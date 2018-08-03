@@ -65,7 +65,7 @@ class Hello_World_Widget extends SiteOrigin_Widget {
       array(
         array(
           'hello-world-widget',
-          plugin_dir_url( __FILE__ ) . 'js/hello-world-widget.js',
+          plugin_dir_url( __FILE__ ) . 'js/hello-world-widget-scripts.js',
           array( 'jquery' ),
           '1.0'
         )
