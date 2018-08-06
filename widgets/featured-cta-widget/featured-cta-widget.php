@@ -64,7 +64,7 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
               'default' => '',
               'required' => true
             ),
-            'text' => array(
+            'desc' => array(
               'type' => 'text',
               'label' => 'Descripción',
               'default' => '',
@@ -84,7 +84,7 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
               'required' => true
             ),
             'cta_url' => array(
-              'type' => 'text',
+              'type' => 'link',
               'label' => 'Url del CTA',
               'default' => '',
               'required' => true
@@ -121,7 +121,7 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
     $vars['icon'] = $instance['section_feats']['icon'];
     $vars['background'] = $instance['section_feats']['background'];
     $vars['main'] = $instance['section_text']['main'];
-    $vars['text'] = $instance['section_text']['text'];
+    $vars['desc'] = $instance['section_text']['desc'];
     $vars['cta_text'] = $instance['section_cta']['cta_text'];
     $vars['cta_url'] = $instance['section_cta']['cta_url'];
     $vars['new_window'] = $instance['section_cta']['new_window'];
