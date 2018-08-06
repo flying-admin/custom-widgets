@@ -129,7 +129,7 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
     $vars['main'] = $instance['section_text']['main'];
     $vars['desc'] = $instance['section_text']['desc'];
     $vars['cta_text'] = $instance['section_cta']['cta_text'];
-    $vars['cta_url'] = $instance['section_cta']['cta_url'];
+    $vars['cta_url'] = sow_esc_url( $instance['section_cta']['cta_url'] );
     $vars['new_window'] = $instance['section_cta']['new_window'];
 
     return $vars;
