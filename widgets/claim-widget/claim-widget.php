@@ -82,7 +82,7 @@ class Claim_Widget extends SiteOrigin_Widget {
               'optional' => true
             ),
             'cta_url' => array(
-              'type' => 'text',
+              'type' => 'link',
               'label' => 'Url del CTA',
               'default' => '',
               'optional' => true
