@@ -38,21 +38,36 @@ class Claim_Widget extends SiteOrigin_Widget {
           'library' => 'image',
           'fallback' => true,
         ),
-        'title' => array(
-          'type' => 'text',
-          'label' => __('Title', 'flyingpigs-custom-widgets'),
-          'default' => ''
-        ),
-        'show_text' => array(
+        'veil' => array(
           'type' => 'checkbox',
           'default' => true,
-          'label' => __('Show text', 'flyingpigs-custom-widgets'),
+          'label' => __('Include veil', 'flyingpigs-custom-widgets'),
+        ),
+        'claim' => array(
+          'type' => 'text',
+          'label' => __('Claim', 'flyingpigs-custom-widgets'),
+          'default' => ''
         ),
         'text' => array(
           'type' => 'text',
           'label' => __('Text', 'flyingpigs-custom-widgets'),
           'default' => ''
         ),
+        'cta_text' => array(
+          'type' => 'text',
+          'label' => __('CTA Text', 'flyingpigs-custom-widgets'),
+          'default' => ''
+        ),
+        'cta_url' => array(
+          'type' => 'text',
+          'label' => __('CTA Url', 'flyingpigs-custom-widgets'),
+          'default' => ''
+        ),
+        'new_window' => array(
+          'type' => 'checkbox',
+          'default' => false,
+          'label' => __('Open CTA in new window', 'flyingpigs-custom-widgets'),
+        )
       ),
 
       //The $base_folder path string.
@@ -75,9 +90,12 @@ class Claim_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    $vars['title'] = $instance['title'];
+    $vars['veil'] = $instance['veil'];
+    $vars['claim'] = $instance['claim'];
     $vars['text'] = $instance['text'];
-    $vars['show_text'] = $instance['show_text'];
+    $vars['cta_text'] = $instance['cta_text'];
+    $vars['cta_url'] = $instance['cta_url'];
+    $vars['new_window'] = $instance['new_window'];
     $vars['image_url'] = '';
 
     $image = wp_get_attachment_image_src($instance['image_url'], 'full', false);

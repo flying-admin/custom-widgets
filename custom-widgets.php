@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Custom Widgets for SiteOrigin
-Description: Custom Widgets inside 'custom-widgets' folder for SiteOrigin Widgets Bundle
+Description: Custom Widgets for SiteOrigin Widgets Bundle
 Version: 1.0
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
