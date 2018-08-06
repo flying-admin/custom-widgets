@@ -1,6 +1,6 @@
 
 <div class="fp_featured-cta
-  <?php if($background != 'white'): ?> fp_featured-cta--color <?php endif; ?>
+  <?php if($background != 'white'): ?> fp_featured-cta--colored <?php endif; ?>
   <?php if($bordered): ?> fp_featured-cta--bordered <?php endif; ?>
 ">
   <div class="container">
