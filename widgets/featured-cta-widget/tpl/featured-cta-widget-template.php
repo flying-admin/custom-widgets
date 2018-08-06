@@ -1,8 +1,8 @@
-<?php if($background == 'white'): ?>
-  <div class="fp_featured-cta">
-<?php else: ?>
-  <div class="fp_featured-cta fp_featured-cta--color">
-<?php endif; ?>
+
+<div class="fp_featured-cta
+  <?php if($background != 'white'): ?> fp_featured-cta--color <?php endif; ?>
+  <?php if($bordered): ?> fp_featured-cta--bordered <?php endif; ?>
+">
   <div class="container">
     <?php if ($icon): ?>
       <div class="row justify-content-center">
@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
       <div class="col-md-6 col-sm-9">
         <h3 class="fp_featured-cta__main"><?php echo $main; ?></h3>
-        <?php if ($desc): ?>
+        <?php if($desc != ''): ?>
           <p class="fp_featured-cta__desc"><?php echo $desc; ?></p>
         <?php endif; ?>
       </div>

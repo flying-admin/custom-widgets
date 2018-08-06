@@ -34,7 +34,7 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
       array(
         'section_feats' => array(
           'type' => 'section',
-          'label' => 'Icono y color del módulo:',
+          'label' => 'Parámetros del módulo:',
           'hide' => false,
           'fields' => array(
             'icon' => array(
@@ -51,6 +51,11 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
               ),
               'default' => 'color',
             ),
+            'bordered' => array(
+              'type' => 'checkbox',
+              'default' => true,
+              'label' => 'Módulo con bordes',
+            )
           )
         ),
         'section_text' => array(
@@ -120,6 +125,7 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
     $vars = [];
     $vars['icon'] = $instance['section_feats']['icon'];
     $vars['background'] = $instance['section_feats']['background'];
+    $vars['bordered'] = $instance['section_feats']['bordered'];
     $vars['main'] = $instance['section_text']['main'];
     $vars['desc'] = $instance['section_text']['desc'];
     $vars['cta_text'] = $instance['section_cta']['cta_text'];

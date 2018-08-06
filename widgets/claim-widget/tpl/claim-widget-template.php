@@ -1,8 +1,7 @@
-<?php if($veil): ?>
-  <div class="fp_claim" style="background-image: url('<?php echo $image_url; ?>');">
-<?php else: ?>
-  <div class="fp_claim fp_claim--no-veil" style="background-image: url('<?php echo $image_url; ?>');">
-<?php endif; ?>
+<div class="fp_claim
+  <?php if(!$veil): ?> fp_claim--no-veil <?php endif; ?>"
+  style="background-image: url('<?php echo $image_url; ?>');"
+>
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
