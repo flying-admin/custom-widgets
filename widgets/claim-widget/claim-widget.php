@@ -30,7 +30,7 @@ class Claim_Widget extends SiteOrigin_Widget {
 
       ),
 
-      //The $form_options array, which describes the form fields used to configure SiteOrigin widgets. We'll explain these in more detail later.
+      //The $form_options array, which describes the form fields used to configure SiteOrigin widgets.
       array(
         'section_img' => array(
           'type' => 'section',
@@ -116,13 +116,13 @@ class Claim_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
+    $vars['image_url'] = '';
     $vars['veil'] = $instance['section_img']['veil'];
     $vars['claim'] = $instance['section_text']['claim'];
     $vars['text'] = $instance['section_text']['text'];
     $vars['cta_text'] = $instance['section_cta']['cta_text'];
     $vars['cta_url'] = $instance['section_cta']['cta_url'];
     $vars['new_window'] = $instance['section_cta']['new_window'];
-    $vars['image_url'] = '';
 
     $image = wp_get_attachment_image_src($instance['section_img']['image_url'], 'full', false);
     if($image) {
