@@ -1,4 +1,3 @@
-
 <?php if($veil){ ?>
   <div class="fp_claim" style="background-image: url('<?php echo $image_url; ?>');">
 <?php } else { ?>
