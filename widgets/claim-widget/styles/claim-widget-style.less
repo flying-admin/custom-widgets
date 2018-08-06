@@ -4,8 +4,8 @@
   display: block;
   position: relative;
   width: auto;
-  height: 45vw;
-  min-height: 690px;
+  height: auto;
+  min-height: 45vw;
   padding: 22.5vw 0 0;
   margin: 0 -15px 30px;
   overflow: hidden;
@@ -26,26 +26,62 @@
   &__content {
     display: block;
     position: relative;
+    padding: 50px 0;
     z-index: 2;
 
     &__title {
-      font-size: 32px;
-      line-height: 42px;
+      display: block;
+      max-width: 85%;
+      font-family: Montserrat, sans-serif;
+      font-weight: 800;
+      font-size: 50px;
+      line-height: 55px;
+      letter-spacing: 0.25px;
+      text-align: left;
+      text-transform: uppercase;
       color: @white;
       padding: 0;
-      margin: 50px 0 0;
+      margin: 0;
+
+      @media(min-width: 1540px){
+        font-size: 70px;
+        line-height: 75px;
+      }
+
+      @media(max-width: 599px){
+        font-size: 30px;
+        line-height: 35px;
+        max-width: 100%;
+      }
     }
 
     &__text {
-      font-size: 16px;
-      line-height: 24px;
-      color: fade(@white, 85%);
+      display: block;
+      max-width: 70%;
+      font-family: "PT Serif", serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 30px;
+      color: @white;
       padding: 0;
-      margin: 15px 0 0;
+      margin: 21px 0 0;
+
+      @media(max-width: 599px){
+        font-size: 14px;
+        line-height: 23px;
+        margin: 14px 0 0;
+        max-width: 92%;
+      }
     }
 
     &__cta {
-      margin: 10px 0 0 !important;
+      margin: 31px 0 0 !important;
+
+      @media(max-width: 599px){
+        display: block !important;
+        margin: 20px 0 0 !important;
+      }
     }
   }
 }
@@ -54,12 +90,25 @@
   display: inline-block;
   width: auto;
   height: auto;
-  padding: 20px 30px;
+  padding: 17px 78px;
   margin: 0;
   color: @black;
   background-color: @white;
   border: 1px solid @white;
+  border-radius: 1px;
   transition: all 0.3s ease-out 0s;
+
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 11px;
+  line-height: 24px;
+  text-transform: uppercase;
+
+  i {
+    font-style: 14px;
+    line-height: 14px;
+    margin-left: 14px;
+  }
 
   &:hover {
     background-color: darken(@white, 10%);

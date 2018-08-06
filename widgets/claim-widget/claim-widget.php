@@ -32,41 +32,67 @@ class Claim_Widget extends SiteOrigin_Widget {
 
       //The $form_options array, which describes the form fields used to configure SiteOrigin widgets. We'll explain these in more detail later.
       array(
-        'image_url' => array(
-          'type' => 'media',
-          'label' => __('Image file', 'flyingpigs-custom-widgets'),
-          'library' => 'image',
-          'fallback' => true,
+        'section_img' => array(
+          'type' => 'section',
+          'label' => 'Imagen de Claim:',
+          'hide' => false,
+          'fields' => array(
+            'image_url' => array(
+              'type' => 'media',
+              'label' => 'Imagen',
+              'library' => 'image',
+              'fallback' => true,
+              'required' => true
+            ),
+            'veil' => array(
+              'type' => 'checkbox',
+              'default' => true,
+              'label' => 'Incluir velo',
+            )
+          )
         ),
-        'veil' => array(
-          'type' => 'checkbox',
-          'default' => true,
-          'label' => __('Include veil', 'flyingpigs-custom-widgets'),
+        'section_text' => array(
+          'type' => 'section',
+          'label' => 'Textos del Claim:',
+          'hide' => false,
+          'fields' => array(
+            'claim' => array(
+              'type' => 'text',
+              'label' => 'Texto principal',
+              'default' => '',
+              'required' => true
+            ),
+            'text' => array(
+              'type' => 'text',
+              'label' => 'Entradilla',
+              'default' => '',
+              'optional' => true
+            )
+          )
         ),
-        'claim' => array(
-          'type' => 'text',
-          'label' => __('Claim', 'flyingpigs-custom-widgets'),
-          'default' => ''
-        ),
-        'text' => array(
-          'type' => 'text',
-          'label' => __('Text', 'flyingpigs-custom-widgets'),
-          'default' => ''
-        ),
-        'cta_text' => array(
-          'type' => 'text',
-          'label' => __('CTA Text', 'flyingpigs-custom-widgets'),
-          'default' => ''
-        ),
-        'cta_url' => array(
-          'type' => 'text',
-          'label' => __('CTA Url', 'flyingpigs-custom-widgets'),
-          'default' => ''
-        ),
-        'new_window' => array(
-          'type' => 'checkbox',
-          'default' => false,
-          'label' => __('Open CTA in new window', 'flyingpigs-custom-widgets'),
+        'section_cta' => array(
+          'type' => 'section',
+          'label' => 'Call To Action (CTA):',
+          'hide' => false,
+          'fields' => array(
+            'cta_text' => array(
+              'type' => 'text',
+              'label' => 'Texto del CTA',
+              'default' => '',
+              'optional' => true
+            ),
+            'cta_url' => array(
+              'type' => 'text',
+              'label' => 'Url del CTA',
+              'default' => '',
+              'optional' => true
+            ),
+            'new_window' => array(
+              'type' => 'checkbox',
+              'default' => false,
+              'label' => 'Abrir CTA en pestaña nueva',
+            )
+          )
         )
       ),
 
@@ -90,20 +116,20 @@ class Claim_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    $vars['veil'] = $instance['veil'];
-    $vars['claim'] = $instance['claim'];
-    $vars['text'] = $instance['text'];
-    $vars['cta_text'] = $instance['cta_text'];
-    $vars['cta_url'] = $instance['cta_url'];
-    $vars['new_window'] = $instance['new_window'];
+    $vars['veil'] = $instance['section_img']['veil'];
+    $vars['claim'] = $instance['section_text']['claim'];
+    $vars['text'] = $instance['section_text']['text'];
+    $vars['cta_text'] = $instance['section_cta']['cta_text'];
+    $vars['cta_url'] = $instance['section_cta']['cta_url'];
+    $vars['new_window'] = $instance['section_cta']['new_window'];
     $vars['image_url'] = '';
 
-    $image = wp_get_attachment_image_src($instance['image_url'], 'full', false);
+    $image = wp_get_attachment_image_src($instance['section_img']['image_url'], 'full', false);
     if($image) {
       $vars['image_url'] = $image[0];
     }
     else {
-      $vars['image_url'] = $instance['image_url_fallback'];
+      $vars['image_url'] = $instance['section_img']['image_url_fallback'];
     }
 
     return $vars;

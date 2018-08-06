@@ -9,9 +9,3 @@
     </p>
   <?php } ?>
 </div>
-
-<?php
-foreach ($instance as $key => $value) {
-  echo $key . ': ' . $value . '<br/>';
-}
-?>
