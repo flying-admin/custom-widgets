@@ -24,9 +24,15 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-lg-6 col-md-9">
-      <a href="<?php echo $cta_url; ?>" class="fp_featured-cta__cta btn btn--primary btn--block" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
-        <?php echo $cta_text; ?>
-      </a>
+      <?php if($background != 'white'): ?>
+        <a href="<?php echo $cta_url; ?>" class="fp_featured-cta__cta btn btn--block" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
+          <?php echo $cta_text; ?>
+        </a>
+      <?php else: ?>
+        <a href="<?php echo $cta_url; ?>" class="fp_featured-cta__cta btn btn--primary btn--block" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
+          <?php echo $cta_text; ?>
+        </a>
+      <?php endif; ?>
     </div>
   </div>
 </div>

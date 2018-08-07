@@ -4,8 +4,9 @@
   display: block;
   width: auto;
   height: auto;
-  margin: -15px 0;
+  margin: 0 -15px;
   padding: 70px;
+  background-color: @white;
 
   &__icon {
     display: block;
@@ -49,7 +50,13 @@
   }
 
   &--colored {
+    background-color: @primary;
 
+    .fp_featured-cta__icon,
+    .fp_featured-cta__main,
+    .fp_featured-cta__desc {
+      color: @white;
+    }
   }
 
   &--bordered {
@@ -63,7 +70,7 @@
     height: auto;
     padding: 17px 78px;
     margin: 0;
-    color: @black;
+    color: @darkgrey;
     background-color: @white;
     border: 1px solid @white;
     border-radius: 1px;
