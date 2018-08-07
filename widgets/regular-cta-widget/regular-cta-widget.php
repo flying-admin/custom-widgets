@@ -38,11 +38,11 @@ class Regular_Cta_Widget extends SiteOrigin_Widget {
           'hide' => false,
           'fields' => array(
             'background' => array(
-              'type'  => 'select',
+              'type'  => 'radio',
               'label' => 'Color de fondo',
               'options' => array(
-                'white' => 'Color blanco',
-                'color' => 'Color destacado'
+                'color' => 'Color destacado',
+                'white' => 'Color blanco'
               ),
               'default' => 'color',
             ),
