@@ -1,22 +1,21 @@
 @import "variables";
 
-.fp_featured-cta {
+.fp_regular-cta {
   display: block;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+
   width: auto;
   height: auto;
   margin: 0 -15px;
   padding: 70px;
   background-color: @white;
 
-  &__icon {
-    display: block;
-    padding: 0;
-    margin: 0;
-    font-size: 80px;
-    line-height: 80px;
-    text-align: center;
-    color: @darkgrey;
-    margin: 0 0 28px;
+  &--wrapper {
+    
   }
 
   &__main {
@@ -32,18 +31,6 @@
     color: @darkgrey;
   }
 
-  &__desc {
-    display: block;
-    padding: 0;
-    font-family: "PT serif", serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 30px;
-    text-align: center;
-    color: @darkgrey;
-    margin: 18px 0 0;
-  }
-
   &__cta {
     max-width: 350px;
     margin: 28px auto 0 !important;
@@ -52,9 +39,7 @@
   &--colored {
     background-color: @primary;
 
-    .fp_featured-cta__icon,
-    .fp_featured-cta__main,
-    .fp_featured-cta__desc {
+    .fp_regular-cta__main {
       color: @white;
     }
   }

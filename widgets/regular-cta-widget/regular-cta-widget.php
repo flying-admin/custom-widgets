@@ -1,28 +1,28 @@
 <?php
 
 /*
-Widget Name: Featured CTA Widget
-Description: Featured CTA module
+Widget Name: Regular CTA Widget
+Description: Regular CTA module
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
 */
 
-class Featured_Cta_Widget extends SiteOrigin_Widget {
+class Regular_Cta_Widget extends SiteOrigin_Widget {
   function __construct() {
     //Here you can do any preparation required before calling the parent constructor, such as including additional files or initializing variables.
 
     //Call the parent constructor with the required arguments.
     parent::__construct (
       // The unique id for your widget.
-      'featured-cta-widget',
+      'regular-cta-widget',
 
       // The name of the widget for display purposes.
-      __('Featured Cta Widget', 'featured-cta-widget'),
+      __('Regular Cta Widget', 'regular-cta-widget'),
 
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => __('Featured Cta Widget.', 'featured-cta-widget')
+        'description' => __('Regular Cta Widget.', 'regular-cta-widget')
       ),
 
       //The $control_options array, which is passed through to WP_Widget
@@ -37,11 +37,6 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
           'label' => 'Parámetros del módulo:',
           'hide' => false,
           'fields' => array(
-            'icon' => array(
-              'type' => 'icon',
-              'label' => 'Icono',
-              'optional' => true
-            ),
             'background' => array(
               'type'  => 'select',
               'label' => 'Color de fondo',
@@ -68,12 +63,6 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
               'label' => 'Texto principal',
               'default' => '',
               'required' => true
-            ),
-            'desc' => array(
-              'type' => 'text',
-              'label' => 'Descripción',
-              'default' => '',
-              'optional' => true
             )
           )
         ),
@@ -112,8 +101,8 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
     $this->register_frontend_scripts(
       array(
         array(
-          'featured-cta-widget',
-          plugin_dir_url( __FILE__ ) . 'js/featured-cta-widget-scripts.js',
+          'regular-cta-widget',
+          plugin_dir_url( __FILE__ ) . 'js/regular-cta-widget-scripts.js',
           array( 'jquery' ),
           '1.0'
         )
@@ -136,11 +125,11 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
   }
 
   function get_template_name($instance) {
-    return 'featured-cta-widget-template';
+    return 'regular-cta-widget-template';
   }
 
   function get_style_name($instance) {
-    return 'featured-cta-widget-style';
+    return 'regular-cta-widget-style';
   }
 }
-siteorigin_widget_register('featured-cta-widget', __FILE__, 'Featured_Cta_Widget');
+siteorigin_widget_register('regular-cta-widget', __FILE__, 'Regular_Cta_Widget');
