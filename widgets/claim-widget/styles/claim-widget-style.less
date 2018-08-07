@@ -90,49 +90,49 @@
       }
     }
   }
-}
 
-.btn {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  padding: 17px 78px;
-  margin: 0;
-  color: @black;
-  background-color: @white;
-  border: 1px solid @white;
-  border-radius: 1px;
-  transition: all 0.3s ease-out 0s;
+  .btn {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    padding: 17px 78px;
+    margin: 0;
+    color: @black;
+    background-color: @white;
+    border: 1px solid @white;
+    border-radius: 1px;
+    transition: all 0.3s ease-out 0s;
 
-  font-family: Montserrat, sans-serif;
-  font-weight: 800;
-  font-size: 11px;
-  line-height: 24px;
-  text-transform: uppercase;
+    font-family: Montserrat, sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    line-height: 24px;
+    text-transform: uppercase;
 
-  i {
-    font-style: 14px;
-    line-height: 14px;
-    margin-left: 14px;
-  }
-
-  &:hover {
-    background-color: darken(@white, 10%);
-    border-color: darken(@white, 10%);
-  }
-
-  &--block {
-    display: block;
-  }
-
-  &--ghost {
-    background-color: transparent;
-    color: @white;
+    i {
+      font-style: 14px;
+      line-height: 14px;
+      margin-left: 14px;
+    }
 
     &:hover {
-      background-color: @white;
-      border-color: @white;
-      color: @black;
+      background-color: darken(@white, 10%);
+      border-color: darken(@white, 10%);
+    }
+
+    &--block {
+      display: block;
+    }
+
+    &--ghost {
+      background-color: transparent;
+      color: @white;
+
+      &:hover {
+        background-color: @white;
+        border-color: @white;
+        color: @black;
+      }
     }
   }
 }
