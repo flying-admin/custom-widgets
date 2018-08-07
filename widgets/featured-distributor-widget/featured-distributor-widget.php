@@ -37,6 +37,13 @@ class Featured_Distributor_Widget extends SiteOrigin_Widget {
           'label' => 'Parámetros del módulo:',
           'hide' => false,
           'fields' => array(
+            'image_url' => array(
+              'type' => 'media',
+              'label' => 'Imagen',
+              'library' => 'image',
+              'fallback' => true,
+              'required' => true
+            ),
             'distributor_type' => array(
               'type'  => 'radio',
               'label' => 'Tipo de distribuidor',
@@ -159,6 +166,7 @@ class Featured_Distributor_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
+    $vars['image_url'] = '';
     $vars['type'] = $instance['section_feats']['distributor_type'];
     $vars['main'] = $instance['section_common']['main'];
     $vars['desc'] = $instance['section_common']['desc'];
@@ -171,6 +179,14 @@ class Featured_Distributor_Widget extends SiteOrigin_Widget {
     $vars['cypher_number'] = $instance['section_cypher']['cypher_number'];
     $vars['cypher_ordinal'] = $instance['section_cypher']['cypher_ordinal'];
     $vars['cypher_desc'] = $instance['section_cypher']['cypher_desc'];
+
+    $image = wp_get_attachment_image_src($instance['section_img']['image_url'], 'full', false);
+    if($image) {
+      $vars['image_url'] = $image[0];
+    }
+    else {
+      $vars['image_url'] = $instance['section_img']['image_url_fallback'];
+    }
 
     return $vars;
   }
