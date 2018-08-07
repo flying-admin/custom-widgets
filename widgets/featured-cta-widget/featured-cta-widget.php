@@ -1,8 +1,8 @@
 <?php
 
 /*
-Widget Name: Featured CTA Widget
-Description: Featured CTA module
+Widget Name: CTA Destacado
+Description: CTA Destacado module
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
 */
@@ -17,12 +17,12 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
       'featured-cta-widget',
 
       // The name of the widget for display purposes.
-      __('Featured Cta Widget', 'featured-cta-widget'),
+      'CTA Destacado',
 
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => __('Featured Cta Widget.', 'featured-cta-widget')
+        'description' => 'CTA Destacado - Módulo de contenido'
       ),
 
       //The $control_options array, which is passed through to WP_Widget

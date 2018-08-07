@@ -1,8 +1,8 @@
 <?php
 
 /*
-Widget Name: Claim Widget
-Description: Claim module'
+Widget Name: Claim
+Description: Claim module
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
 */
@@ -17,12 +17,12 @@ class Claim_Widget extends SiteOrigin_Widget {
       'claim-widget',
 
       // The name of the widget for display purposes.
-      __('Claim Widget', 'claim-widget'),
+      'Claim',
 
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => __('Claim Widget.', 'claim-widget')
+        'description' => 'Claim - Módulo de la parte superior'
       ),
 
       //The $control_options array, which is passed through to WP_Widget

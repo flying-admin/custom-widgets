@@ -1,8 +1,8 @@
 <?php
 
 /*
-Widget Name: Regular CTA Widget
-Description: Regular CTA module
+Widget Name: CTA Normal
+Description: CTA Normal module
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
 */
@@ -17,12 +17,12 @@ class Regular_Cta_Widget extends SiteOrigin_Widget {
       'regular-cta-widget',
 
       // The name of the widget for display purposes.
-      __('Regular Cta Widget', 'regular-cta-widget'),
+      'CTA Normal',
 
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => __('Regular Cta Widget.', 'regular-cta-widget')
+        'description' => 'CTA Normal - Módulo de contenido',
       ),
 
       //The $control_options array, which is passed through to WP_Widget
