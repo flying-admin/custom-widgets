@@ -77,7 +77,13 @@ class Featured_Distributor_Widget extends SiteOrigin_Widget {
               'default' => '',
               'optional' => true
             ),
-            'url' => array(
+            'link_text' => array(
+              'type' => 'text',
+              'label' => 'Texto del enlace',
+              'default' => '',
+              'optional' => true
+            ),
+            'link_url' => array(
               'type' => 'link',
               'label' => 'Url del enlace',
               'default' => '',
@@ -170,7 +176,8 @@ class Featured_Distributor_Widget extends SiteOrigin_Widget {
     $vars['type'] = $instance['section_feats']['distributor_type'];
     $vars['main'] = $instance['section_common']['main'];
     $vars['desc'] = $instance['section_common']['desc'];
-    $vars['url'] = sow_esc_url( $instance['section_common']['url'] );
+    $vars['link_text'] = $instance['section_common']['link_text'];
+    $vars['link_url'] = sow_esc_url( $instance['section_common']['link_url'] );
     $vars['new_window'] = $instance['section_common']['new_window'];
 
     $vars['phrase_main'] = $instance['section_phrase']['phrase_main'];
@@ -180,12 +187,12 @@ class Featured_Distributor_Widget extends SiteOrigin_Widget {
     $vars['cypher_ordinal'] = $instance['section_cypher']['cypher_ordinal'];
     $vars['cypher_desc'] = $instance['section_cypher']['cypher_desc'];
 
-    $image = wp_get_attachment_image_src($instance['section_img']['image_url'], 'full', false);
+    $image = wp_get_attachment_image_src($instance['section_feats']['image_url'], 'full', false);
     if($image) {
       $vars['image_url'] = $image[0];
     }
     else {
-      $vars['image_url'] = $instance['section_img']['image_url_fallback'];
+      $vars['image_url'] = $instance['section_feats']['image_url_fallback'];
     }
 
     return $vars;
