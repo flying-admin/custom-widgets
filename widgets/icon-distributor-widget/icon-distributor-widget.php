@@ -32,7 +32,7 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
 
       //The $form_options array, which describes the form fields used to configure SiteOrigin widgets.
       array(
-        'section_genaral' => array(
+        'section_general' => array(
           'type' => 'section',
           'label' => 'Textos del módulo:',
           'hide' => false,
@@ -51,34 +51,32 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
             )
           )
         ),
-        'section_fields' => array(
-          'items' => array(
-            'type' => 'repeater',
-            'label' => 'Elementos del módulo',
-            'item_name'  => 'Elemento',
-            'item_label' => array(
-              'selector'     => "[id*='icon_title']",
-              'update_event' => 'change',
-              'value_method' => 'val'
+        'section_items' => array(
+          'type' => 'repeater',
+          'label' => 'Elementos del módulo',
+          'item_name'  => 'Elemento',
+          'item_label' => array(
+            'selector'     => "[id*='icon_title']",
+            'update_event' => 'change',
+            'value_method' => 'val'
+          ),
+          'fields' => array(
+            'icon' => array(
+              'type' => 'icon',
+              'label' => 'Icono',
+              'optional' => true
             ),
-            'fields' => array(
-              'icon' => array(
-                'type' => 'icon',
-                'label' => 'Icono',
-                'optional' => true
-              ),
-              'icon_title' => array(
-                'type' => 'text',
-                'label' => 'Título del elemento',
-                'default' => '',
-                'optional' => true
-              ),
-              'icon_text' => array(
-                'type' => 'text',
-                'label' => 'Descripción del elemento',
-                'default' => '',
-                'optional' => true
-              )
+            'icon_title' => array(
+              'type' => 'text',
+              'label' => 'Título del elemento',
+              'default' => '',
+              'optional' => true
+            ),
+            'icon_text' => array(
+              'type' => 'text',
+              'label' => 'Descripción del elemento',
+              'default' => '',
+              'optional' => true
             )
           )
         )
@@ -105,10 +103,9 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
   function get_template_variables($instance) {
     $vars = [];
     $vars['image_url'] = '';
-    $vars['text'] = $instance['section_text']['text'];
-    $vars['cta_text'] = $instance['section_cta']['cta_text'];
-    $vars['cta_url'] = sow_esc_url( $instance['section_cta']['cta_url'] );
-    $vars['new_window'] = $instance['section_cta']['new_window'];
+    $vars['title'] = $instance['section_general']['title'];
+    $vars['text'] = $instance['section_general']['text'];
+    $vars['items'] = $instance['section_items'];
 
     return $vars;
   }
