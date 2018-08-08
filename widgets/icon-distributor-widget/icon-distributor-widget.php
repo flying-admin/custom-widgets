@@ -52,31 +52,51 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
           )
         ),
         'section_items' => array(
-          'type' => 'repeater',
-          'label' => 'Elementos del módulo',
-          'item_name'  => 'Elemento',
-          'item_label' => array(
-            'selector'     => "[id*='icon_title']",
-            'update_event' => 'change',
-            'value_method' => 'val'
-          ),
+          'type' => 'section',
+          'label' => 'Iconos',
+          'hide' => false,
           'fields' => array(
-            'icon' => array(
-              'type' => 'icon',
-              'label' => 'Icono',
-              'optional' => true
+            'items_row' => array(
+              'type' => 'select',
+              'label' => 'Número de items por fila',
+              'default' => 'six',
+              'options' => array(
+                'one' => '1',
+                'two' => '2',
+                'three' => '3',
+                'four' => '4',
+                'five' => '5',
+                'six' => '6'
+              )
             ),
-            'icon_title' => array(
-              'type' => 'text',
-              'label' => 'Título del elemento',
-              'default' => '',
-              'optional' => true
-            ),
-            'icon_text' => array(
-              'type' => 'text',
-              'label' => 'Descripción del elemento',
-              'default' => '',
-              'optional' => true
+            'items' => array(
+              'type' => 'repeater',
+              'label' => 'Elementos del módulo',
+              'item_name'  => 'Elemento',
+              'item_label' => array(
+                'selector'     => "[id*='icon_title']",
+                'update_event' => 'change',
+                'value_method' => 'val'
+              ),
+              'fields' => array(
+                'icon' => array(
+                  'type' => 'icon',
+                  'label' => 'Icono',
+                  'optional' => true
+                ),
+                'icon_title' => array(
+                  'type' => 'text',
+                  'label' => 'Título del elemento',
+                  'default' => '',
+                  'optional' => true
+                ),
+                'icon_text' => array(
+                  'type' => 'text',
+                  'label' => 'Descripción del elemento',
+                  'default' => '',
+                  'optional' => true
+                )
+              )
             )
           )
         )
@@ -105,7 +125,8 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
     $vars['image_url'] = '';
     $vars['title'] = $instance['section_general']['title'];
     $vars['text'] = $instance['section_general']['text'];
-    $vars['items'] = $instance['section_items'];
+    $vars['items_row'] = $instance['section_items']['items_row'];
+    $vars['items'] = $instance['section_items']['items'];
 
     return $vars;
   }

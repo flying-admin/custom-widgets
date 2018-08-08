@@ -1,5 +1,96 @@
 @import "variables";
 
 .fp_icon-distributor {
-  
+  display: block;
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 40px 70px;
+  margin: 0 -15px;
+
+  @media(max-width: 1541px){
+    padding: 40px 0;
+  }
+
+  &__content {
+    display: block;
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 1542px;
+    margin: 0 auto;
+
+    &__general {
+
+      &__title {
+
+      }
+
+      &__desc {
+
+      }
+    }
+
+    &__icons {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      &__item {
+        display: block;
+        width: auto;
+        height: auto;
+        flex-basis: 100%;
+
+        &__icon {
+
+        }
+
+        &__title {
+          font-family: Montserrat, sans-serif;
+          font-weight: 800;
+          font-size: 11px;
+          line-height: 18px;
+          letter-spacing: 0.7px;
+          color: @darkgrey;
+        }
+
+        &__desc {
+
+        }
+      }
+
+      &--one {
+        .fp_icon-distributor__content__icons__item {
+          flex-basis: 100%;
+        }
+      }
+      &--two {
+        .fp_icon-distributor__content__icons__item {
+          flex-basis: 100%/2;
+        }
+      }
+      &--three {
+        .fp_icon-distributor__content__icons__item {
+          flex-basis: 100%/3;
+        }
+      }
+      &--four {
+        .fp_icon-distributor__content__icons__item {
+          flex-basis: 100%/4;
+        }
+      }
+      &--five {
+        .fp_icon-distributor__content__icons__item {
+          flex-basis: 100%/5;
+        }
+      }
+      &--six {
+        .fp_icon-distributor__content__icons__item {
+          flex-basis: 100%/6;
+        }
+      }
+    }
+  }
 }
