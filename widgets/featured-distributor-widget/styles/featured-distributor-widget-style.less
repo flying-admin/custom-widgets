@@ -5,13 +5,11 @@
   position: relative;
   width: auto;
   height: auto;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 1542px;
-  overflow: hidden;
+  padding: 100px 70px;
+  margin: 0 -15px;
 
   @media(max-width: 1541px){
-    margin: 0 -15px;
+    padding: 100px 0;
   }
 
   &__content {
@@ -21,6 +19,13 @@
     justify-content: space-between;
     align-items: stretch;
     align-content: stretch;
+
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 1542px;
+    margin: 0 auto;
+    overflow: hidden;
 
     @media(max-width: 991px){
       flex-wrap: wrap;
