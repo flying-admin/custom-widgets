@@ -8,7 +8,10 @@
         <p class="fp_icon-distributor__content__general__desc"><?php echo $text; ?></p>
       <?php endif; ?>
     </div>
-    <div class="fp_icon-distributor__content__icons <?php echo "fp_icon-distributor__content__icons--" . $items_row; ?>">
+    <div class="fp_icon-distributor__content__icons
+      <?php echo "fp_icon-distributor__content__icons--" . $items_align; ?>
+      <?php echo "fp_icon-distributor__content__icons--" . $items_row; ?>
+    ">
       <?php for ($i = 0; $i < count($items); $i++): ?>
         <div class="fp_icon-distributor__content__icons__item">
           <?php if($items[$i]['icon'] != ''): ?>
