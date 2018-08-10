@@ -56,6 +56,16 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
           'label' => 'Iconos',
           'hide' => false,
           'fields' => array(
+            'items_align' => array(
+              'type' => 'select',
+              'label' => 'Alineación de los items',
+              'default' => 'center',
+              'options' => array(
+                'center' => 'Centro',
+                'left' => 'Izquierda',
+                'right' => 'Derecha'
+              )
+            ),
             'items_row' => array(
               'type' => 'select',
               'label' => 'Número de items por fila',
@@ -125,6 +135,7 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
     $vars['image_url'] = '';
     $vars['title'] = $instance['section_general']['title'];
     $vars['text'] = $instance['section_general']['text'];
+    $vars['items_align'] = $instance['section_items']['items_align'];
     $vars['items_row'] = $instance['section_items']['items_row'];
     $vars['items'] = $instance['section_items']['items'];
 
