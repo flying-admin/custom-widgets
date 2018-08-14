@@ -15,22 +15,8 @@
             <?php endif; ?>
           </div>
         </div>
-        <div class="row  <?php if( $extra_content_position == 'left' ): echo 'flex-row-reverse'; endif; ?> " >
-          <div class=" col-sm-12 <?php if( $extra_content == 'image' || $extra_content == 'video' ){ echo ' col-lg-6 '; }else{ echo ' col-lg-8 ' ;}?> ">
-            <?php if($rich_text != ''): ?>
-            <div class="fp_introduction__content__module">
-              <?php echo $rich_text; ?>
-            </div>
-            <?php endif; ?>
-            <?php if($link): ?>
-              <a href="<?php echo $link_url; ?>" class="link link--primary link--external fp_introduction__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
-                <?php echo $link_text; ?>
-                <?php echo siteorigin_widget_get_icon( 'genericons-external' ); ?>
-              </a>
-            <?php endif; ?>
-          </div>
+        <div class="row  <?php if( $extra_content_position == 'right' ): echo 'flex-row-reverse'; endif; ?> " >
           <?php if( $extra_content != 'none' ): ?>
-    
             <div class="col-sm-12 <?php if( $extra_content == 'image' || $extra_content == 'video' ){ echo ' col-lg-6 '; }else{ echo ' col-lg-4 ' ;}?>  ">
               <div class="extra-content">
                 <?php if( $cta ): // start CTA ?>
@@ -54,24 +40,24 @@
                         </a>
                       </div>
                     </div>
-                     
+                    
                     <?php endif; ?>
                   </div>
                 <?php endif; // end CTA ?> 
 
                 <?php if( $image   && $image_url): ?>
-                  <img src="<?php echo $image_url; ?>" alt="" class="extra_content__img img-fluid">
+                    <figure class="extra-content__img content_image" data-width="740" data-height="480" >
+                      <img src="<?php echo $image_url; ?>" class="">
+                    </figure>
                 <?php endif; ?>
 
                 <?php if( $video ): ?>
                   <?php if( $video_url == false ): ?>
                       <p>  error video URL </p>    
                   <?php else: ?>
-                    <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal"   class="extra_content__video">
-                      <figure class="content_img">
-                        
-                          <img src="<?php echo $video_image ?>" class="extra_content__video__image">
-                        
+                    <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal"   class="extra-content__video">
+                      <figure class="extra-content__video__image content_image" data-width="740" data-height="480" >
+                          <img src="<?php echo $video_image ?>" class="">
                       </figure>
                       <?php echo siteorigin_widget_get_icon( 'ionicons-ios-play-outline' ); ?>
                     </a>
@@ -81,6 +67,19 @@
               </div>
             </div>
           <?php endif; ?>
+          <div class=" col-sm-12 <?php if( $extra_content == 'image' || $extra_content == 'video' ){ echo ' col-lg-6 '; }else{ echo ' col-lg-8 ' ;}?> ">
+            <?php if($rich_text != ''): ?>
+            <div class="fp_introduction__content__module">
+              <?php echo $rich_text; ?>
+            </div>
+            <?php endif; ?>
+            <?php if($link): ?>
+              <a href="<?php echo $link_url; ?>" class="link link--primary link--external fp_introduction__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
+                <?php echo $link_text; ?>
+                <?php echo siteorigin_widget_get_icon( 'genericons-external' ); ?>
+              </a>
+            <?php endif; ?>
+          </div>
         </div>
       </div>
       </div>
@@ -90,12 +89,12 @@
 </div>
 <?php if( $extra_content == 'video' ): ?>
 <!-- MODAL -->
-<div class="modal fade modal--video" id="introduccion__modal-video-<?php echo $video_code ?>" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
-    <div class="modal-dialog" role="document">
+<div class="modal fade modal--video modal--ghost" id="introduccion__modal-video-<?php echo $video_code ?>" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <?php echo siteorigin_widget_get_icon( 'genericons-close-alt' ); ?>
                 </button>
             </div>
             <div class="modal-body">
