@@ -298,7 +298,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
           break;
       case "image":
           $vars['image'] = true;
-          $vars['image_url' ] =  $this->get_image($instance['section_image']['image_url'], $instance['section_image']['image_url_fallback']);
+          $vars['image_url' ] =  $this->getImage($instance['section_image']['image_url'], $instance['section_image']['image_url_fallback']);
           $vars['extra_content_position' ]= $instance['section_image']['image_position'];
           break;
       case "video":
@@ -323,7 +323,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
           $vars['video_code'] = $video_code ;
 
           if( $instance['section_video']['video_image'] == 'custom_image' || $vars['video_type'] == false || $vars['video_url'] == false ){
-            $vars['video_image']= $this->get_image( $instance['section_video']['image_url'], $instance['section_video']['image_url_fallback'] );
+            $vars['video_image']= $this->getImage( $instance['section_video']['image_url'], $instance['section_video']['image_url_fallback'] );
           } else {
             if( $video_code != ''){
               if( $vars['video_type'] == 'youtube'){
@@ -336,11 +336,10 @@ class Introduction_Widget extends SiteOrigin_Widget {
           break;
     }
 
-    echo var_dump($vars);
     return $vars;
   }
 
-  function get_image( $image , $fallback = false ){
+  function getImage( $image , $fallback = false ){
     $img = wp_get_attachment_image_src( $image , 'full', false );
     if( $img ) {
       return $img[0];
@@ -349,14 +348,6 @@ class Introduction_Widget extends SiteOrigin_Widget {
     }
   }
 
-  /**
-   * Gets the thumbnail url for a vimeo video using the video id. This only works for public videos.
-   *
-   * @param string $id The video id.
-   * @param string $thumbType Thumbnail image size. supported sizes: small, medium (default) and large.
-   *
-   * @return string|bool
-   */
 
   function getVimeoVideoThumbnailByVideoId( $id = '', $thumbType = 'medium' ) {
       $id = trim( $id );
@@ -383,16 +374,39 @@ class Introduction_Widget extends SiteOrigin_Widget {
   }
 
   function getYoutubeId( $url ){
-      parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
-      if(array_key_exists ( 'v' , $my_array_of_vars ) ){
-        return  $my_array_of_vars['v'];   
-      }else{
-        return '';   
-      } 
+      // parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
+      // if(array_key_exists ( 'v' , $my_array_of_vars ) ){
+      //   return  $my_array_of_vars['v'];   
+      // }else{
+      //   return '';   
+      // } 
+
+      if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+        $id = $match[1];
+        var_dump($id);
+        if($id){
+          return $id;
+        }else{
+          return '';
+        }
+    }
   }
 
   function getVimeoId( $url ){
-      $id = substr( parse_url($url, PHP_URL_PATH), 1 );
+      // $id = substr( parse_url($url, PHP_URL_PATH), 1 );
+      // if($id){
+      //   return $id;
+      // }else{
+      //   return '';
+      // }
+
+      $regs = [];
+      $id = '';
+  
+      if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $regs)) {
+          $id = $regs[3];
+      }
+  
       if($id){
         return $id;
       }else{
@@ -401,14 +415,13 @@ class Introduction_Widget extends SiteOrigin_Widget {
   } 
   
 
-
-
   function get_template_name($instance) {
     return 'introduction-widget-template';
   }
 
   function get_style_name($instance) {
     return 'introduction-widget-style';
+
   }
 }
 siteorigin_widget_register('introduction-widget', __FILE__, 'Introduction_Widget');
