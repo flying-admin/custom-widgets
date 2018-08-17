@@ -1,0 +1,59 @@
+@black: #000000;
+@white: #FFFFFF;
+@darkgrey: #333333;
+@primary: #d90011;
+@f_title: "Montserrat", sans-serif;
+@f_default: "PT Serif", serif;
+
+.title_text {
+  font-weight: 800;
+  font-size : 35px;
+  line-height : 42px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+
+  @media(min-width: 1542px) {
+    font-size: 55px;
+    line-height: 70px;
+  }
+
+  @media(max-width: 599px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.regular_text {
+  font-weight: 400;
+  font-size : 18px;
+  letter-spacing : normal;
+  line-height : 30.6px;
+
+  @media(max-width: 599px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media (min-width: 1542px){
+    font-size: 22px;
+    line-height: 35px;
+  }
+
+}
+
+.medium_text {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+
+  @media(max-width: 599px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media (min-width: 1542px){
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+}
