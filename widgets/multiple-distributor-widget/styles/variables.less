@@ -1,0 +1,99 @@
+@black: #000000;
+@white: #FFFFFF;
+@darkgrey: #333333;
+@primary: #d90011;
+@f_title: "Montserrat", sans-serif;
+@f_default: "PT Serif", serif;
+
+.title_text {
+  font-weight: 800;
+  font-size : 35px;
+  line-height : 42px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+
+  @media(min-width: 1542px) {
+    font-size: 55px;
+    line-height: 70px;
+  }
+
+  @media(max-width: 599px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.regular_text {
+  font-weight: 400;
+  font-size : 18px;
+  letter-spacing : normal;
+  line-height : 30.6px;
+
+  @media(max-width: 599px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media (min-width: 1542px){
+    font-size: 22px;
+    line-height: 35px;
+  }
+}
+
+.medium_text {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+
+  @media(max-width: 599px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media (min-width: 1542px){
+    font-size: 17px;
+    line-height: 28px;
+  }
+}
+
+.link-text {
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: @primary;
+  text-decoration: none;
+
+  @media(max-width: 599px) {
+    font-size: 10px;
+    line-height: 21px;
+  }
+
+  &::after {
+    content: "\f105";
+    font-family: 'sow-fontawesome';
+    display: inline-block;
+    position: relative;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 17px;
+    line-height: 18px;
+    top: 1px;
+    margin-left: 8px;
+    transition: all 0.3s ease-out 0s;
+  }
+
+  &:hover {
+    color: darken(@primary, 10%);
+    text-decoration: none;
+
+    &::after {
+      transform: translateX(5px);
+    }
+  }
+}
