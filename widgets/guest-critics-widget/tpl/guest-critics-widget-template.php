@@ -62,11 +62,11 @@
                 <div class="row justify-content-between">
                   <div class="col-md-4 <?php if($items[$i]['item_photo'] != ''): ?> text-md-center <?php endif; ?> "> 
                     <div class="row align-items-center">
-                      <div class="col-4 col-sm-3 col-md-12">
-                        <?php if($items[$i]['item_photo'] != ''): ?>
+                      <?php if($items[$i]['item_photo'] != ''): ?>
+                        <div class="col-4 col-sm-3 col-md-12">
                           <img src=" <?php echo  $items[$i]['item_photo'] ;  ?>" alt="" class="fp_guest-critics__modal__item__img">
-                        <?php endif; ?>
-                      </div>
+                        </div>
+                      <?php endif; ?>
                       <div class="col-8 col-sm-9 col-md-12">
                         <div class="fp_guest-critics__modal__item__info">
                           <?php if( $items[$i]['name'] != ''): ?>
