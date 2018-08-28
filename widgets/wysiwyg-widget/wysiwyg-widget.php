@@ -1,28 +1,28 @@
 <?php
 
 /*
-Widget Name: Wyswyg
-Description: Wyswyg module
+Widget Name: Wysiwyg
+Description: Wysiwyg module
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
 */
 
-class Wyswyg_Widget extends SiteOrigin_Widget {
+class Wysiwyg_Widget extends SiteOrigin_Widget {
   function __construct() {
     //Here you can do any preparation required before calling the parent constructor, such as including additional files or initializing variables.
 
     //Call the parent constructor with the required arguments.
     parent::__construct (
       // The unique id for your widget.
-      'wyswyg-widget',
+      'wysiwyg-widget',
 
       // The name of the widget for display purposes.
-      'Wyswyg',
+      'Wysiwyg',
 
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Wyswyg - Módulo de la parte superior'
+        'description' => 'Wysiwyg - Módulo de la parte superior'
       ),
 
       //The $control_options array, which is passed through to WP_Widget
@@ -259,8 +259,8 @@ class Wyswyg_Widget extends SiteOrigin_Widget {
     $this->register_frontend_scripts(
       array(
         array(
-          'wyswyg-widget',
-          plugin_dir_url( __FILE__ ) . 'js/wyswyg-widget-scripts.js',
+          'wysiwyg-widget',
+          plugin_dir_url( __FILE__ ) . 'js/wysiwyg-widget-scripts.js',
           array( 'jquery' ),
           '1.0'
         )
@@ -416,12 +416,12 @@ class Wyswyg_Widget extends SiteOrigin_Widget {
   
 
   function get_template_name($instance) {
-    return 'wyswyg-widget-template';
+    return 'wysiwyg-widget-template';
   }
 
   function get_style_name($instance) {
-    return 'wyswyg-widget-style';
+    return 'wysiwyg-widget-style';
 
   }
 }
-siteorigin_widget_register('wyswyg-widget', __FILE__, 'Wyswyg_Widget');
+siteorigin_widget_register('wysiwyg-widget', __FILE__, 'Wysiwyg_Widget');

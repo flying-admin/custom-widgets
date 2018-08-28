@@ -1,5 +1,5 @@
 jQuery(function(){
-  console.log('wyswyg-widget - ready');
+  console.log('wysiwyg-widget - ready');
 
     jQuery('.modal.modal--video').on('hidden.bs.modal', function (e) {
       jQuery('.video-iframe').each(function(){

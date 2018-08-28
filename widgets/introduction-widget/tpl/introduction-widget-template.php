@@ -1,5 +1,4 @@
-<div class="fp_introduction">
-  <div class="container">
+<div class="fp_introduction fp_module">
     <div class="row">
       <div class="col-sm-12">
       <div class="fp_introduction__content">
@@ -84,8 +83,6 @@
       </div>
       </div>
     </div>
-      
-  </div>
 </div>
 <?php if( $extra_content == 'video' ): ?>
 <!-- MODAL -->

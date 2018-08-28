@@ -1,10 +1,20 @@
 @import "variables";
 
-@media (min-width: 1200px){
-  .container {
-    max-width: 1542px;
+.fp_module:not(.fp_module--full-width){
+  padding: 88px 70px 90px;
+  max-width: 1682px;
+
+  @media (max-width: 1024px){
+    padding: 88px 40px;
   }
-}
+  @media (max-width: 800px){
+    padding: 62px 44px 60px;
+  }
+  @media (max-width: 600px){
+    padding: 22px 15px;
+  }
+} 
+
 .fp_introduction-h {
   display: block;
   position: relative;

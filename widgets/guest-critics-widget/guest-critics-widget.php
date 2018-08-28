@@ -32,14 +32,14 @@ class Guest_Critics_Widget extends SiteOrigin_Widget {
 
       //The $form_options array, which describes the form fields used to configure SiteOrigin widgets.
       array(
-        'section_general' => array(
+        'section_main' => array(
           'type' => 'section',
           'label' => 'Textos del módulo:',
           'hide' => false,
           'fields' => array(
             'title' => array(
               'type' => 'text',
-              'label' => 'Título',
+              'label' => 'Titulo',
               'default' => '',
               'optional' => true
             ),
@@ -48,68 +48,55 @@ class Guest_Critics_Widget extends SiteOrigin_Widget {
               'label' => 'Entradilla',
               'default' => '',
               'optional' => true
-            )
-          )
-        ),
-        'section_items' => array(
-          'type' => 'section',
-          'label' => 'Iconos',
-          'hide' => false,
-          'fields' => array(
-            'items_align' => array(
-              'type' => 'select',
-              'label' => 'Alineación de los items',
-              'default' => 'center',
-              'options' => array(
-                'center' => 'Centro',
-                'left' => 'Izquierda',
-                'right' => 'Derecha'
-              )
-            ),
-            'items_row' => array(
-              'type' => 'select',
-              'label' => 'Número de items por fila',
-              'default' => 'six',
-              'options' => array(
-                'one' => '1',
-                'two' => '2',
-                'three' => '3',
-                'four' => '4',
-                'five' => '5',
-                'six' => '6'
-              )
             ),
             'items' => array(
               'type' => 'repeater',
               'label' => 'Elementos del módulo',
               'item_name'  => 'Elemento',
               'item_label' => array(
-                'selector'     => "[id*='icon_title']",
+                'selector'     => "[id*='guest-critics_title']",
                 'update_event' => 'change',
                 'value_method' => 'val'
               ),
               'fields' => array(
-                'icon' => array(
-                  'type' => 'icon',
-                  'label' => 'Icono',
-                  'optional' => true
-                ),
-                'icon_title' => array(
+                'name' => array(
                   'type' => 'text',
-                  'label' => 'Título del elemento',
+                  'label' => 'Nombre',
                   'default' => '',
                   'optional' => true
                 ),
-                'icon_text' => array(
+                'position' => array(
                   'type' => 'text',
-                  'label' => 'Descripción del elemento',
+                  'label' => 'Cargo',
                   'default' => '',
                   'optional' => true
-                )
+                ),
+                'photo' => array(
+                    'type' => 'media',
+                    'label' => 'Foto de perfil',
+                    'library' => 'image',
+                    'fallback' => true,
+                    'optional' => true,
+                ),
+                'background' => array(
+                    'type' => 'media',
+                    'label' => 'Imagen de fondo',
+                    'library' => 'image',
+                    'fallback' => true,
+                    'optional' => true,
+                    'description' => 'Hay que subir una imagen de al menos 740 x 480 px.'
+                ),
+                'rich_text' => array(
+                  'type' => 'tinymce',
+                  'label' => 'Descripción',
+                  'default' => '',
+                  'rows' => 10,
+                  'optional' => true
+                ),
               )
-            )
+            ),
           )
-        )
+        ),
       ),
 
       //The $base_folder path string.
@@ -132,14 +119,49 @@ class Guest_Critics_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    $vars['image_url'] = '';
-    $vars['title'] = $instance['section_general']['title'];
-    $vars['text'] = $instance['section_general']['text'];
-    $vars['items_align'] = $instance['section_items']['items_align'];
-    $vars['items_row'] = $instance['section_items']['items_row'];
-    $vars['items'] = $instance['section_items']['items'];
+    $vars['title'] = $instance['section_main']['title'];
+    $vars['text'] = $instance['section_main']['text'];
+    $module_items = $instance['section_main']['items'];
+
+    for ($j = 0; $j < count($module_items); $j++ ){
+
+
+      if( empty ( $module_items[$j]["photo"] ) ){
+        $module_items[$j]["item_photo"] = "";
+      }else{
+        $module_items[$j]["item_photo"] =  $this->getImage( $module_items[$j]["photo"] ,$module_items[$j]["photo_fallback"]) ;
+      }
+
+      if( empty ( $module_items[$j]["background"] ) ){
+        $module_items[$j]["item_background"] = "";
+      }else{
+        $module_items[$j]["item_background"] =  $this->getImage( $module_items[$j]["background"] ,$module_items[$j]["background_fallback"]) ;
+      }
+
+      $module_items[$j]['modal_id'] = "";
+      if(  $module_items[$j]["rich_text"] != '' ){
+        $module_items[$j]['modal_id']= "m-". base_convert($instance["_sow_form_id"], 16, 36) ."-".$j;
+      }
+      
+    }
+
+    
+
+    $vars['items'] = $module_items;
+
+    
+    
 
     return $vars;
+  }
+
+  function getImage( $image , $fallback = false ){
+    $img = wp_get_attachment_image_src( $image , 'full', false );
+    if( $img ) {
+      return $img[0];
+    }else {
+      return $fallback;
+    }
   }
 
   function get_template_name($instance) {
