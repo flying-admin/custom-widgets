@@ -1,7 +1,7 @@
 <div class="fp_guest-critics fp_module">
     <div class="fp_guest-critics__content">
       <div class="row">
-        <div class="col-sm-12">
+        <div class="col-lg-10 col-sm-12">
           <h2 class="fp_guest-critics__content__title">
             <?php echo $title; ?>
           </h2>
@@ -10,11 +10,6 @@
             <?php echo $text; ?>
           </p>
           <?php endif; ?>
-          <?php if( $rich_text != ''): ?>
-          <div class="fp_guest-critics__content__module">
-            <?php echo $rich_text; ?>
-          </div>
-          <?php endif; ?>
         </div>
       </div>
       <div class="row">
@@ -22,7 +17,7 @@
           <div class="fp_guest-critics__content__items">
             <div class="row justify-content-around">
               <?php for ($i = 0; $i < count($items); $i++): ?>
-              <div class="col-md-6 col-xl-4">
+              <div class="col-md-6 col-xl-4 mt-4">
               <?php if( $items[$i]["modal_id"] != ''  ): ?> <a href="#<?php echo $items[$i]["modal_id"]; ?>" data-toggle="modal"  > <?php endif; ?>
                 <div class="fp_guest-critics__content__item  <?php  if( $items[$i]['item_background'] != ''): ?> fp_guest-critics__content__item--bg  <?php endif; ?> "  <?php  if( $items[$i]['item_background'] != ''): ?>   style="background-image:url('<?php echo $items[$i]['item_background'] ?>')" <?php endif; ?>   />
                   <div class="fp_guest-critics__content__item__content d-flex flex-column <?php if($items[$i]['item_photo'] == ''): ?> justify-content-center <?php endif; ?>">
@@ -46,7 +41,6 @@
       </div>
     </div>
 </div>
-
 <?php for ($i = 0; $i < count($items); $i++): ?>
   <?php if(  $items[$i]["modal_id"] != '' ): ?>
   <div class="modal modal--ghost fade" id="<?php echo $items[$i]["modal_id"]  ?>" tabindex="-1" role="dialog" aria-labelledby="modal-guest-critics-label">
@@ -94,7 +88,8 @@
 <?php endfor; ?>
 
 <?php
-   echo '------------------------------------<br/>';
+
+  echo '------------------------------------<br/>';
   foreach ($instance as $key => $value) {
     echo $key . ': ' . $value . '<br/>';
     if (is_array($value)){
@@ -122,6 +117,5 @@
   // echo '<br/>';echo '<br/>';echo '<br/>';echo '<br/>';echo '<br/>';echo '<br/>';
   // echo $a;
   // echo '<br/>';echo '<br/>';echo '<br/>';echo '<br/>';echo '<br/>';echo '<br/>';
-
 
 ?>
