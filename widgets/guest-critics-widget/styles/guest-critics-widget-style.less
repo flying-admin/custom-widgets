@@ -20,6 +20,7 @@
   position: relative;
   width: auto;
   height: auto;
+  font-family: @f_default;
   min-height: 45vw;
   margin: 0 -15px 30px;
   overflow: hidden;
@@ -92,27 +93,20 @@
       
 
       &__title{
-        font-size: 15px;
-        line-height: 26px;
-        font-weight : 800;
-        letter-spacing : 0.3px;
+        .title_text--medium();
         color: @primary;
         font-family: @f_title;
-        text-transform: uppercase;
+
         &:hover{
           transition: color .15s;
           color: darken(@primary, 10%);
-        }
-        @media (max-width:600px){
-          font-size : 13px;
-          line-height : 24px;
-          letter-spacing : 0.26px;
         }
       }
 
       p.fp_guest-critics__content__item__text{
           .medium_text();
           color: @darkgrey;
+          font-family: @f_default;
           margin-top: 0;
           @media (max-width:600px){
             font-size : 14px;
@@ -177,25 +171,23 @@
         margin-bottom: 35px;
       }
       &__title{
-        font-size: 15px;
-        line-height: 26px;
-        font-weight : 800;
-        letter-spacing : 0.3px;
+        .title_text--medium();
         color: @darkgrey;
         font-family: @f_title;
-        text-transform: uppercase;
       }
 
       p.fp_guest-critics__modal__item__text{
           .medium_text();
           color: @darkgrey;
           margin-top: 0;
+          font-family: @f_default;
           font-style: italic;
       }
 
       &__description{
         .medium_text();
         color: @darkgrey;
+        font-family: @f_default;
 
         h1,h2,h3,h4{
           font-family: @f_title;
