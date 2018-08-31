@@ -148,6 +148,7 @@ class Call_To_Action_Form_Widget extends SiteOrigin_Widget {
   function get_template_variables($instance) {
     $vars = [];
     $vars['title'] =           $instance['section_main']['title'];
+    $vars['form_id'] =         base_convert($instance["_sow_form_id"], 16, 36);
     $vars['description'] =     $instance['section_main']['description'];
     $vars['contact_person'] =  $instance['section_main']['contact_person'];
     $vars['contact_phone'] =   $instance['section_main']['contact_phone'];

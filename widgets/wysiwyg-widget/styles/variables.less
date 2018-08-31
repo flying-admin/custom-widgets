@@ -1,7 +1,8 @@
 @black: #000000;
 @white: #FFFFFF;
 @darkgrey: #333333;
-@primary: #d90011;
+@primary: #0097dc;
+@primary--dark: #00338d;
 @f_title: "Montserrat", sans-serif;
 @f_default: "PT Serif", serif;
 
@@ -20,6 +21,29 @@
   @media(max-width: 599px) {
     font-size: 20px;
     line-height: 26px;
+  }
+}
+.title_text--underline {
+  font-size: 36px;
+  line-height: 48px;
+
+  @media(min-width: 1542px) {
+    font-size: 45px;
+    line-height: 63px;
+  }
+
+  @media(max-width: 599px) {
+    font-size: 28px;
+    line-height: 37px;
+  }
+  &:after{
+    content: "";
+    width: 44px;
+    height: 2px;
+    display: block;
+    position: relative;
+    margin-top: 20px;
+    background-color: #333;
   }
 }
 

@@ -383,7 +383,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
 
       if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
         $id = $match[1];
-        var_dump($id);
+
         if($id){
           return $id;
         }else{

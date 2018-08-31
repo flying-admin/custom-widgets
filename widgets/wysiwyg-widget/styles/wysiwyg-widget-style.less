@@ -1,20 +1,51 @@
 @import "variables";
 
-@media (min-width: 1200px){
-  .container {
-    max-width: 1542px;
+.fp_module{
+  width: calc(~"100% + 30px");
+  position: relative;
+  margin: 0 -15px 30px;
+
+  &:not(.fp_module--full-width){
+    .fp_module__content{
+      padding: 88px 70px 90px;
+      max-width: 1682px;
+      margin: 0 auto;
+
+      @media (max-width: 1024px){
+        padding: 88px 40px;
+      }
+      @media (max-width: 800px){
+        padding: 62px 44px 60px;
+      }
+      @media (max-width: 600px){
+        padding: 22px 15px;
+      }
+    }
   }
 }
+
+.bg-light{
+  background-color: @white;
+}
+
 .fp_wysiwyg {
   display: block;
   position: relative;
   width: auto;
   height: auto;
-  min-height: 45vw;
-  margin: 0 -15px 30px;
+  margin: 0;
   overflow: hidden;
   background-size: cover;
   background-position: top;
+
+  p:first-child {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  p:default{
+    margin-top: 12px;
+    margin-bottom: 0;
+  }
 
   &__container{
     max-width: 1542px;
@@ -28,17 +59,12 @@
     z-index: 2;
     &__title {
       display: block;
-      max-width: 85%;
-      font-family: @f_title;
-      .title_text();
+      font-family: @f_default;
+      .title_text--underline();
       text-align: left;
-      text-transform: uppercase;
       color: @darkgrey;
       padding: 0;
       margin: 0;
-      @media(max-width: 599px) {
-        max-width: 100%;
-      }
     }
     &__text {
       display: block;
@@ -49,6 +75,7 @@
       margin: 28px 0 0;
       @media(max-width: 599px) {
         margin: 14px 0 0;
+        font-weight: bold;
       }
     }
     &__module {
@@ -69,173 +96,52 @@
           margin: 20px 0 0;
         }
       }
-    }
-  }
-  .link {
-    text-decoration: none;
-    &--external {
-      font-family: @f_title;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.7px;
-      line-height: 18px;
-      margin-top: 17px;
-      color: @darkgrey;
-      text-transform: uppercase;
-      transition: color .15s;
-      display: inline-block;
 
-      [class*=icon]{
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 11px;
-        margin-left: 10px;
-        display: inline-block;
-        transition: transform 0.2s ease-out;
-        position: relative;
-        bottom: -2px;
+      ul{
+        padding-left: 20px;
       }
 
-      &:hover{
-        [class*=icon]{
-          transition: transform .2s ease-out;
-          transform: translateX(5px) translateZ(0);
-        }
+      h1,h2,h3,h4,h5,h6{
+        font-family: @f_default;
       }
-    }
-    &--primary {
-      color: @primary;
+
+      h1,h2,h3{
+        display: none!important;
+      }
+      
+      h4{
+        font-size : 18px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 31px;
+        font-family: @f_title;
+        text-transform: uppercase;
+      }
+
+      h5{
+        font-size : 15px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 26px;
+        font-family: @f_title;
+        text-transform: uppercase;
+      }
+
+      h6{
+        font-size : 15px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 26px;
+      }
     }
   }
-  .btn {
-    display: inline-block;
-    width: auto;
-    height: auto;
-    padding: 17px 78px;
-    margin: 0;
-    color: @darkgrey;
-    background-color: @white;
-    border: 1px solid @white;
-    border-radius: 1px;
-    transition: all 0.3s ease-out 0s;
-    font-family: @f_title;
-    font-weight: 800;
-    font-size: 11px;
-    line-height: 24px;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-    i {
-      font-style: 14px;
-      line-height: 14px;
-      margin-left: 14px;
-    }
-    &:hover {
-      background-color: darken(@white, 10%);
-      border-color: darken(@white, 10%);
-    }
-    &--block {
-      width: 100%;
-      padding: 17px 10px;
-    }
-    &--primary {
-      position: relative;
-      span{
-        z-index: 3;
-        position: relative;
-      }
-      color: @white;
-      &:before{
-        bottom: 0px;
-        content: "";
-        display: block;
-        height: 100%;
-        left: 0px;
-        background-color: @primary;
-        border-color:  @primary;
-        position: absolute;
-        right: 0px;
-        top: 0px;
-        width: 100%;
-        z-index:1;
-      }
-      &:after{
-        transition: left .2s ease-out,right .2s ease-out,opacity .2s ease-out,background-color .2s ease-out;
-        display: block;
-        content: "";
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        opacity: 0;
-        position: absolute;
-        right: 50%;
-      }
-      &:hover{
-        background: none;
-        &:after{
-          opacity: 1;
-          left: 0;
-          right: 0;
-          background-color: darken(@primary, 10%);
-          border-color: darken(@primary, 10%);
-        }
-      }
-      [class*=icon]{
-        font-size: 20px;
-        font-weight: 400;
-        line-height: 11px;
-        margin-left: 10px;
-        display: inline-block;
-        transition: transform 0.2s ease-out;
-        position: relative;
-        bottom: -4px;
-      }
-    }
-    
-  }
-  p:first-child {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-  p{
-    margin-top: 12px;
-    margin-bottom: 0;
-  }
+
+
+
 
   .extra-content{
     margin-top: 55px;
     text-align: center;
-    &__cta-block{
-      padding: 35px 40px 40px;
-      border-top: 1px solid darken(@white, 10%);
-      background-color: @white;
-      color: @darkgrey;
-      .cta-block{
-        &__title{
-            display: block;
-            font-family: @f_title;
-            font-size: 15px;
-            font-weight: 800;
-            letter-spacing: 0.25px;
-            line-height: 26px;
-            text-transform: uppercase;
-        }
-        &__text{
-          display: block;
-          font-family:@f_default;
-          font-size: 15px;
-          font-weight: 400;
-          line-height: 26px;
-          margin-top: 12px;
-          text-align: left;
-        }
-
-        &__btn{
-          margin-top: 25px;
-        }
-      }
-    }
 
     &__video{
       text-align: center;

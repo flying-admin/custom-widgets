@@ -41,7 +41,7 @@ function init_cta_form_send_form (){
         // Set the recipient email address.
         $recipient = $_POST["emaildata"]['sendto'];
         // Set the email subject.
-        $subject = $_POST["action"];
+        $subject = "Fomulario: ".$_POST["emaildata"]['eventtopic'];
 
         // Build the email content.
         $email_content = "Name: $name\n";

@@ -1,7 +1,58 @@
 jQuery(function(){
-  console.log('call-to-action-form-widget - ready');
-  jQuery(".field input").each(function(){
 
+  var module = $('.sticky__module');
+  if (module.length > 0) {
+    // sticky elements
+    $('.sticky__module .sticky__item').addClass('d-none');
+
+    var $stickyModule = $('.sticky__module').first();
+    var $stickyContent = $stickyModule.find('.sticky__content');
+    var $stickyElement = $stickyModule.find('.sticky__item');
+		$stickyElement.removeClass('d-none'); 
+		
+		var _stickyHeight = $stickyElement.outerHeight();
+		$stickyElement.css({
+			transform: "translateY(-"+_stickyHeight+"px) translateZ(0px)",
+		});
+
+    var _contentPosition = ($stickyContent.offset().top) + $stickyContent.outerHeight();
+  
+    $(window).on('scroll', function () {
+      var _headerHeight = $('.header__main').outerHeight();
+      _stickyHeight = $stickyElement.outerHeight();
+      var st = $(this).scrollTop();
+
+      if (st < _contentPosition) {
+        $stickyElement.removeClass('active');
+        $stickyElement.css({
+          transform: "translateY(-"+_stickyHeight+"px) translateZ(0px)",
+        });
+      } else if (st > _contentPosition) {
+        $stickyElement.addClass('active');
+        if ($('header').hasClass('header--sticky')) {
+          $stickyElement.css({
+            transform: "translateY(" + _headerHeight + "px) translateZ(0px)",
+          });
+        } else {
+          $stickyElement.css({
+            transform: "translateY(0px) translateZ(0px)",
+          });
+        }
+      }
+    });
+
+   
+
+    $(window).on('resize', function(){
+      $(window).trigger('scroll');
+      _contentPosition = ($stickyContent.offset().top) + $stickyContent.outerHeight();
+    });
+  }
+
+
+    
+  // input text animation if filled or focus
+  jQuery(".field input").each(function(){
     var attr = jQuery(this).attr('placeholder');
 
     var $label = jQuery(this).closest(".field").find('span').first();
@@ -36,6 +87,7 @@ jQuery(function(){
     }
   });
 
+  // cta form validation
 	jQuery(".cta-form .send_button").on( 'click', function(e){
     var moduleCtaFormParent = jQuery(this).closest(".cta-form");
     
@@ -125,6 +177,5 @@ jQuery(function(){
 	});
 
 
-  
 
 });

@@ -145,9 +145,7 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
     }
 
     $vars['image_url' ] =  $this->getImage( $instance['section_main']['image_url'], $instance['section_main']['image_url_fallback']);
-          
-    echo var_dump($vars);
-
+        
     return $vars;
   }
 

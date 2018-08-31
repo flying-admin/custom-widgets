@@ -1,18 +1,30 @@
 @import "variables";
 
-.fp_module:not(.fp_module--full-width){
-  padding: 88px 70px 90px;
-  max-width: 1682px;
+.fp_module{
+  width: calc(~"100% + 30px");
+  position: relative;
+  margin: 0 -15px 30px;
 
-  @media (max-width: 1024px){
-    padding: 88px 40px;
+  &:not(.fp_module--full-width){
+    .fp_module__content{
+      padding: 88px 70px 90px;
+      max-width: 1682px;
+      margin: 0 auto;
+
+      @media (max-width: 1024px){
+        padding: 88px 40px;
+      }
+      @media (max-width: 800px){
+        padding: 62px 44px 60px;
+      }
+      @media (max-width: 600px){
+        padding: 22px 15px;
+      }
+    }
   }
-  @media (max-width: 800px){
-    padding: 62px 44px 60px;
-  }
-  @media (max-width: 600px){
-    padding: 22px 15px;
-  }
+}
+.bg-light{
+  background-color: @white;
 }
 
 .fp_introduction {
@@ -20,8 +32,7 @@
   position: relative;
   width: auto;
   height: auto;
-  min-height: 45vw;
-  margin: 0 -15px 30px;
+  margin: 0;
   overflow: hidden;
   background-size: cover;
   background-position: top;
@@ -78,6 +89,34 @@
         .flex-row-reverse & {
           margin: 20px 0 0;
         }
+      }
+      h1,h2,h3,h4,h5,h6{
+        font-family: @f_default;
+      }
+      h1,h2,h3{
+        display: none!important;
+      }
+      h4{
+        font-size : 18px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 31px;
+        font-family: @f_title;
+        text-transform: uppercase;
+      }
+      h5{
+        font-size : 15px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 26px;
+        font-family: @f_title;
+        text-transform: uppercase;
+      }
+      h6{
+        font-size : 15px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 26px;
       }
     }
   }

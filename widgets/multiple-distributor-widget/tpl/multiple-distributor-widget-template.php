@@ -42,30 +42,3 @@
   </div>
 
 </div>
-
-<?php
-  foreach ($items as $key => $value) {
-    echo $key . ': ' . $value . '<br/>';
-    if (is_array($value)){
-      foreach ($value as $k => $v) {
-        echo '- '.$k . ': ' . $v . '<br/>';
-        if (is_array($v)){
-          foreach ($v as $k2 => $v2) {
-            echo '- - '.$k2 . ': ' . $v2 . '<br/>';
-            if (is_array($v2)){
-              foreach ($v2 as $k3 => $v3) {
-                echo '- - - '.$k3 . ': ' . $v3 . '<br/>';
-                if (is_array($v3)){
-                  foreach ($v3 as $k4 => $v4) {
-                    echo '- - - - '.$k4 . ': ' . $v4 . '<br/>';
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      echo '<br/>';
-    }
-  }
-?>

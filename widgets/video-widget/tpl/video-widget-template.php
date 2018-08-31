@@ -1,36 +1,37 @@
-<div class="fp_video fp_module <?php if( $video_size != 'centered' ): ?> fp_module--full-width <?php endif; ?>">
-  <div class="row">
-    <div class="col-sm-12">
-    <div class="fp_video__content">
-      <div class="row">
-      <?php if( $video_size == 'centered' ): ?>
-        <div class="col-lg-10 col-sm-12">
-          <h2 class="fp_video__content__title">
-            <?php echo $title; ?>
-          </h2>
-          <?php if($text != ''): ?>
-          <p class="fp_video__content__text">
-            <?php echo $text; ?>
-          </p>
+<div class="fp_module <?php if( $video_size != 'centered' ): ?> fp_module--full-width <?php endif; ?>">
+  <div class="fp_video">
+    <div class="row">
+      <div class="col-sm-12">
+      <div class="fp_video__content">
+        <div class="row">
+        <?php if( $video_size == 'centered' ): ?>
+          <div class="col-lg-10 col-sm-12">
+            <h2 class="fp_video__content__title">
+              <?php echo $title; ?>
+            </h2>
+            <?php if($text != ''): ?>
+            <p class="fp_video__content__text">
+              <?php echo $text; ?>
+            </p>
+            <?php endif; ?>
+          </div>
+        <?php endif; ?>  
+        <?php if( $video_url != false ): ?>
+          <div class="col-sm-12">
+              <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal"   class="fp_video__content__video <?php if( $video_size != 'centered' ): ?> fp_video--full-width <?php endif; ?> ">
+                <?php if( $video_image != false ): ?>
+                  <div class="fp_video__content__video__image"   style="background-image:url('<?php echo $video_image ?>')" ></div>
+                <?php endif; ?> 
+                <?php echo siteorigin_widget_get_icon( 'ionicons-ios-play-outline' ); ?>
+              </a>
+            </div>
           <?php endif; ?>
         </div>
-      <?php endif; ?>  
-      <?php if( $video_url != false ): ?>
-        <div class="col-sm-12">
-            <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal"   class="fp_video__content__video <?php if( $video_size != 'centered' ): ?> fp_video--full-width <?php endif; ?> ">
-              <?php if( $video_image != false ): ?>
-                <div class="fp_video__content__video__image"   style="background-image:url('<?php echo $video_image ?>')" ></div>
-              <?php endif; ?> 
-              <?php echo siteorigin_widget_get_icon( 'ionicons-ios-play-outline' ); ?>
-            </a>
-          </div>
-        <?php endif; ?>
       </div>
-    </div>
+      </div>
     </div>
   </div>
 </div>
-
 <?php if( $video_url != false  ): ?>
   <!-- MODAL -->
   <div class="modal fade modal--video modal--ghost" id="introduccion__modal-video-<?php echo $video_code ?>" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
@@ -58,14 +59,3 @@
   </div>
 <?php endif; ?>
 
-<?php
-  foreach ($instance as $key => $value) {
-    echo $key . ': ' . $value . '<br/>';
-    if (is_array($value)){
-      foreach ($value as $k => $v) {
-        echo '- '.$k . ': ' . $v . '<br/>';
-      }
-      echo '<br/>';
-    }
-  }
-?>
