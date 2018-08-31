@@ -94,7 +94,8 @@
 
       &__contact{
         a{
-          .regular_text();
+          font-size: 18px;
+          line-height: 32px;
           font-family: @f_default;
           & [class*=icon]{
             color: @darkgrey;
@@ -132,6 +133,8 @@
     line-height: 24px;
     text-transform: uppercase;
     letter-spacing: 0.7px;
+    min-width: 224px;
+
     i {
       font-style: 14px;
       line-height: 14px;
@@ -144,6 +147,7 @@
     &--block {
       width: 100%;
       padding: 17px 10px;
+      min-width: none;
     }
     &--primary {
       position: relative;
@@ -232,6 +236,10 @@
       line-height: 24px;
       width: calc(~"100% - 225px");
       vertical-align: top;
+
+      @media (max-width:767px){
+        width: 100%;
+      }
       span{
         max-width: 280px;
         &:first-child {
@@ -273,6 +281,9 @@
 
       input[type=email]{
         max-width: 280px;
+        @media (max-width:767px){
+          max-width: none;
+        }
       }
     }
     .checkbox{
