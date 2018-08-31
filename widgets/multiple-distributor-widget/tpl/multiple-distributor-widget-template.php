@@ -31,9 +31,11 @@
           <p class="fp_multi-distributor__content__item__info__text medium_text">
             <?php echo $items[$i]['item_text']; ?>
           </p>
-          <a href="<?php $items[$i]['item_link_url'] ?>" class="fp_multi-distributor__content__item__info__link link-text" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
-            <?php echo $items[$i]['item_link_text']; ?>
-          </a>
+          <?php if($items[$i]['item_link_url'] != ''): ?>
+            <a href="<?php $items[$i]['item_link_url'] ?>" class="fp_multi-distributor__content__item__info__link link-text" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
+              <?php echo $items[$i]['item_link_text']; ?>
+            </a>
+          <?php endif; ?>
         </div>
 
       </div>

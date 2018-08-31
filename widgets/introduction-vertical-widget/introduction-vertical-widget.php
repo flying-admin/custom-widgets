@@ -22,7 +22,7 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Introduction con imagen vertical - Modulo de introduccion'
+        'description' => 'Introducción con imagen vertical - Permite crear un contenido breve a modo de introducción con una imagen vertical complementaria.'
       ),
 
       //The $control_options array, which is passed through to WP_Widget
@@ -62,6 +62,15 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
               'library' => 'image',
               'fallback' => true,
               'required' => true,
+            ),
+            'image_position' => array(
+              'type'  => 'radio',
+              'label' => 'Posicion de la Imagen',
+              'options' => array(
+                'right' => 'Derecha',
+                'left' => 'Izquierda',
+              ),
+              'default' => 'right',
             ),
             'add_link' => array(
               'type'  => 'radio',
@@ -145,7 +154,8 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
     }
 
     $vars['image_url' ] =  $this->getImage( $instance['section_main']['image_url'], $instance['section_main']['image_url_fallback']);
-        
+    $vars['image_position'] = $instance['section_main']['image_position'];
+    
     return $vars;
   }
 

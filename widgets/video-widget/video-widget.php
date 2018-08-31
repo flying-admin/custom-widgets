@@ -22,7 +22,7 @@ class Video_Widget extends SiteOrigin_Widget {
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Video - Módulo de video'
+        'description' => 'Video - Módulo de contenido'
       ),
 
       //The $control_options array, which is passed through to WP_Widget

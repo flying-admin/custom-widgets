@@ -239,13 +239,6 @@ class Wysiwyg_Widget extends SiteOrigin_Widget {
   }
 
   function getYoutubeId( $url ){
-      // parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
-      // if(array_key_exists ( 'v' , $my_array_of_vars ) ){
-      //   return  $my_array_of_vars['v'];   
-      // }else{
-      //   return '';   
-      // } 
-
       if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
         $id = $match[1];
 
@@ -258,12 +251,6 @@ class Wysiwyg_Widget extends SiteOrigin_Widget {
   }
 
   function getVimeoId( $url ){
-      // $id = substr( parse_url($url, PHP_URL_PATH), 1 );
-      // if($id){
-      //   return $id;
-      // }else{
-      //   return '';
-      // }
 
       $regs = [];
       $id = '';

@@ -3,7 +3,7 @@
   <div class="fp_introduction-v">
     
     <div class="fp_introduction-v__content">
-      <div class="row">
+      <div class="row <?php if($image_position == 'left'): ?> flex-row-reverse  <?php endif; ?>">
         <div class="col-sm-8">
           <h2 class="fp_introduction-v__content__title">
             <?php echo $title; ?>

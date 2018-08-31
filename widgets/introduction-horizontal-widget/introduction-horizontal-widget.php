@@ -22,7 +22,7 @@ class Introduction_Horizontal_Widget extends SiteOrigin_Widget {
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Introduction Horizontal - Módulo introducción con imagen horizontal'
+        'description' => 'Permite crear un contenido breve a modo de introducción con una imagen horizontal complementaria.'
       ),
 
       //The $control_options array, which is passed through to WP_Widget

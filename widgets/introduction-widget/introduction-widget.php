@@ -2,7 +2,7 @@
 
 /*
 Widget Name: Introduction
-Description: Introduction module
+Description: Permite crear un contenido breve a modo de introduccion.
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
 */
@@ -17,12 +17,12 @@ class Introduction_Widget extends SiteOrigin_Widget {
       'introduction-widget',
 
       // The name of the widget for display purposes.
-      'Introduction',
+      'Introduccion',
 
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Introduction - Módulo de la parte superior'
+        'description' => 'Introducción - Permite crear un contenido breve a modo de introducción.'
       ),
 
       //The $control_options array, which is passed through to WP_Widget
@@ -175,6 +175,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
               'type' => 'media',
               'label' => 'Imagen',
               'library' => 'image',
+              'description' => "Introducir una imagen de 740 x 480",
               'fallback' => true,
               'required' => true
             ),
