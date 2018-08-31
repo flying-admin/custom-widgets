@@ -17,7 +17,7 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
       'introduction-vertical-widget',
 
       // The name of the widget for display purposes.
-      'Introduction vertical image',
+      'Introducción con imagen vertical',
 
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
@@ -139,12 +139,12 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    
+
     $vars['title'] = $instance['section_main']['title'];
     $vars['text'] = $instance['section_main']['text'];
     $vars['rich_text'] = $instance['section_main']['rich_text'];
 
-   
+
     $vars['link'] = false;
     if( $instance['section_main']['add_link'] == 'yes' ){
       $vars['link'] = true;
@@ -155,7 +155,7 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
 
     $vars['image_url' ] =  $this->getImage( $instance['section_main']['image_url'], $instance['section_main']['image_url_fallback']);
     $vars['image_position'] = $instance['section_main']['image_position'];
-    
+
     return $vars;
   }
 
