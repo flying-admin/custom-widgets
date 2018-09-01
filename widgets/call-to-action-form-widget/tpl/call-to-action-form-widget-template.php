@@ -17,35 +17,35 @@
             <div class="fp_cta_form__content__contact_info text-center text-xl-center text-md-left text-lg-left d-md-flex d-lg-flex d-xl-block">
               <?php if($image != ''): ?>
                 <img src="<?php echo $image; ?>" alt="" class="fp_cta_form__content__contact_info__img" />
-              <?php endif; ?> 
+              <?php endif; ?>
               <div>
                 <?php if($contact_person != ''): ?>
                   <p class="fp_cta_form__content__contact_info__title"><?php echo $contact_person; ?></p>
-                <?php endif; ?> 
-                
+                <?php endif; ?>
+
                 <?php if($chargue != ''): ?>
                   <p class="fp_cta_form__content__contact_info__text"><?php echo $chargue; ?></p>
-                <?php endif; ?> 
-                
+                <?php endif; ?>
+
                 <?php if( $contact_email != '' || $contact_phone != '' ): ?>
                   <div class="fp_cta_form__content__contact_info__contact">
 
                     <?php if( $contact_email != ''): ?>
-                    <a href="mailto:<?php echo $contact_email; ?>" class="link--primary"> 
+                    <a href="mailto:<?php echo $contact_email; ?>" class="link--primary">
                       <?php echo siteorigin_widget_get_icon( 'ionicons-ios-email-outline' ); ?>
                       <?php echo $contact_email; ?>
-                    </a><br class="d-block d-md-none" />
-                    <?php endif; ?> 
-                    
+                    </a>
+                    <?php endif; ?>
+
                     <?php if($contact_phone != ''): ?>
                     <a href="tel:<?php echo $contact_phone; ?>" class="link--primary">
                       <?php echo siteorigin_widget_get_icon( 'ionicons-ios-telephone-outline' ); ?>
                       <?php echo $contact_phone; ?>
                     </a>
-                    <?php endif; ?> 
+                    <?php endif; ?>
 
                   </div>
-                <?php endif; ?> 
+                <?php endif; ?>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@
                     </label>
                     <label class="field field_mail">
                       <span>Email</span>
-                      <input id="email" type="email" name="email" placeholder="example@example.com" />
+                      <input id="email" type="email" name="email" value="" />
                     </label>
                     <label class="field field_message">
                       <span class="">Mensaje</span>
@@ -89,7 +89,7 @@
                           <label id="label_form" for="checkbox_01">
                             <input type="checkbox" id="checkbox_01" />
                             <span class="icon-check">Acepto las
-                              <a href="https://www.ie.edu/politica-privacidad" class="link--primary" target="_blank">Condiciones legales</a>
+                              <a href="https://www.ie.edu/politica-privacidad" class="link--primary" target="_blank">condiciones legales</a>
                             </span>
                           </label>
                         </div>
@@ -137,37 +137,36 @@
                 <div class="d-flex align-items-center align-items-lg-start">
                     <?php if($image != ''): ?>
                       <img src="<?php echo $image; ?>" alt="" class="fp_cta_form__content__contact_info__img mr-3" />
-                    <?php endif; ?> 
+                    <?php endif; ?>
                     <div>
                       <?php if($contact_person != ''): ?>
                         <p class="fp_cta_form__content__contact_info__title"><?php echo $contact_person; ?></p>
-                      <?php endif; ?> 
-                      
+                      <?php endif; ?>
+
                       <?php if($chargue != ''): ?>
                         <p class="fp_cta_form__content__contact_info__text"><?php echo $chargue; ?></p>
-                      <?php endif; ?> 
+                      <?php endif; ?>
                       <?php if( $contact_email != '' || $contact_phone != '' ): ?>
                         <div class="fp_cta_form__content__contact_info__contact d-none d-lg-block">
 
                           <?php if( $contact_email != ''): ?>
-                          <a href="mailto:<?php echo $contact_email; ?>" class="link--primary">
-                            <?php echo siteorigin_widget_get_icon( 'ionicons-ios-email-outline' ); ?>
-                            <?php echo $contact_email; ?>
-                          </a>
-                          <br class="d-block d-md-none" />
+                            <a href="mailto:<?php echo $contact_email; ?>" class="link--primary">
+                              <?php echo siteorigin_widget_get_icon( 'ionicons-ios-email-outline' ); ?>
+                              <?php echo $contact_email; ?>
+                            </a>
                           <?php endif; ?>
 
                           <?php if($contact_phone != ''): ?>
-                          <a href="tel:<?php echo $contact_phone; ?>" class="link--primary">
-                            <?php echo siteorigin_widget_get_icon( 'ionicons-ios-telephone-outline' ); ?>
-                            <?php echo $contact_phone; ?>
-                          </a>
+                            <a href="tel:<?php echo $contact_phone; ?>" class="link--primary">
+                              <?php echo siteorigin_widget_get_icon( 'ionicons-ios-telephone-outline' ); ?>
+                              <?php echo $contact_phone; ?>
+                            </a>
                           <?php endif; ?>
 
                         </div>
                       <?php endif; ?>
                     </div>
-                  </div>  
+                  </div>
               </div>
               <div class="col-12 col-md-5 col-lg-3 text-right">
                 <a href="#fp_cta_form-<?php echo $form_id; ?>" class="btn btn--primary mt-md-4">
@@ -181,6 +180,3 @@
     </div>
   </div>
 </div>
-
-
-

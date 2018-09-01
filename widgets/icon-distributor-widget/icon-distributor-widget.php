@@ -89,10 +89,38 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
                 'value_method' => 'val'
               ),
               'fields' => array(
-                'icon' => array(
+                'icon_type' => array(
+                  'type'  => 'radio',
+                  'label' => 'Tipo de icono',
+                  'options' => array(
+                    'icon' => 'Icono',
+                    'image' => 'Imagen',
+                  ),
+                  'default' => 'icon',
+                  'state_emitter' => array(
+                    'callback' => 'select',
+                    'args' => array( 'icon_type_{$repeater}' )
+                  ),
+                ),
+                'icon_icon' => array(
                   'type' => 'icon',
                   'label' => 'Icono',
-                  'optional' => true
+                  'optional' => true,
+                  'state_handler' => array(
+                    'icon_type_{$repeater}[icon]' => array('show'),
+                    '_else[icon_type_{$repeater}]' => array('hide')
+                  )
+                ),
+                'icon_image' => array(
+                  'type' => 'media',
+                  'label' => 'Imagen',
+                  'library' => 'image',
+                  'fallback' => true,
+                  'optional' => true,
+                  'state_handler' => array(
+                    'icon_type_{$repeater}[image]' => array('show'),
+                    '_else[icon_type_{$repeater}]' => array('hide')
+                  )
                 ),
                 'icon_title' => array(
                   'type' => 'text',
@@ -138,6 +166,18 @@ class Icon_Distributor_Widget extends SiteOrigin_Widget {
     $vars['items_align'] = $instance['section_items']['items_align'];
     $vars['items_row'] = $instance['section_items']['items_row'];
     $vars['items'] = $instance['section_items']['items'];
+
+    for($i = 0; $i < count($vars['items']); $i++){
+      if($vars['items'][$i]['icon_type'] == 'image'){
+        $image = wp_get_attachment_image_src($vars['items'][$i]['icon_image'], 'full', false);
+        if($image) {
+          $vars['items'][$i]['icon_image'] = $image[0];
+        }
+        else {
+          $vars['items'][$i]['icon_image'] = $vars['items'][$i]['icon_image_fallback'];
+        }
+      }
+    }
 
     return $vars;
   }

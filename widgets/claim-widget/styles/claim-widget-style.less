@@ -77,7 +77,7 @@
     &__title {
       display: block;
       max-width: 85%;
-      font-family: Montserrat, sans-serif;
+      font-family: @f_title;
       font-weight: 800;
       font-size: 50px;
       line-height: 55px;
@@ -103,7 +103,7 @@
     &__text {
       display: block;
       max-width: 70%;
-      font-family: "PT Serif", serif;
+      font-family: @f_default;
       font-weight: 400;
       font-style: italic;
       font-size: 18px;
@@ -132,6 +132,7 @@
 
   .btn {
     display: inline-block;
+    position: relative;
     width: auto;
     height: auto;
     padding: 17px 78px;
@@ -142,11 +143,16 @@
     border-radius: 1px;
     transition: all 0.3s ease-out 0s;
 
-    font-family: Montserrat, sans-serif;
+    font-family: @f_title;
     font-weight: 800;
     font-size: 11px;
     line-height: 24px;
     text-transform: uppercase;
+
+    span {
+      position: relative;
+      z-index: 2;
+    }
 
     i {
       font-style: 14px;
@@ -154,9 +160,27 @@
       margin-left: 14px;
     }
 
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      background-color: @primary--dark;
+      transition: all 0.3s ease-out 0s;
+    }
+
     &:hover {
-      background-color: darken(@white, 10%);
-      border-color: darken(@white, 10%);
+      color: @white;
+      background-color: @white;
+      border-color: transparent;
+
+      &::after {
+        width: 100%;
+      }
     }
 
     &--block {
@@ -167,8 +191,12 @@
       background-color: transparent;
       color: @white;
 
-      &:hover {
+      &::after {
         background-color: @white;
+      }
+
+      &:hover {
+        background-color: transparent;
         border-color: @white;
         color: @black;
       }

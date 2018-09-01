@@ -10,7 +10,7 @@
       <?php endif; ?>
       <?php if($cta_text != '' && $cta_url != ''): ?>
         <a href="<?php echo $cta_url; ?>" class="btn btn--ghost fp_claim__content__cta" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
-          <?php echo $cta_text; ?>
+          <span><?php echo $cta_text; ?></span>
         </a>
       <?php endif; ?>
     </div>

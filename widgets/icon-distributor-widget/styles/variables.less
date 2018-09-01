@@ -1,5 +1,115 @@
 @black: #000000;
 @white: #FFFFFF;
+@lightgrey: #707070;
 @darkgrey: #333333;
 @grey: #424446;
-@primary: #D90011;
+@primary: #0097dc;
+@primary--dark: #00338d;
+@f_title: "Montserrat", sans-serif;
+@f_default: "PT Serif", serif;
+
+.title_text {
+  font-weight: 800;
+  font-size : 35px;
+  line-height : 42px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+
+  @media(min-width: 1542px) {
+    font-size: 55px;
+    line-height: 70px;
+  }
+
+  @media(max-width: 599px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+.regular_text {
+  font-weight: 400;
+  font-size : 18px;
+  letter-spacing : normal;
+  line-height : 30.6px;
+
+  @media(max-width: 599px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media (min-width: 1542px){
+    font-size: 22px;
+    line-height: 35px;
+  }
+}
+
+.medium_text {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 26px;
+
+  @media(max-width: 599px) {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  @media (min-width: 1542px){
+    font-size: 17px;
+    line-height: 28px;
+  }
+}
+
+.tiny_text {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+
+  @media(max-width: 599px) {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
+  @media (min-width: 1542px){
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.link-text {
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 18px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: @primary--dark;
+  text-decoration: none;
+
+  @media(max-width: 599px) {
+    font-size: 10px;
+    line-height: 21px;
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    height: 8px;
+    width: 8px;
+    border-right: 2px solid @primary--dark;
+    border-bottom: 2px solid @primary--dark;
+    border-radius: 1px;
+    transform-origin: 50% 50%;
+    transform: rotate(-45deg);
+    margin: 0;
+    margin-left: 5px;
+    transition: all 0.3s ease-out 0s;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    &::after {
+      transform: rotate(-45deg) translate(5px, 5px);
+    }
+  }
+}

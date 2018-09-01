@@ -17,7 +17,7 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="fp_guest-critics__content__items">
-                <div class="row justify-content-around">
+                <div class="row justify-content-start">
                   <?php for ($i = 0; $i < count($items); $i++): ?>
                   <div class="col-md-6 col-xl-4 mt-4">
                   <?php if( $items[$i]["modal_id"] != ''  ): ?> <a href="#<?php echo $items[$i]["modal_id"]; ?>" data-toggle="modal"  > <?php endif; ?>
@@ -32,7 +32,7 @@
                         <?php if( $items[$i]['position'] != ''): ?>
                           <p class="fp_guest-critics__content__item__text"><?php echo  $items[$i]['position'] ;  ?></p>
                         <?php endif; ?>
-                      </div> 
+                      </div>
                     </div>
                     <?php if( $items[$i]["modal_id"] != '' ): ?> </a> <?php endif; ?>
                   </div>
@@ -58,7 +58,7 @@
             <div class="modal-body">
               <div class="fp_guest-critics__modal__item">
                 <div class="row justify-content-between">
-                  <div class="col-md-4 <?php if($items[$i]['item_photo'] != ''): ?> text-md-center <?php endif; ?> "> 
+                  <div class="col-md-4 <?php if($items[$i]['item_photo'] != ''): ?> text-md-center <?php endif; ?> ">
                     <div class="row align-items-center">
                       <?php if($items[$i]['item_photo'] != ''): ?>
                         <div class="col-4 col-sm-3 col-md-12">
@@ -90,5 +90,3 @@
   </div>
   <?php endif; ?>
 <?php endfor; ?>
-
-

@@ -32,7 +32,7 @@
   width: auto;
   height: auto;
   font-family: @f_default;
-  
+
   margin: 0;
   overflow: hidden;
   background-size: cover;
@@ -100,16 +100,16 @@
         z-index: 1;
         height: 100%;
       }
-      
+
 
       &__title{
         .title_text--medium();
-        color: @primary;
+        color: @primary--dark;
         font-family: @f_title;
 
         &:hover{
           transition: color .15s;
-          color: darken(@primary, 10%);
+          color: @primary;
         }
       }
 
@@ -230,7 +230,7 @@
           letter-spacing : 0.25px;
           line-height : 26px;
         }
-       
+
       }
 
       &__img{
@@ -238,7 +238,7 @@
         height: 150px;
         border-radius: 100%;
         margin: 0 auto 35px;
-        
+
         @media (max-width: 767px){
           width: 90px;
           height: 90px;
@@ -281,8 +281,3 @@
     }
   }
 }
-
-
-
-
-

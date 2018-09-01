@@ -62,7 +62,8 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
               'default' => 'three',
               'options' => array(
                 'two' => '2',
-                'three' => '3'
+                'three' => '3',
+                'four' => '4'
               )
             ),
             'items_type' => array(
@@ -88,86 +89,6 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                 'value_method' => 'val'
               ),
               'fields' => array(
-
-                // Grouped values in items
-                // 'section_item_image' => array(
-                //   'type' => 'section',
-                //   'label' => 'Imagen del elemento:',
-                //   'hide' => false,
-                //   'fields' => array(
-                //     'image_url' => array(
-                //       'type' => 'media',
-                //       'label' => 'Imagen',
-                //       'library' => 'image',
-                //       'fallback' => true,
-                //       'optional' => true
-                //     )
-                //   ),
-                //   'state_handler' => array(
-                //     'items_type[normal]' => array('show'),
-                //     'items_type[icons]' => array('hide')
-                //   )
-                // ),
-                // 'section_item_icon' => array(
-                //   'type' => 'section',
-                //   'label' => 'Icono del elemento:',
-                //   'hide' => false,
-                //   'fields' => array(
-                //     'icon' => array(
-                //       'type' => 'icon',
-                //       'label' => 'Icono',
-                //       'optional' => true
-                //     )
-                //   ),
-                //   'state_handler' => array(
-                //     'items_type[normal]' => array('hide'),
-                //     'items_type[icons]' => array('show')
-                //   )
-                // ),
-                // 'section_item_texts' => array(
-                //   'type' => 'section',
-                //   'label' => 'Textos del elemento:',
-                //   'hide' => false,
-                //   'fields' => array(
-                //     'item_title' => array(
-                //       'type' => 'text',
-                //       'label' => 'Título del elemento',
-                //       'default' => '',
-                //       'optional' => true
-                //     ),
-                //     'item_text' => array(
-                //       'type' => 'text',
-                //       'label' => 'Descripción del elemento',
-                //       'default' => '',
-                //       'optional' => true
-                //     )
-                //   )
-                // ),
-                // 'section_item_link' => array(
-                //   'type' => 'section',
-                //   'label' => 'Enlace del elemento:',
-                //   'hide' => false,
-                //   'fields' => array(
-                //     'item_link_text' => array(
-                //       'type' => 'text',
-                //       'label' => 'Texto del enlace',
-                //       'default' => '',
-                //       'optional' => true
-                //     ),
-                //     'item_link_url' => array(
-                //       'type' => 'link',
-                //       'label' => 'Url del enlace',
-                //       'default' => '',
-                //       'optional' => true
-                //     ),
-                //     'item_new_window' => array(
-                //       'type' => 'checkbox',
-                //       'default' => false,
-                //       'label' => 'Abrir enlace en pestaña nueva',
-                //     )
-                //   )
-                // )
-
                 'image_url' => array(
                   'type' => 'media',
                   'label' => 'Imagen',
@@ -201,13 +122,12 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                 'icon_bgcolor' => array(
                   'type' => 'color',
                   'label' => 'Color de fondo',
-                  'default' => '#D90011',
+                  'default' => '#00338D',
                   'state_handler' => array(
                     'items_type[normal]' => array('hide'),
                     'items_type[icons]' => array('show')
                   )
                 ),
-
 
                 'item_title' => array(
                   'type' => 'text',
@@ -218,6 +138,12 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                 'item_text' => array(
                   'type' => 'text',
                   'label' => 'Descripción del elemento',
+                  'default' => '',
+                  'optional' => true
+                ),
+                'item_info' => array(
+                  'type' => 'text',
+                  'label' => 'Texto informativo',
                   'default' => '',
                   'optional' => true
                 ),
@@ -243,8 +169,31 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
               )
             )
           )
+        ),
+        'section_cta' => array(
+          'type' => 'section',
+          'label' => 'Call To Action (CTA):',
+          'hide' => false,
+          'fields' => array(
+            'cta_text' => array(
+              'type' => 'text',
+              'label' => 'Texto del CTA',
+              'default' => '',
+              'optional' => true
+            ),
+            'cta_url' => array(
+              'type' => 'link',
+              'label' => 'Url del CTA',
+              'default' => '',
+              'optional' => true
+            ),
+            'new_window' => array(
+              'type' => 'checkbox',
+              'default' => false,
+              'label' => 'Abrir CTA en pestaña nueva',
+            )
+          )
         )
-
       ),
 
       //The $base_folder path string.
@@ -273,19 +222,9 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
     $vars['items_row'] = $instance['section_items']['items_row'];
     $vars['items_type'] = $instance['section_items']['items_type'];
     $vars['items'] = $instance['section_items']['items'];
-
-    // Grouped values in items
-    // if ($vars['items_type'] == 'normal'){
-    //   for($i = 0; $i < count($vars['items']); $i++){
-    //     $image = wp_get_attachment_image_src($vars['items'][$i]['section_item_image']['image_url'], 'full', false);
-    //     if($image) {
-    //       $vars['items'][$i]['section_item_image']['image_url'] = $image[0];
-    //     }
-    //     else {
-    //       $vars['items'][$i]['section_item_image']['image_url'] = $vars['items'][$i]['section_item_image']['image_url_fallback'];
-    //     }
-    //   }
-    // }
+    $vars['cta_text'] = $instance['section_cta']['cta_text'];
+    $vars['cta_url'] = sow_esc_url( $instance['section_cta']['cta_url'] );
+    $vars['new_window'] = $instance['section_cta']['new_window'];
 
     if ($vars['items_type'] == 'normal'){
       for($i = 0; $i < count($vars['items']); $i++){
