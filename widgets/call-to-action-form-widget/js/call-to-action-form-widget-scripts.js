@@ -8,15 +8,15 @@ jQuery(function(){
     var $stickyModule = $('.sticky__module').first();
     var $stickyContent = $stickyModule.find('.sticky__content');
     var $stickyElement = $stickyModule.find('.sticky__item');
-		$stickyElement.removeClass('d-none'); 
-		
+		$stickyElement.removeClass('d-none');
+
 		var _stickyHeight = $stickyElement.outerHeight();
 		$stickyElement.css({
 			transform: "translateY(-"+_stickyHeight+"px) translateZ(0px)",
 		});
 
     var _contentPosition = ($stickyContent.offset().top) + $stickyContent.outerHeight();
-  
+
     $(window).on('scroll', function () {
       var _headerHeight = $('.header__main').outerHeight();
       _stickyHeight = $stickyElement.outerHeight();
@@ -41,7 +41,7 @@ jQuery(function(){
       }
     });
 
-   
+
 
     $(window).on('resize', function(){
       $(window).trigger('scroll');
@@ -50,7 +50,7 @@ jQuery(function(){
   }
 
 
-    
+
   // input text animation if filled or focus
   jQuery(".field input").each(function(){
     var attr = jQuery(this).attr('placeholder');
@@ -90,7 +90,7 @@ jQuery(function(){
   // cta form validation
 	jQuery(".cta-form .send_button").on( 'click', function(e){
     var moduleCtaFormParent = jQuery(this).closest(".cta-form");
-    
+
 		e.preventDefault();
 		var email = jQuery(moduleCtaFormParent).find("#email").val();
 		var expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
@@ -109,7 +109,7 @@ jQuery(function(){
 		if( !jQuery(moduleCtaFormParent).find('#checkbox_01').is(':checked') ){
 			jQuery(moduleCtaFormParent).find('.checkbox').addClass('error');
 			jQuery(moduleCtaFormParent).find('#label_form p').remove();
-			jQuery(moduleCtaFormParent).find('#label_form').append( "<p>Debes aceptar las Condiciones Legales</p>" );
+			jQuery(moduleCtaFormParent).find('#label_form').append( "<p>Please accept the Legal terms</p>" );
 			cond1 = false;
 		}
 		//Comprombamos que el correo esté escrito y sea un formato correcto
@@ -117,15 +117,15 @@ jQuery(function(){
 		jQuery(moduleCtaFormParent).find('.field.field_mail').removeClass('error');
 		if( email == null || email.length == 0 || !expresion.test(email) ) {
 			jQuery(moduleCtaFormParent).find('.field.field_mail').addClass('error');
-			jQuery(moduleCtaFormParent).find('.field.field_mail').append( "<p>Introduce un email válido</p>" );
+			jQuery(moduleCtaFormParent).find('.field.field_mail').append( "<p>Please enter a valid Email</p>" );
 			cond2 = false;
-	}
+	   }
 		//Comprombamos el nombre
 		jQuery(moduleCtaFormParent).find('.field.field_name p').remove();
 		jQuery(moduleCtaFormParent).find('.field.field_name').removeClass('error');
 		if( name == null || name.length == 0  ) {
 			jQuery(moduleCtaFormParent).find('.field.field_name').addClass('error');
-			jQuery(moduleCtaFormParent).find('.field.field_name').append( "<p>Enter a name</p>" );
+			jQuery(moduleCtaFormParent).find('.field.field_name').append( "<p>Please enter a Name</p>" );
 			cond3 = false;
 		 }
 		//Comprombamos el apellido
@@ -133,7 +133,7 @@ jQuery(function(){
 		jQuery(moduleCtaFormParent).find('.field.field_lastname').removeClass('error');
 		if( lastname == null || lastname.length == 0 ) {
 			jQuery(moduleCtaFormParent).find('.field.field_lastname').addClass('error');
-			jQuery(moduleCtaFormParent).find('.field.field_lastname').append( "<p>Enter a lastname</p>" );
+			jQuery(moduleCtaFormParent).find('.field.field_lastname').append( "<p>Please enter a Last name</p>" );
 			cond4 = false;
 		}
 		//Comprombamos el mensaje
@@ -141,7 +141,7 @@ jQuery(function(){
 		jQuery(moduleCtaFormParent).find('.field.field_message').removeClass('error');
 		if( message == null || message.length == 0  ) {
 			jQuery(moduleCtaFormParent).find('.field.field_message').addClass('error');
-			jQuery(moduleCtaFormParent).find('.field.field_message').append( "<p>Enter a message</p>" );
+			jQuery(moduleCtaFormParent).find('.field.field_message').append( "<p>Please enter a Message</p>" );
 			cond5 = false;
 		}
 		//Si entra en if, ha rellenado correctamente formulario
@@ -160,17 +160,17 @@ jQuery(function(){
 				url: "#" ,
 				data: { action: 'ie_exec_cta_formulario', emaildata: emailData },
 				success: function(data) {
-					
+
 					jQuery(moduleCtaFormParent).find(".form-content").addClass('d-none');
 					jQuery(moduleCtaFormParent).find(".form-error").addClass('d-none');
 					jQuery(moduleCtaFormParent).find(".form-success").removeClass('d-none');
-					
+
         },
         error: function(msg) {
           console.log(msg.statusText);
           jQuery(moduleCtaFormParent).find(".form-error").removeClass('d-none');
         }
-        
+
 			});
 		}
 

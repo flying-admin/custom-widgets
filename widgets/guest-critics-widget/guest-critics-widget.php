@@ -125,7 +125,6 @@ class Guest_Critics_Widget extends SiteOrigin_Widget {
 
     for ($j = 0; $j < count($module_items); $j++ ){
 
-
       if( empty ( $module_items[$j]["photo"] ) ){
         $module_items[$j]["item_photo"] = "";
       }else{
@@ -142,15 +141,10 @@ class Guest_Critics_Widget extends SiteOrigin_Widget {
       if(  $module_items[$j]["rich_text"] != '' ){
         $module_items[$j]['modal_id']= "m-". base_convert($instance["_sow_form_id"], 16, 36) ."-".$j;
       }
-      
+
     }
 
-    
-
     $vars['items'] = $module_items;
-
-    
-    
 
     return $vars;
   }
@@ -159,7 +153,7 @@ class Guest_Critics_Widget extends SiteOrigin_Widget {
     $img = wp_get_attachment_image_src( $image , 'full', false );
     if( $img ) {
       return $img[0];
-    }else {
+    } else {
       return $fallback;
     }
   }

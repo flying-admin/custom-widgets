@@ -112,7 +112,7 @@
                     <p class="form_confirmation__subtitle">La información se ha enviado correctamente</p>
                   </div>
                   <div class="form-error d-none">
-                    <h1>Error en el envio de formulario</h1>
+                    <h5>Error en el envio de formulario</h5>
                   </div>
                 </div>
               </div>
@@ -169,7 +169,7 @@
                   </div>
               </div>
               <div class="col-12 col-md-5 col-lg-3 text-right">
-                <a href="#fp_cta_form-<?php echo $form_id; ?>" class="btn btn--primary mt-md-4">
+                <a href="#fp_cta_form-<?php echo $form_id; ?>" class="btn btn--primary">
                   <span>¿Tienes alguna duda?</span>
                 </a>
               </div>

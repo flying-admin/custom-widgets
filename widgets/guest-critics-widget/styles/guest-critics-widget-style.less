@@ -1,11 +1,12 @@
 @import "variables";
 
-.fp_module{
+.fp_module {
   width: calc(~"100% + 30px");
   position: relative;
   margin: 0 -15px 30px;
-  &:not(.fp_module--full-width){
-    .fp_module__content{
+
+  &:not(.fp_module--full-width) {
+    .fp_module__content {
       padding: 88px 70px 90px;
       max-width: 1682px;
       margin: 0 auto;
@@ -22,6 +23,7 @@
     }
   }
 }
+
 .bg-light{
   background-color: @white;
 }
@@ -42,7 +44,8 @@
     margin-top: 0;
     margin-bottom: 0;
   }
-  p{
+
+  p {
     margin-top: 12px;
     margin-bottom: 0;
   }
@@ -66,6 +69,7 @@
       margin: 0;
       .title_text();
     }
+
     &__text {
       display: block;
       font-family: @f_default;
@@ -73,16 +77,19 @@
       padding: 0;
       margin: 28px 0 0;
       .regular_text();
+
       @media(max-width: 599px) {
         margin: 14px 0 0;
       }
     }
+
     &__items{
       margin-top: 41px;
       a{
         text-decoration: none;
       }
     }
+
     &__item{
       height: 100%;
       background-size: cover;
@@ -165,88 +172,86 @@
     }
   }
 
-    &__modal__item{
-      background-color: #fff;
-      padding: 88px 70px 90px;
-      @media (max-width: 767px){
-        padding: 60px 30px;
-      }
-      @media (max-width: 576px){
-        padding: 44px 15px;
-      }
-
-      p{ margin: 0 }
-
-      &__info{
-        margin-bottom: 35px;
-      }
-      &__title{
-        .title_text--medium();
-        color: @darkgrey;
-        font-family: @f_title;
-      }
-
-      p.fp_guest-critics__modal__item__text{
-          .medium_text();
-          color: @darkgrey;
-          margin-top: 0;
-          font-family: @f_default;
-          font-style: italic;
-      }
-
-      &__description{
-        .medium_text();
-        color: @darkgrey;
-        font-family: @f_default;
-
-        ul{
-          padding-left: 20px;
-        }
-        h1,h2,h3,h4,h5,h6{
-          font-family: @f_default;
-        }
-        h1,h2,h3{
-          display: none!important;
-        }
-        h4{
-          font-size : 18px;
-          font-weight : 800;
-          letter-spacing : 0.25px;
-          line-height : 31px;
-          font-family: @f_title;
-          text-transform: uppercase;
-        }
-        h5{
-          font-size : 15px;
-          font-weight : 800;
-          letter-spacing : 0.25px;
-          line-height : 26px;
-          font-family: @f_title;
-          text-transform: uppercase;
-        }
-        h6{
-          font-size : 15px;
-          font-weight : 800;
-          letter-spacing : 0.25px;
-          line-height : 26px;
-        }
-
-      }
-
-      &__img{
-        width: 150px;
-        height: 150px;
-        border-radius: 100%;
-        margin: 0 auto 35px;
-
-        @media (max-width: 767px){
-          width: 90px;
-          height: 90px;
-        }
-      }
+  &__modal__item{
+    background-color: #fff;
+    padding: 88px 70px 90px;
+    @media (max-width: 767px){
+      padding: 60px 30px;
+    }
+    @media (max-width: 576px){
+      padding: 44px 15px;
     }
 
+    p{ margin: 0 }
 
+    &__info{
+      margin-bottom: 35px;
+    }
+    &__title{
+      .title_text--medium();
+      color: @darkgrey;
+      font-family: @f_title;
+    }
+
+    p.fp_guest-critics__modal__item__text{
+        .medium_text();
+        color: @darkgrey;
+        margin-top: 0;
+        font-family: @f_default;
+        font-style: italic;
+    }
+
+    &__description{
+      .medium_text();
+      color: @darkgrey;
+      font-family: @f_default;
+
+      ul{
+        padding-left: 20px;
+      }
+      h1,h2,h3,h4,h5,h6{
+        font-family: @f_default;
+      }
+      h1,h2,h3{
+        display: none!important;
+      }
+      h4{
+        font-size : 18px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 31px;
+        font-family: @f_title;
+        text-transform: uppercase;
+      }
+      h5{
+        font-size : 15px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 26px;
+        font-family: @f_title;
+        text-transform: uppercase;
+      }
+      h6{
+        font-size : 15px;
+        font-weight : 800;
+        letter-spacing : 0.25px;
+        line-height : 26px;
+      }
+
+    }
+
+    &__img{
+      width: 150px;
+      height: 150px;
+      border-radius: 100%;
+      margin: 0 auto 35px;
+
+      @media (max-width: 767px){
+        width: 90px;
+        height: 90px;
+      }
+    }
+  }
 }
 
 .modal-dialog.modal-xl {

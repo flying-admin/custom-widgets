@@ -38,7 +38,7 @@
               <?php echo $items[$i]['item_text']; ?>
             </p>
             <?php if($items[$i]['item_link_text'] != '' && $items[$i]['item_link_url'] != ''): ?>
-              <a href="<?php echo $items[$i]['item_link_url'] ?>" class="fp_multi-distributor__content__item__info__link link-text" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
+              <a href="<?php echo $items[$i]['item_link_url'] ?>" class="fp_multi-distributor__content__item__info__link link-text" <?php if($items[$i]['item_new_window']): ?> target="_blank" <?php endif; ?>>
                 <?php echo $items[$i]['item_link_text']; ?>
               </a>
             <?php endif; ?>

@@ -1,12 +1,12 @@
 @import "variables";
 
-.fp_module{
+.fp_module {
   width: calc(~"100% + 30px");
   position: relative;
   margin: 0 -15px 30px;
 
-  &:not(.fp_module--full-width){
-    .fp_module__content{
+  &:not(.fp_module--full-width) {
+    .fp_module__content {
       padding: 88px 70px 90px;
       max-width: 1682px;
       margin: 0 auto;
@@ -24,7 +24,7 @@
   }
 }
 
-.bg-light{
+.bg-light {
   background-color: @white;
 }
 
@@ -38,7 +38,7 @@
   background-size: cover;
   background-position: top;
 
-  &__container{
+  &__container {
     max-width: 1542px;
     width: 100%;
   }
@@ -47,6 +47,7 @@
     display: block;
     position: relative;
     z-index: 2;
+
     &__title {
       display: block;
       max-width: 85%;
@@ -60,6 +61,7 @@
         max-width: 100%;
       }
     }
+
     &__text {
       display: block;
       font-family: @f_default;
@@ -71,6 +73,7 @@
         margin: 14px 0 0;
       }
     }
+
     &__module {
       display: block;
       font-family: @f_default;
@@ -78,32 +81,47 @@
       color: @darkgrey;
       padding: 0;
       margin: 55px 0 0;
-      margin-right: 20px; 
+      margin-right: 20px;
+
       .flex-row-reverse & {
         margin-right: 0px;
         margin-left: 20px;
       }
+
       @media(max-width: 599px) {
         margin: 20px 0 0;
+
         .flex-row-reverse & {
           margin: 20px 0 0;
         }
       }
-      a{
+
+      a {
         color: @primary;
         text-decoration: none;
+
         &:hover{
           color: darken( @primary , 10%);
           transition: color .15s;
         }
       }
-      h1,h2,h3,h4,h5,h6{
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
         font-family: @f_default;
       }
-      h1,h2,h3{
+
+      h1,
+      h2,
+      h3 {
         display: none!important;
       }
-      h4{
+
+      h4 {
         font-size : 18px;
         font-weight : 800;
         letter-spacing : 0.25px;
@@ -111,7 +129,8 @@
         font-family: @f_title;
         text-transform: uppercase;
       }
-      h5{
+
+      h5 {
         font-size : 15px;
         font-weight : 800;
         letter-spacing : 0.25px;
@@ -119,7 +138,8 @@
         font-family: @f_title;
         text-transform: uppercase;
       }
-      h6{
+
+      h6 {
         font-size : 15px;
         font-weight : 800;
         letter-spacing : 0.25px;
@@ -127,10 +147,8 @@
       }
     }
 
-    &__img{
+    &__img {
       margin: 0;
-     
-     
 
       @media (max-width: 1200px)  {
         height: 320px;
@@ -144,10 +162,23 @@
       @media (max-width: 767px){
         height: 250px;
       }
+      @media(max-width: 575px){
+        margin-top: 30px;
+      }
+    }
+
+    &--left {
+
+    }
+
+    &--right {
+
     }
   }
+
   .link {
     text-decoration: none;
+
     &--external {
       font-family: @f_title;
       font-size: 11px;
@@ -160,7 +191,7 @@
       transition: color .15s;
       display: inline-block;
 
-      [class*=icon]{
+      [class*=icon] {
         font-size: 16px;
         font-weight: 400;
         line-height: 11px;
@@ -171,15 +202,17 @@
         bottom: -2px;
       }
 
-      &:hover{
-        [class*=icon]{
+      &:hover {
+        [class*=icon] {
           transition: transform .2s ease-out;
           transform: translateX(5px) translateZ(0);
         }
       }
     }
+
     &--primary {
       color: @primary;
+
       &:hover{
         color: darken( @primary , 10%);
         transition: color .15s;
@@ -191,19 +224,19 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+
   p{
     margin-top: 12px;
     margin-bottom: 0;
   }
-
-
 }
 
 
 
-.container__image.container__image--v{
+.container__image.container__image--v {
   overflow: hidden;
-  .content_image{
+
+  .content_image {
     padding-bottom: 0!important;
     height: 100%!important;
     overflow: hidden;
@@ -214,7 +247,7 @@
       margin-left: 0!important;
     }
 
-    img{
+    img {
       position: absolute;
       top: 0;
       left: 0;
@@ -231,7 +264,3 @@
     }
   }
 }
-
-
-
-
