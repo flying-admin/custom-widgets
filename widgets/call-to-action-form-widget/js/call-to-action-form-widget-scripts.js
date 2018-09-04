@@ -119,7 +119,7 @@ jQuery(function(){
 			jQuery(moduleCtaFormParent).find('.field.field_mail').addClass('error');
 			jQuery(moduleCtaFormParent).find('.field.field_mail').append( "<p>Please enter a valid Email</p>" );
 			cond2 = false;
-	   }
+	  }
 		//Comprombamos el nombre
 		jQuery(moduleCtaFormParent).find('.field.field_name p').remove();
 		jQuery(moduleCtaFormParent).find('.field.field_name').removeClass('error');
@@ -127,7 +127,7 @@ jQuery(function(){
 			jQuery(moduleCtaFormParent).find('.field.field_name').addClass('error');
 			jQuery(moduleCtaFormParent).find('.field.field_name').append( "<p>Please enter a Name</p>" );
 			cond3 = false;
-		 }
+		}
 		//Comprombamos el apellido
 		jQuery(moduleCtaFormParent).find('.field.field_lastname p').remove();
 		jQuery(moduleCtaFormParent).find('.field.field_lastname').removeClass('error');

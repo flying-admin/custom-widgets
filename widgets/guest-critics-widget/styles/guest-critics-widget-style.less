@@ -113,14 +113,14 @@
         .title_text--medium();
         color: @primary--dark;
         font-family: @f_title;
+        transition: all 0.3s ease-out 0s;
 
-        &:hover{
-          transition: color .15s;
-          color: @primary;
+        &:hover {
+          opacity: 0.7;
         }
       }
 
-      p.fp_guest-critics__content__item__text{
+      p.fp_guest-critics__content__item__text {
           .medium_text();
           color: @darkgrey;
           font-family: @f_default;
@@ -131,12 +131,14 @@
           }
       }
 
-      &__img{
+      &__img {
         width: 120px;
         height: 120px;
         border-radius: 100%;
         margin: 0 auto;
-        & + .fp_guest-critics__content__item__title,  & + .fp_guest-critics__content__item__text{
+
+        & + .fp_guest-critics__content__item__title,
+        & + .fp_guest-critics__content__item__text {
           margin-top: 25px;
         }
       }
