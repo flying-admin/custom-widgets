@@ -1,4 +1,4 @@
-<div class="fp_module"> 
+<div class="fp_module">
 <div class="fp_module__content">
   <div class="fp_introduction ">
       <div class="row">
@@ -18,21 +18,21 @@
               <?php endif; ?>
             </div>
           </div>
-          <div class="row  <?php if( $extra_content_position == 'right' ): echo 'flex-row-reverse'; endif; ?> " >
+          <div class="row  <?php if( $extra_content_position == 'right' ): echo 'flex-row-reverse'; endif; ?>">
             <?php if( $extra_content != 'none' ): ?>
               <div class="col-sm-12 <?php if( $extra_content == 'image' || $extra_content == 'video' ){ echo ' col-lg-6 '; }else{ echo ' col-lg-4 ' ;}?>  ">
                 <div class="extra-content">
                   <?php if( $cta ): // start CTA ?>
                     <div class="extra-content__cta-block">
-                      <?php if($cta_title != ''): ?> 
-                        <p class="cta-block__title"> <?php echo $cta_title; ?></p> 
+                      <?php if($cta_title != ''): ?>
+                        <p class="cta-block__title"> <?php echo $cta_title; ?></p>
                       <?php endif; ?>
 
-                      <?php if($cta_text != ''): ?> 
+                      <?php if($cta_text != ''): ?>
                       <p class="cta-block__text"> <?php echo $cta_text; ?></p>
                       <?php endif; ?>
-                      
-                      <?php if($cta_link_text != ''): ?> 
+
+                      <?php if($cta_link_text != ''): ?>
                       <div class="row justify-content-center">
                         <div class="col-lg-12 col-md-6">
                           <a href="<?php echo $cta_link_url; ?>" class="btn btn--block btn--primary cta-block__btn " <?php if($cta_new_window): ?> target="_blank" <?php endif; ?>>
@@ -43,10 +43,10 @@
                           </a>
                         </div>
                       </div>
-                      
+
                       <?php endif; ?>
                     </div>
-                  <?php endif; // end CTA ?> 
+                  <?php endif; // end CTA ?>
 
                   <?php if( $image   && $image_url): ?>
                       <figure class="extra-content__img content_image" data-width="740" data-height="480" >
@@ -56,7 +56,7 @@
 
                   <?php if( $video ): ?>
                     <?php if( $video_url == false ): ?>
-                        <p>  error video URL </p>    
+                        <p>  error video URL </p>
                     <?php else: ?>
                       <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal"   class="extra-content__video">
                         <figure class="extra-content__video__image content_image" data-width="740" data-height="480" >
@@ -105,10 +105,10 @@
                     <div class="embed-responsive embed-responsive-16by9">
                       <?php if( $video_type == 'youtube' ): ?>
                           <iframe width="560" height="315" class="embed-responsive-item video-iframe youtube " src="https://www.youtube.com/embed/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" enablejsapi=1 allow="autoplay"></iframe>
-                      <?php endif; ?>      
+                      <?php endif; ?>
                       <?php if( $video_type == 'vimeo' ): ?>
                           <iframe class="embed-responsive-item video-iframe vimeo" src="https://player.vimeo.com/video/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
-                      <?php endif; ?>    
+                      <?php endif; ?>
                     </div>
                 </div>
             </div>

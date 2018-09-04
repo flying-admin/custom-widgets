@@ -60,8 +60,7 @@ class Wysiwyg_Widget extends SiteOrigin_Widget {
             'video_url' => array(
               'type' => 'text',
               'label' => 'Enlace del vídeo',
-              'placeholder' => 'Por ejemplo, https://www.youtube.com/watch?v=b2fATDBV-JU o https://vimeo.com/28301101',
-              'description' => "Por ejemplo, https://www.youtube.com/watch?v=b2fATDBV-JU o https://vimeo.com/28301101",
+              'description' => "Por ejemplo, https://www.youtube.com/watch?v=XXXXXXXX o https://vimeo.com/XXXXXXXX",
               'default' => '',
               'required' => true,
               'state_handler' => array(
@@ -131,8 +130,8 @@ class Wysiwyg_Widget extends SiteOrigin_Widget {
             ),
           ),
         ),
-      ),  
-     
+      ),
+
       //The $base_folder path string.
       plugin_dir_path(__FILE__)
     );
@@ -153,7 +152,7 @@ class Wysiwyg_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    
+
     $vars['title'] = $instance['section_main']['title'];
     $vars['text'] = $instance['section_main']['text'];
     $vars['rich_text'] = $instance['section_main']['rich_text'];
@@ -172,7 +171,7 @@ class Wysiwyg_Widget extends SiteOrigin_Widget {
           $vars['video_type'] = false;
           $vars['extra_content_position'] = $instance['section_main']['video_position'];
           $vars['video_image'] = false;
-          
+
           $video_code = '';
 
           if( strpos( $vars['video_url'] , 'youtube') != false ){
@@ -254,18 +253,18 @@ class Wysiwyg_Widget extends SiteOrigin_Widget {
 
       $regs = [];
       $id = '';
-  
+
       if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $regs)) {
           $id = $regs[3];
       }
-  
+
       if($id){
         return $id;
       }else{
         return '';
       }
-  } 
-  
+  }
+
 
   function get_template_name($instance) {
     return 'wysiwyg-widget-template';

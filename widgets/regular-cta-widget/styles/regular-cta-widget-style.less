@@ -38,7 +38,7 @@
     padding: 0;
     padding-right: 40px;
     margin: 0;
-    font-family: Montserrat, sans-serif;
+    font-family: @f_title;
     font-weight: 800;
     font-size: 28px;
     line-height: 38px;
@@ -68,7 +68,7 @@
   }
 
   &--colored {
-    background-color: @primary;
+    background-color: @primary--dark;
 
     .fp_regular-cta__main {
       color: @white;
@@ -82,17 +82,18 @@
 
   .btn {
     display: inline-block;
+    position: relative;
     width: auto;
     height: auto;
     padding: 17px 78px;
     margin: 0;
-    color: @darkgrey;
-    background-color: @white;
-    border: 1px solid @white;
+    color: @white;
+    background-color: @primary--dark;
+    border: none;
     border-radius: 1px;
     transition: all 0.3s ease-out 0s;
 
-    font-family: Montserrat, sans-serif;
+    font-family: @f_title;
     font-weight: 800;
     font-size: 11px;
     line-height: 24px;
@@ -104,9 +105,23 @@
       margin-left: 14px;
     }
 
-    &:hover {
-      background-color: darken(@white, 10%);
-      border-color: darken(@white, 10%);
+    span {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      transition: all 0.3s ease-out 0s;
+      transform: translateX(-50%);
+      background-color: darken(@primary--dark, 10%);
+      z-index: 1;
     }
 
     &--block {
@@ -114,14 +129,19 @@
     }
 
     &--primary {
-      background-color: @primary;
-      border-color: @primary;
+      background-color: @white;
+      color: @darkgrey;
+
+      &::after {
+        background-color: darken(@primary--dark, 10%);
+      }
+    }
+
+    &:hover {
       color: @white;
 
-      &:hover {
-        background-color: darken(@primary, 10%);
-        border-color: darken(@primary, 10%);
-        color: @white;
+      &::after {
+        width: 101%;
       }
     }
   }

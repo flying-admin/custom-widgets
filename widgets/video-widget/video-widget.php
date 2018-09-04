@@ -37,43 +37,38 @@ class Video_Widget extends SiteOrigin_Widget {
           'label' => 'Textos del módulo:',
           'hide' => false,
           'fields' => array(
+            'title' => array(
+              'type' => 'text',
+              'label' => 'Texto principal',
+              'default' => '',
+              'required' => true
+            ),
+            'text' => array(
+              'type' => 'text',
+              'label' => 'Entradilla',
+              'default' => '',
+              'optional' => true
+            ),
+          ),
+        ),
+        'section_video' => array(
+          'type' => 'section',
+          'label' => 'Video del módulo:',
+          'hide' => false,
+          'fields' => array(
             'video_size' => array(
               'type' => 'select',
               'label' => 'Elige ancho de vídeo centrado o completo',
               'default' => 'centered',
               'options' => array(
                 'centered' => 'Centrado',
-                'full_width' => 'Ancho completo',
-              ),
-              'state_emitter' => array(
-                'callback' => 'select',
-                'args' => array( 'video_size' )
-              ),
-            ),
-            'title' => array(
-              'type' => 'text',
-              'label' => 'Texto principal',
-              'default' => '',
-              'required' => true,
-              'state_handler' => array(
-                'video_size[centered]' => array('show'),
-                'video_size[full_width]' => array('hide'),
-              )
-            ),
-            'text' => array(
-              'type' => 'text',
-              'label' => 'Entradilla',
-              'default' => '',
-              'optional' => true,
-              'state_handler' => array(
-                'video_size[centered]' => array('show'),
-                'video_size[full_width]' => array('hide'),
+                'fullwidth' => 'Ancho completo',
               )
             ),
             'video_url' => array(
               'type' => 'text',
               'label' => 'Enlace del vídeo',
-              'placeholder' => 'Por ejemplo, https://www.youtube.com/watch?v=b2fATDBV-JU o https://vimeo.com/28301101',
+              'placeholder' => 'Por ejemplo, https://www.youtube.com/watch?v=XXXXXXXX o https://vimeo.com/XXXXXXXX',
               'default' => '',
               'required' => true
             ),
@@ -81,11 +76,10 @@ class Video_Widget extends SiteOrigin_Widget {
               'type'  => 'radio',
               'label' => '¿Qué imagen quieres para el vídeo?',
               'options' => array(
-                'no_image' => 'Ninguna',
-                'default_image' => 'Imagen del vídeo por defecto',
-                'custom_image' => 'Personalizada',
+                'default_image' => 'Imagen por defecto',
+                'custom_image' => 'Imagen personalizada'
               ),
-              'default' => 'no_image',
+              'default' => 'default_image',
               'state_emitter' => array(
                 'callback' => 'select',
                 'args' => array( 'video_image' )
@@ -98,7 +92,6 @@ class Video_Widget extends SiteOrigin_Widget {
               'fallback' => true,
               'required' => true,
               'state_handler' => array(
-                'video_image[no_image]'  => array('hide'),
                 'video_image[default_image]' => array('hide'),
                 'video_image[custom_image]' => array('show')
               )
@@ -127,45 +120,44 @@ class Video_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    
-    $var['video_size'] = $instance['section_main']['video_size'];
 
-    if( $var['video_size'] == 'centered'){
-      $vars['title'] = $instance['section_main']['title'];
-      $vars['text'] = $instance['section_main']['text'];
-    }
-
-    $vars['video_url'] = $instance['section_main']['video_url'];
+    $vars['video_size'] = $instance['section_video']['video_size'];
+    $vars['title'] = $instance['section_main']['title'];
+    $vars['text'] = $instance['section_main']['text'];
+    $vars['video_url'] = $instance['section_video']['video_url'];
     $vars['video_type'] = false;
-    $vars['extra_content_position'] = $instance['section_main']['video_position'];
     $vars['video_image'] = false;
-    
+
     $video_code = '';
 
     if( strpos( $vars['video_url'] , 'youtube') != false ){
       $vars['video_type'] = 'youtube';
       $video_code = $this->getYoutubeId( $vars['video_url'] );
-    } elseif ( strpos( $vars['video_url'] , 'vimeo') != false) {
+    }
+    elseif ( strpos( $vars['video_url'] , 'vimeo') != false) {
       $vars['video_type'] = 'vimeo';
       $video_code = $this->getVimeoId( $vars['video_url'] );
-    }else{
+    }
+    else {
       $vars['video_url'] = false;
     }
 
     $vars['video_code'] = $video_code ;
 
-    if( $instance['section_main']['video_image'] == 'custom_image' || $vars['video_type'] == false || $vars['video_url'] == false ){
-      $vars['video_image']= $this->getImage( $instance['section_main']['image_url'], $instance['section_main']['image_url_fallback'] );
-    } elseif ( $instance['section_main']['video_image'] == 'default_image' ) {
+    if( $instance['section_video']['video_image'] == 'custom_image' || $vars['video_type'] == false || $vars['video_url'] == false ){
+      $vars['video_image']= $this->getImage( $instance['section_video']['image_url'], $instance['section_video']['image_url_fallback'] );
+    }
+    elseif ( $instance['section_video']['video_image'] == 'default_image' ) {
       if( $video_code != ''){
         if( $vars['video_type'] == 'youtube'){
-            $vars['video_image'] = 'https://img.youtube.com/vi/'.$video_code.'/hqdefault.jpg';
-        } elseif ($vars['video_type'] == 'vimeo'){
-            $vars['video_image'] = $this->getVimeoVideoThumbnailByVideoId( $video_code, 'medium' );
+          $vars['video_image'] = 'https://img.youtube.com/vi/'.$video_code.'/hqdefault.jpg';
+        }
+        elseif ($vars['video_type'] == 'vimeo'){
+          $vars['video_image'] = $this->getVimeoVideoThumbnailByVideoId( $video_code, 'medium' );
         }
       }
     }
- 
+
     return $vars;
   }
 
@@ -173,7 +165,7 @@ class Video_Widget extends SiteOrigin_Widget {
     $img = wp_get_attachment_image_src( $image , 'full', false );
     if( $img ) {
       return $img[0];
-    }else {
+    } else {
       return $fallback;
     }
   }
@@ -182,23 +174,23 @@ class Video_Widget extends SiteOrigin_Widget {
   function getVimeoVideoThumbnailByVideoId( $id = '', $thumbType = 'medium' ) {
       $id = trim( $id );
       if ( $id == '' ) {
-          return FALSE;
+        return FALSE;
       }
       $apiData = unserialize( file_get_contents( "http://vimeo.com/api/v2/video/$id.php" ) );
       if ( is_array( $apiData ) && count( $apiData ) > 0 ) {
-          $videoInfo = $apiData[ 0 ];
-          switch ( $thumbType ) {
-              case 'small':
-                  return $videoInfo[ 'thumbnail_small' ];
-                  break;
-              case 'large':
-                  return $videoInfo[ 'thumbnail_large' ];
-                  break;
-              case 'medium':
-                  return $videoInfo[ 'thumbnail_medium' ];
-              default:
-                  break;
-          }
+        $videoInfo = $apiData[ 0 ];
+        switch ( $thumbType ) {
+          case 'small':
+            return $videoInfo[ 'thumbnail_small' ];
+            break;
+          case 'large':
+            return $videoInfo[ 'thumbnail_large' ];
+            break;
+          case 'medium':
+            return $videoInfo[ 'thumbnail_medium' ];
+          default:
+            break;
+        }
       }
       return FALSE;
   }
@@ -208,7 +200,7 @@ class Video_Widget extends SiteOrigin_Widget {
         $id = $match[1];
         if($id){
           return $id;
-        }else{
+        } else {
           return '';
         }
     }
@@ -217,18 +209,18 @@ class Video_Widget extends SiteOrigin_Widget {
   function getVimeoId( $url ){
       $regs = [];
       $id = '';
-  
+
       if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $regs)) {
           $id = $regs[3];
       }
-  
+
       if($id){
         return $id;
-      }else{
+      } else {
         return '';
       }
-  } 
-  
+  }
+
 
   function get_template_name($instance) {
     return 'video-widget-template';

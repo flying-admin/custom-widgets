@@ -7,6 +7,7 @@
   margin: 0 -15px;
   padding: 70px;
   background-color: @white;
+  text-align: center;
 
   @media(max-width: 991px){
     padding: 70px 40px;
@@ -36,7 +37,7 @@
     display: block;
     padding: 0;
     margin: 0;
-    font-family: Montserrat, sans-serif;
+    font-family: @f_title;
     font-weight: 800;
     font-size: 28px;
     line-height: 38px;
@@ -54,7 +55,7 @@
   &__desc {
     display: block;
     padding: 0;
-    font-family: "PT serif", serif;
+    font-family: @f_default;
     font-weight: 400;
     font-size: 18px;
     line-height: 30px;
@@ -69,17 +70,19 @@
   }
 
   &__cta {
-    max-width: 350px;
+    width: auto;
+    min-width: 350px;
+    max-width: 100%;
+    text-align: center;
     margin: 28px auto 0 !important;
 
     @media(max-width: 599px){
-      max-width: none;
       width: 100% !important;
     }
   }
 
   &--colored {
-    background-color: @primary;
+    background-color: @primary--dark;
 
     .fp_featured-cta__icon,
     .fp_featured-cta__main,
@@ -95,17 +98,18 @@
 
   .btn {
     display: inline-block;
+    position: relative;
     width: auto;
     height: auto;
     padding: 17px 78px;
     margin: 0;
-    color: @darkgrey;
-    background-color: @white;
-    border: 1px solid @white;
+    color: @white;
+    background-color: @primary--dark;
+    border: none;
     border-radius: 1px;
     transition: all 0.3s ease-out 0s;
 
-    font-family: Montserrat, sans-serif;
+    font-family: @f_title;
     font-weight: 800;
     font-size: 11px;
     line-height: 24px;
@@ -117,9 +121,23 @@
       margin-left: 14px;
     }
 
-    &:hover {
-      background-color: darken(@white, 10%);
-      border-color: darken(@white, 10%);
+    span {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      transition: all 0.3s ease-out 0s;
+      transform: translateX(-50%);
+      background-color: darken(@primary--dark, 10%);
+      z-index: 1;
     }
 
     &--block {
@@ -127,14 +145,19 @@
     }
 
     &--primary {
-      background-color: @primary;
-      border-color: @primary;
+      background-color: @white;
+      color: @darkgrey;
+
+      &::after {
+        background-color: darken(@primary--dark, 10%);
+      }
+    }
+
+    &:hover {
       color: @white;
 
-      &:hover {
-        background-color: darken(@primary, 10%);
-        border-color: darken(@primary, 10%);
-        color: @white;
+      &::after {
+        width: 101%;
       }
     }
   }
