@@ -328,7 +328,8 @@
     input[type=number],
     input[type=password],
     input[type=tel],
-    input[type=text] {
+    input[type=text],
+    textarea {
       font-size: 15px;
       display: block;
       border-bottom: solid darken(@white, 25%);
@@ -348,7 +349,8 @@
       input[type=number],
       input[type=password],
       input[type=tel],
-      input[type=text] {
+      input[type=text],
+      textarea {
         border-color: @error;
         color: @error;
       }
@@ -408,7 +410,7 @@
         transform: rotate(50deg);
       }
     }
-    label>input:checked+span {
+    label > input:checked + span {
       &:after {
         border-color: @white;
       }

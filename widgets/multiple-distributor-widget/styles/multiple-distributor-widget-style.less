@@ -395,6 +395,26 @@
       padding: 30px;
       margin: 0;
 
+      p {
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      .wp-caption.aligncenter {
+        width: 100% !important;
+        text-align: center;
+
+        img {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+
+      img.aligncenter {
+        display: block;
+        margin: 0 auto;
+      }
+
       @media(max-width: 767px){
         padding: 15px;
       }
@@ -416,8 +436,12 @@
         width: auto;
         max-width: 100%;
         height: auto;
-        max-height: 2000px;
+        max-height: ~"calc(85vh - 60px)";
         margin: 0 auto;
+
+        @media(max-width: 767px){
+          max-height: ~"calc(85vh - 30px)";
+        }
       }
     }
 
@@ -457,11 +481,15 @@
         padding: 15px;
       }
 
-      object {
+      & > object,
+      & > iframe {
         display: block;
         width: 100%;
         height: auto;
         min-height: 75vh;
+        padding: 0;
+        margin: 0;
+        border: none;
       }
     }
   }

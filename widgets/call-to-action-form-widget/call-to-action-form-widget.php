@@ -67,7 +67,7 @@ class Call_To_Action_Form_Widget extends SiteOrigin_Widget {
               'default' => '',
               'optional' => true
             ),
-            'chargue' => array(
+            'charge' => array(
               'type' => 'text',
               'label' => 'Cargo',
               'default' => '',
@@ -93,19 +93,9 @@ class Call_To_Action_Form_Widget extends SiteOrigin_Widget {
                 'args' => array( 'add_form' )
               ),
             ),
-            'form_email' => array(
-              'type' => 'text',
-              'label' => 'Dirigido a',
-              'default' => '',
-              'required' => true,
-              'state_handler' => array(
-                'add_form[none]' => array('hide'),
-                'add_form[yes]' => array('show')
-              )
-            ),
             'form_link_text' => array(
               'type' => 'text',
-              'label' => 'Texto del enlace',
+              'label' => 'Texto del CTA',
               'default' => '',
               'required' => true,
               'state_handler' => array(
@@ -115,14 +105,83 @@ class Call_To_Action_Form_Widget extends SiteOrigin_Widget {
             ),
             'form_link_url' => array(
               'type' => 'link',
-              'label' => 'URL del enlace',
+              'label' => 'URL del CTA',
               'default' => '',
               'required' => true,
               'state_handler' => array(
                 'add_form[none]' => array('show'),
                 'add_form[yes]' => array('hide')
               )
+            ),
+            'new_window' => array(
+              'type' => 'checkbox',
+              'default' => false,
+              'label' => 'Abrir CTA en pestaña nueva',
+              'state_handler' => array(
+                'add_form[none]' => array('show'),
+                'add_form[yes]' => array('hide')
+              )
+            ),
+            'form_email' => array(
+              'type' => 'text',
+              'label' => 'Dirigido a',
+              'default' => '',
+              'required' => true,
+              'state_handler' => array(
+                'add_form[yes]' => array('show'),
+                'add_form[none]' => array('hide')
+              )
+            ),
+            'form_field_firstname' => array(
+              'type' => 'checkbox',
+              'default' => true,
+              'label' => 'Añadir campo "Nombre"',
+              'state_handler' => array(
+                'add_form[yes]' => array('show'),
+                'add_form[none]' => array('hide')
+              )
+            ),
+            'form_field_lastname' => array(
+              'type' => 'checkbox',
+              'default' => true,
+              'label' => 'Añadir campo "Apellidos"',
+              'state_handler' => array(
+                'add_form[yes]' => array('show'),
+                'add_form[none]' => array('hide')
+              )
+            ),
+            'form_field_email' => array(
+              'type' => 'checkbox',
+              'default' => true,
+              'label' => 'Añadir campo "Email"',
+              'state_handler' => array(
+                'add_form[yes]' => array('show'),
+                'add_form[none]' => array('hide')
+              )
+            ),
+            'form_field_message' => array(
+              'type' => 'checkbox',
+              'default' => true,
+              'label' => 'Añadir campo "Mensaje"',
+              'state_handler' => array(
+                'add_form[yes]' => array('show'),
+                'add_form[none]' => array('hide')
+              )
+            ),
+            'add_sticky' => array(
+              'type'  => 'radio',
+              'label' => '¿Quieres añadir el Sticky?',
+              'options' => array(
+                'yes' => 'Sí',
+                'no' => 'No',
+              ),
+              'default' => 'no',
+              'state_handler' => array(
+                'add_form[yes]' => array('show'),
+                'add_form[none]' => array('hide')
+              )
             )
+
           ),
         ),
       ),
@@ -153,13 +212,23 @@ class Call_To_Action_Form_Widget extends SiteOrigin_Widget {
     $vars['contact_person'] =  $instance['section_main']['contact_person'];
     $vars['contact_phone'] =   $instance['section_main']['contact_phone'];
     $vars['contact_email'] =   $instance['section_main']['contact_email'];
-    $vars['chargue'] =         $instance['section_main']['chargue'];
+    $vars['charge'] =          $instance['section_main']['charge'];
     $vars['add_form'] =        $instance['section_main']['add_form'];
     $vars['fp_ctaf'] =         $instance['section_main']['form_email'];
     //$vars['fp_ctaf'] =         fp_ctaf_encript($instance['section_main']['form_email']);
     $vars['form_link_text'] =  $instance['section_main']['form_link_text'];
     $vars['form_link_url'] =   $instance['section_main']['form_link_url'];
-    $vars['image' ] =          $this->getImage($instance['section_main']['image_url'], $instance['section_main']['image_url_fallback']);
+    $vars['new_window'] =      $instance['section_main']['new_window'];
+    $vars['image'] =           $this->getImage($instance['section_main']['image_url'], $instance['section_main']['image_url_fallback']);
+
+    $vars['form'] = array(
+      'firstname' => $instance['section_main']['form_field_firstname'],
+      'lastname' => $instance['section_main']['form_field_lastname'],
+      'email' => $instance['section_main']['form_field_email'],
+      'message' => $instance['section_main']['form_field_message']
+    );
+    $vars['add_sticky'] =      $instance['section_main']['add_sticky'];
+
     return $vars;
   }
 

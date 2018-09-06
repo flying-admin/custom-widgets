@@ -108,9 +108,13 @@
 
                   <?php elseif ($modal['item_modal_type'] == 'file'): ?>
 
-                    <object data="<?php echo $modal['item_modal_file']; ?>" type="application/pdf">
+                    <?php if( substr($modal['item_modal_video'], -3) == 'pdf' ): ?>
+                      <object data="<?php echo $modal['item_modal_file']; ?>" type="application/pdf">
+                        <iframe src="https://docs.google.com/viewer?url=<?php echo $modal['item_modal_file']; ?>&embedded=true"></iframe>
+                      </object>
+                    <?php else: ?>
                       <iframe src="https://docs.google.com/viewer?url=<?php echo $modal['item_modal_file']; ?>&embedded=true"></iframe>
-                    </object>
+                    <?php endif; ?>
 
                   <?php endif; ?>
                 </div>

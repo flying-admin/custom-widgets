@@ -207,7 +207,7 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                         'image' => 'Fotografía (Formato JPG)',
                         'video' => 'Video (Formato MP4 o MOV)',
                         'stream' => 'Video (Youtube o Vimeo)',
-                        'file' => 'Documento PDF'
+                        'file' => 'Documento'
                       ),
                       'state_emitter' => array(
                         'callback' => 'select',
@@ -260,7 +260,7 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                     ),
                     'item_modal_file' => array(
                       'type' => 'media',
-                      'label' => 'Documento PDF',
+                      'label' => 'Documento',
                       'library' => 'file',
                       'fallback' => true,
                       'optional' => true,

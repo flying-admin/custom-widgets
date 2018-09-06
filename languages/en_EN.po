@@ -1,0 +1,60 @@
+"Project-Id-Version: custom-widgets\n"
+"POT-Creation-Date: 2018-09-04 12:54+0200\n"
+"PO-Revision-Date: 2018-09-04 12:54+0200\n"
+"Last-Translator: \n"
+"Language-Team: FlyingPigs\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: custom-widgets\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+msgid "First name"
+msgstr "First name"
+
+msgid "Last name"
+msgstr "Last name"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Please enter your First name"
+msgstr "Please enter your First name"
+
+msgid "Please enter your Last name"
+msgstr "Please enter your Last name"
+
+msgid "Please enter a valid Email"
+msgstr "Please enter a valid Email"
+
+msgid "Please enter your Message"
+msgstr "Please enter your Message"
+
+msgid "Please accept the Legal terms"
+msgstr "Please accept the Legal terms"
+
+msgid "I accept the"
+msgstr "I accept the"
+
+msgid "Legal terms"
+msgstr "Legal terms"
+
+msgid "Send"
+msgstr "Send"
+
+msgid "Thank you"
+msgstr "Thank you"
+
+msgid "The form has been sent succesfully"
+msgstr "The form has been sent succesfully"
+
+msgid "Oops! Something went wrong, please try again later"
+msgstr "Oops! Something went wrong, please try again later"
+
+msgid "Any questions?"
+msgstr "Any questions?"

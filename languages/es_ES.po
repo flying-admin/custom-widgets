@@ -1,0 +1,60 @@
+"Project-Id-Version: custom-widgets\n"
+"POT-Creation-Date: 2018-09-04 12:54+0200\n"
+"PO-Revision-Date: 2018-09-04 12:54+0200\n"
+"Last-Translator: \n"
+"Language-Team: FlyingPigs\n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: custom-widgets\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+msgid "First name"
+msgstr "Nombre"
+
+msgid "Last name"
+msgstr "Apellido"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Message"
+msgstr "Mensaje"
+
+msgid "Please enter your First name"
+msgstr "Por favor introduzca su Nombre"
+
+msgid "Please enter your Last name"
+msgstr "Por favor introduzca su Apellido"
+
+msgid "Please enter a valid Email"
+msgstr "Por favor introduzca un Email válido"
+
+msgid "Please enter your Message"
+msgstr "Por favor introduzca su Mensaje"
+
+msgid "Please accept the Legal terms"
+msgstr "Por favor acepte los Terminos legales"
+
+msgid "I accept the"
+msgstr "Acepto los"
+
+msgid "Legal terms"
+msgstr "Terminos legales"
+
+msgid "Send"
+msgstr "Enviar"
+
+msgid "Thank you"
+msgstr "Gracias"
+
+msgid "The form has been sent succesfully"
+msgstr "El formuario se ha enviado correctamente"
+
+msgid "Oops! Something went wrong, please try again later"
+msgstr "¡Uups! Ha ocurrido un error, por favor pruebe de nuevo"
+
+msgid "Any questions?"
+msgstr "¿Tienes alguna duda?"
