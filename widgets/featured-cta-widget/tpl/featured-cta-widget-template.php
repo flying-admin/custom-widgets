@@ -6,8 +6,13 @@
   <?php if ($icon): ?>
     <div class="row justify-content-center no-gutters">
       <div class="col-xl-6 col-lg-8 col-md-10">
-        <div class="fp_featured-cta__icon">
-          <?php echo siteorigin_widget_get_icon( $icon ); ?>
+        <div class="fp_featured-cta__icon fp_featured-cta__icon--<?php echo $icon_type; ?>">
+          <?php if($icon_type == 'icon'): ?>
+            <?php echo siteorigin_widget_get_icon( $icon ); ?>
+          <?php endif; ?>
+          <?php if($icon_type == 'image'): ?>
+            <img src="<?php echo $icon; ?>" alt="">
+          <?php endif; ?>
         </div>
       </div>
     </div>

@@ -37,10 +37,38 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
           'label' => 'Parámetros del módulo:',
           'hide' => false,
           'fields' => array(
-            'icon' => array(
+            'icon_type' => array(
+              'type'  => 'radio',
+              'label' => 'Tipo de icono',
+              'options' => array(
+                'icon' => 'Icono',
+                'image' => 'Imagen'
+              ),
+              'default' => 'icon',
+              'state_emitter' => array(
+                'callback' => 'select',
+                'args' => array( 'icon_type' )
+              )
+            ),
+            'icon_icon' => array(
               'type' => 'icon',
               'label' => 'Icono',
-              'optional' => true
+              'optional' => true,
+              'state_handler' => array(
+                'icon_type[icon]' => array('show'),
+                '_else[icon_type]' => array('hide')
+              )
+            ),
+            'icon_image' => array(
+              'type' => 'media',
+              'label' => 'Imagen',
+              'library' => 'image',
+              'fallback' => true,
+              'required' => true,
+              'state_handler' => array(
+                'icon_type[image]' => array('show'),
+                '_else[icon_type]' => array('hide')
+              )
             ),
             'background' => array(
               'type'  => 'radio',
@@ -123,7 +151,7 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    $vars['icon'] = $instance['section_feats']['icon'];
+    $vars['icon_type'] = $instance['section_feats']['icon_type'];
     $vars['background'] = $instance['section_feats']['background'];
     $vars['bordered'] = $instance['section_feats']['bordered'];
     $vars['main'] = $instance['section_text']['main'];
@@ -131,6 +159,19 @@ class Featured_Cta_Widget extends SiteOrigin_Widget {
     $vars['cta_text'] = $instance['section_cta']['cta_text'];
     $vars['cta_url'] = sow_esc_url( $instance['section_cta']['cta_url'] );
     $vars['new_window'] = $instance['section_cta']['new_window'];
+
+    if ($vars['icon_type'] == 'icon'){
+      $vars['icon'] = $instance['section_feats']['icon_icon'];
+    }
+    else {
+      $image = wp_get_attachment_image_src($instance['section_feats']['icon_image'], 'full', false);
+      if($image) {
+        $vars['icon'] = $image[0];
+      }
+      else {
+        $vars['icon'] = $instance['section_feats']['icon_image_fallback'];
+      }
+    }
 
     return $vars;
   }
