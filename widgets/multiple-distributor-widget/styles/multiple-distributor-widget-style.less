@@ -379,4 +379,123 @@
       }
     }
   }
+
+  &__modal {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 250px;
+    background-color: @white;
+
+    &__text {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 30px;
+      margin: 0;
+
+      @media(max-width: 767px){
+        padding: 15px;
+      }
+    }
+
+    &__image {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 30px;
+      margin: 0;
+
+      @media(max-width: 767px){
+        padding: 15px;
+      }
+
+      img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        max-height: 2000px;
+        margin: 0 auto;
+      }
+    }
+
+    &__video {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      margin: 0;
+
+      video {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    &__stream {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      margin: 0;
+    }
+
+    &__file {
+      display: block;
+      width: 100%;
+      height: auto;
+      padding: 30px;
+      margin: 0;
+
+      @media(max-width: 767px){
+        padding: 15px;
+      }
+
+      object {
+        display: block;
+        width: 100%;
+        height: auto;
+        min-height: 75vh;
+      }
+    }
+  }
+}
+
+.modal-dialog.modal-xl {
+  width: 95vw;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+.modal {
+  &.modal--ghost{
+    .modal-header,
+    .modal-content,
+    .modal-body,
+    .modal-footer {
+      background-color: transparent;
+      border: none;
+    }
+    .close {
+      float: right;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: @white;
+      text-shadow: none;
+      opacity: 1;
+      width: 44px;
+      position: relative;
+      left: -15px;
+      height: 44px;
+      line-height: 44px;
+      font-size: 28px;
+    }
+  }
 }

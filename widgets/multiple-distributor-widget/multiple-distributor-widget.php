@@ -148,22 +148,132 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                   'optional' => true
                 ),
 
+                'item_link_type' => array(
+                  'type'  => 'radio',
+                  'label' => 'Tipo de enlace',
+                  'options' => array(
+                    'none' => 'Ninguno',
+                    'link' => 'Enlace normal',
+                    'modal' => 'Enlace a lightbox'
+                  ),
+                  'default' => 'normal',
+                  'state_emitter' => array(
+                    'callback' => 'select',
+                    'args' => array( 'item_link_type_{$repeater}' )
+                  ),
+                ),
                 'item_link_text' => array(
                   'type' => 'text',
                   'label' => 'Texto del enlace',
                   'default' => '',
-                  'optional' => true
+                  'optional' => true,
+                  'state_handler' => array(
+                    'item_link_type_{$repeater}[none]' => array('hide'),
+                    '_else[item_link_type_{$repeater}]' => array('show')
+                  )
                 ),
+
                 'item_link_url' => array(
                   'type' => 'link',
                   'label' => 'Url del enlace',
                   'default' => '',
-                  'optional' => true
+                  'optional' => true,
+                  'state_handler' => array(
+                    'item_link_type_{$repeater}[link]' => array('show'),
+                    '_else[item_link_type_{$repeater}]' => array('hide')
+                  )
                 ),
                 'item_new_window' => array(
                   'type' => 'checkbox',
                   'default' => false,
                   'label' => 'Abrir enlace en pestaña nueva',
+                  'state_handler' => array(
+                    'item_link_type_{$repeater}[link]' => array('show'),
+                    '_else[item_link_type_{$repeater}]' => array('hide')
+                  )
+                ),
+
+                'section_item_modal' => array(
+                  'type' => 'section',
+                  'label' => 'Contenido del lightbox:',
+                  'hide' => false,
+                  'fields' => array(
+                    'item_modal_type' => array(
+                      'type' => 'select',
+                      'label' => 'Tipo de contenido del modal',
+                      'default' => 'text',
+                      'options' => array(
+                        'text' => 'Texto',
+                        'image' => 'Fotografía (Formato JPG)',
+                        'video' => 'Video (Formato MP4 o MOV)',
+                        'stream' => 'Video (Youtube o Vimeo)',
+                        'file' => 'Documento PDF'
+                      ),
+                      'state_emitter' => array(
+                        'callback' => 'select',
+                        'args' => array( 'item_modal_type{$repeater}' )
+                      ),
+                    ),
+                    'item_modal_text' => array(
+                      'type' => 'tinymce',
+                      'label' => 'Contenido del modal',
+                      'default' => '',
+                      'rows' => 10,
+                      'optional' => true,
+                      'state_handler' => array(
+                        'item_modal_type{$repeater}[text]' => array('show'),
+                        '_else[item_modal_type{$repeater}]' => array('hide')
+                      )
+                    ),
+                    'item_modal_image' => array(
+                      'type' => 'media',
+                      'label' => 'Fotografía (Formato JPG)',
+                      'library' => 'image',
+                      'fallback' => true,
+                      'optional' => true,
+                      'state_handler' => array(
+                        'item_modal_type{$repeater}[image]' => array('show'),
+                        '_else[item_modal_type{$repeater}]' => array('hide')
+                      )
+                    ),
+                    'item_modal_video' => array(
+                      'type' => 'media',
+                      'label' => 'Video (Formato MP4 o MOV)',
+                      'library' => 'video',
+                      'fallback' => true,
+                      'optional' => true,
+                      'state_handler' => array(
+                        'item_modal_type{$repeater}[video]' => array('show'),
+                        '_else[item_modal_type{$repeater}]' => array('hide')
+                      )
+                    ),
+                    'item_modal_stream' => array(
+                      'type' => 'text',
+                      'label' => 'Enlace del vídeo',
+                      'placeholder' => 'Por ejemplo, https://www.youtube.com/watch?v=XXXXXXXX o https://vimeo.com/XXXXXXXX',
+                      'default' => '',
+                      'optional' => true,
+                      'state_handler' => array(
+                        'item_modal_type{$repeater}[stream]' => array('show'),
+                        '_else[item_modal_type{$repeater}]' => array('hide')
+                      )
+                    ),
+                    'item_modal_file' => array(
+                      'type' => 'media',
+                      'label' => 'Documento PDF',
+                      'library' => 'file',
+                      'fallback' => true,
+                      'optional' => true,
+                      'state_handler' => array(
+                        'item_modal_type{$repeater}[file]' => array('show'),
+                        '_else[item_modal_type{$repeater}]' => array('hide')
+                      )
+                    )
+                  ),
+                  'state_handler' => array(
+                    'item_link_type_{$repeater}[modal]' => array('show'),
+                    '_else[item_link_type_{$repeater}]' => array('hide')
+                  )
                 )
 
               )
@@ -228,17 +338,79 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
 
     if ($vars['items_type'] == 'normal'){
       for($i = 0; $i < count($vars['items']); $i++){
-        $image = wp_get_attachment_image_src($vars['items'][$i]['image_url'], 'full', false);
-        if($image) {
-          $vars['items'][$i]['image_url'] = $image[0];
+        $vars['items'][$i]['image_url'] =  $this->getMedia($vars['items'][$i]['image_url'], $vars['items'][$i]['image_url_fallback']);
+      }
+    }
+
+    for($j = 0; $j < count($vars['items']); $j++){
+      if ($vars['items'][$j]['item_link_type'] == 'modal'){
+        $vars['items'][$j]['section_item_modal']['item_modal_id'] = "modal-" . base_convert($instance["_sow_form_id"], 16, 36) . "-" . $j;
+
+        if ($vars['items'][$j]['section_item_modal']['item_modal_type'] == 'image'){
+          $vars['items'][$j]['section_item_modal']['item_modal_image'] =  $this->getMedia($vars['items'][$j]['section_item_modal']['item_modal_image'], $vars['items'][$j]['section_item_modal']['item_modal_image_fallback']);
         }
-        else {
-          $vars['items'][$i]['image_url'] = $vars['items'][$i]['image_url_fallback'];
+        if ($vars['items'][$j]['section_item_modal']['item_modal_type'] == 'video'){
+          $vars['items'][$j]['section_item_modal']['item_modal_video'] =  $this->getMedia($vars['items'][$j]['section_item_modal']['item_modal_video'], $vars['items'][$j]['section_item_modal']['item_modal_video_fallback']);
+        }
+        if ($vars['items'][$j]['section_item_modal']['item_modal_type'] == 'file'){
+          $vars['items'][$j]['section_item_modal']['item_modal_file'] =  $this->getMedia($vars['items'][$j]['section_item_modal']['item_modal_file'], $vars['items'][$j]['section_item_modal']['item_modal_file_fallback']);
+        }
+        if ($vars['items'][$j]['section_item_modal']['item_modal_type'] == 'stream'){
+          if( strpos($vars['items'][$j]['section_item_modal']['item_modal_stream'], 'youtube') != false ){
+            $vars['items'][$j]['section_item_modal']['item_modal_stream_type'] = 'youtube';
+            $vars['items'][$j]['section_item_modal']['item_modal_stream_code'] = $this->getYoutubeId($vars['items'][$j]['section_item_modal']['item_modal_stream']);
+          }
+          elseif ( strpos($vars['items'][$j]['section_item_modal']['item_modal_stream'], 'vimeo') != false) {
+            $vars['items'][$j]['section_item_modal']['item_modal_stream_type'] = 'vimeo';
+            $vars['items'][$j]['section_item_modal']['item_modal_stream_code'] = $this->getVimeoId($vars['items'][$j]['section_item_modal']['item_modal_stream']);
+          }
+          else {
+            $vars['items'][$j]['section_item_modal']['item_modal_stream_code'] = false;
+          }
         }
       }
     }
 
+    var_dump($vars);
+    echo '<br/>';
     return $vars;
+  }
+
+  function getMedia( $media , $fallback = false ){
+    $media = wp_get_attachment_url( $media );
+    var_dump($media);
+    echo '<br/><br/>';
+    if( $media ) {
+      return $media;
+    } else {
+      return $fallback;
+    }
+  }
+
+  function getYoutubeId( $url ){
+      if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+        $id = $match[1];
+        if($id){
+          return $id;
+        } else {
+          return '';
+        }
+    }
+  }
+
+  function getVimeoId( $url ){
+      $regs = [];
+      $id = '';
+
+      if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $regs)) {
+          $id = $regs[3];
+      }
+
+      if($id){
+        return $id;
+      } else {
+        return '';
+      }
   }
 
   function get_template_name($instance) {
