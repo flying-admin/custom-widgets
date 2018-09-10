@@ -69,41 +69,41 @@
                     <div class="form-content">
                       <?php if($form['firstname']): ?>
                         <label class="field field_firstname">
-                          <span class=""><?php echo __('First name'); ?></span>
-                          <input type="text" id="firstname" name="firstname" value="" data-validation="<?php echo __('Please enter your First name'); ?>"/>
+                          <span class=""><?php echo __('First name', 'custom-widgets'); ?></span>
+                          <input type="text" id="firstname" name="firstname" value="" data-validation="<?php echo __('Please enter your First name', 'custom-widgets'); ?>"/>
                         </label>
                       <?php endif; ?>
                       <?php if($form['lastname']): ?>
                         <label class="field field_lastname">
-                          <span class=""><?php echo __('Last name'); ?></span>
-                          <input type="text" id="lastname" name="lastname" value="" data-validation="<?php echo __('Please enter your Last name'); ?>"/>
+                          <span class=""><?php echo __('Last name', 'custom-widgets'); ?></span>
+                          <input type="text" id="lastname" name="lastname" value="" data-validation="<?php echo __('Please enter your Last name', 'custom-widgets'); ?>"/>
                         </label>
                       <?php endif; ?>
                       <?php if($form['email']): ?>
                         <label class="field field_email">
-                          <span><?php echo __('Email'); ?></span>
-                          <input type="email" id="email" name="email" value="" data-validation="<?php echo __('Please enter a valid Email'); ?>"/>
+                          <span><?php echo __('Email', 'custom-widgets'); ?></span>
+                          <input type="email" id="email" name="email" value="" data-validation="<?php echo __('Please enter a valid Email', 'custom-widgets'); ?>"/>
                         </label>
                       <?php endif; ?>
                       <?php if($form['message']): ?>
                         <label class="field field_message">
-                          <span class=""><?php echo __('Message'); ?></span>
-                          <textarea id="message" name="message" rows="3" data-validation="<?php echo __('Please enter your Message'); ?>"></textarea>
+                          <span class=""><?php echo __('Message', 'custom-widgets'); ?></span>
+                          <textarea id="message" name="message" rows="3" data-validation="<?php echo __('Please enter your Message', 'custom-widgets'); ?>"></textarea>
                         </label>
                       <?php endif; ?>
                       <div class="row align-items-center">
                         <div class="col-sm-12 col-md mt-3">
                           <div class="checkbox">
                             <label class="field_legal" for="legal">
-                              <input type="checkbox" id="legal" name="legal" data-validation="<?php echo __('Please accept the Legal terms'); ?>"/>
+                              <input type="checkbox" id="legal" name="legal" data-validation="<?php echo __('Please accept the Legal terms', 'custom-widgets'); ?>"/>
                               <span class="icon-check">
-                                <?php echo __('I accept the'); ?> <a href="https://www.ie.edu/politica-privacidad" class="link--primary" target="_blank"><?php echo __('Legal terms'); ?></a>
+                                <?php echo __('I accept the', 'custom-widgets'); ?> <a href="https://www.ie.edu/politica-privacidad" class="link--primary" target="_blank"><?php echo __('Legal terms', 'custom-widgets'); ?></a>
                               </span>
                             </label>
                           </div>
                         </div>
                         <div class="col text-md-right mt-3">
-                          <button class="btn btn--primary send_button"><span><?php echo __('Send'); ?></span></button>
+                          <button class="btn btn--primary send_button"><span><?php echo __('Send', 'custom-widgets'); ?></span></button>
                         </div>
                       </div>
                       <input id="sendto" type="hidden" value="<?php echo $fp_ctaf ?>" />
@@ -116,11 +116,11 @@
                   <div class="col-sm-12">
                     <div class="form_confirmation d-none form-success">
                       <i class="icon-check"></i>
-                      <h5 class="form_confirmation__title"><?php echo __('Thank you'); ?></h5>
-                      <p class="form_confirmation__subtitle"><?php echo __('The form has been sent succesfully'); ?></p>
+                      <h5 class="form_confirmation__title"><?php echo __('Thank you', 'custom-widgets'); ?></h5>
+                      <p class="form_confirmation__subtitle"><?php echo __('The form has been sent succesfully', 'custom-widgets'); ?></p>
                     </div>
                     <div class="form-error d-none">
-                      <h5><?php echo __('Oops! Something went wrong, please try again later'); ?></h5>
+                      <h5><?php echo __('Oops! Something went wrong, please try again later', 'custom-widgets'); ?></h5>
                     </div>
                   </div>
                 </div>
@@ -179,7 +179,7 @@
               </div>
               <div class="col-12 col-md-5 col-lg-3 text-right">
                 <a href="#fp_cta_form-<?php echo $form_id; ?>" class="btn btn--primary">
-                  <span><?php echo __('Any questions?'); ?></span>
+                  <span><?php echo __('Any questions?', 'custom-widgets'); ?></span>
                 </a>
               </div>
             </div>

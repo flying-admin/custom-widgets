@@ -1,6 +1,8 @@
+msgid ""
+msgstr ""
 "Project-Id-Version: custom-widgets\n"
-"POT-Creation-Date: 2018-09-04 12:54+0200\n"
-"PO-Revision-Date: 2018-09-04 12:54+0200\n"
+"POT-Creation-Date: 2018-09-04 12:00+0200\n"
+"PO-Revision-Date: 2018-09-04 12:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: FlyingPigs\n"
 "Language: es_ES\n"
@@ -8,9 +10,10 @@
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.0.6\n"
-"X-Poedit-Basepath: custom-widgets\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 msgid "First name"
 msgstr "Nombre"
 
