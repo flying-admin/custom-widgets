@@ -92,7 +92,7 @@
 </div>
 <?php if( $extra_content == 'video' ): ?>
 <!-- MODAL -->
-<div class="modal fade modal--video modal--ghost" id="introduccion__modal-video-<?php echo $video_code ?>" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
+<div class="modal modal--ghost modal--introduction fade" id="introduccion__modal-video-<?php echo $video_code ?>" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">

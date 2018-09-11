@@ -10,19 +10,57 @@
  * Domain Path: /languages
  */
 
+// Load all modules inside widgets folder
 function custom_widgets ($folders){
   $folders[] = plugin_dir_path(__FILE__) . 'widgets/';
+
   return $folders;
 }
 add_filter( 'siteorigin_widgets_widget_folders', 'custom_widgets' );
 
+// Adding visibility options
+function custom_widgets_visibility_field( $fields ) {
+  $fields['custom_widgets_visibility'] = array(
+      'name'        => 'Ocultar bloque de la web',
+      'type'        => 'checkbox',
+      'group'       => 'attributes',
+      'default'     => false,
+      'label'       => 'Ocultar bloque',
+      'description' => 'Marque esta casilla para ocultar este bloque de forma temporal.',
+      'priority'    => 20,
+  );
+
+  return $fields;
+}
+add_filter( 'siteorigin_panels_row_style_fields', 'custom_widgets_visibility_field' );
+add_filter( 'siteorigin_panels_widget_style_fields', 'custom_widgets_visibility_field' );
+
+// Adding visibility classes
+function custom_widgets_visibility_attribute( $attributes, $args ) {
+  if( !empty( $args['custom_widgets_visibility'] ) && ( $args['custom_widgets_visibility'] !== false ) ) {
+    array_push( $attributes['class'], 'hide-widget' );
+  }
+
+  return $attributes;
+}
+add_filter( 'siteorigin_panels_row_style_attributes', 'custom_widgets_visibility_attribute', 10, 2);
+add_filter( 'siteorigin_panels_widget_style_attributes', 'custom_widgets_visibility_attribute', 10, 2);
+
+// Load default styles
+function custom_widgets_styles() {
+  wp_enqueue_style( 'custom-widgets-styles', plugin_dir_url(__FILE__) . '/css/default.css', array(), '1.0' );
+  // wp_register_style( 'custom-widgets-styles', plugin_dir_url(__FILE__) . '/css/default.css', array(), '1.0' );
+}
+add_action( 'wp_enqueue_scripts', 'custom_widgets_styles' );
+
+// Load translation files inside languages folder
 function custom_widgets_load_textdomain() {
-  // load_plugin_textdomain( 'wpdocs_textdomain', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
   $plugin_dir = dirname( plugin_basename( __FILE__ ) ) . '/languages';
   $res = load_plugin_textdomain( 'custom-widgets', false, $plugin_dir );
 }
 add_action( 'plugins_loaded', 'custom_widgets_load_textdomain' );
 
+// CTA Form Handler
 function init_cta_form_send_form (){
   if ( $_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST["action"]) ) {
     if ($_REQUEST["action"] == "ie_exec_cta_formulario"){
@@ -44,7 +82,6 @@ function init_cta_form_send_form (){
         echo "Oops! There was a problem with your submission. Please complete the form and try again.";
         exit;
       }
-
 
       // Set the recipient email address.
       $recipient = $_POST["emaildata"]['sendto'];

@@ -153,7 +153,7 @@ class Video_Widget extends SiteOrigin_Widget {
           $vars['video_image'] = 'https://img.youtube.com/vi/'.$video_code.'/hqdefault.jpg';
         }
         elseif ($vars['video_type'] == 'vimeo'){
-          $vars['video_image'] = $this->getVimeoVideoThumbnailByVideoId( $video_code, 'medium' );
+          $vars['video_image'] = $this->grab_vimeo_thumbnail( $vars['video_url'] );
         }
       }
     }
@@ -170,29 +170,22 @@ class Video_Widget extends SiteOrigin_Widget {
     }
   }
 
+  function grab_vimeo_thumbnail($vimeo_url){
+    if( !$vimeo_url ) return false;
 
-  function getVimeoVideoThumbnailByVideoId( $id = '', $thumbType = 'medium' ) {
-      $id = trim( $id );
-      if ( $id == '' ) {
-        return FALSE;
-      }
-      $apiData = unserialize( file_get_contents( "http://vimeo.com/api/v2/video/$id.php" ) );
-      if ( is_array( $apiData ) && count( $apiData ) > 0 ) {
-        $videoInfo = $apiData[ 0 ];
-        switch ( $thumbType ) {
-          case 'small':
-            return $videoInfo[ 'thumbnail_small' ];
-            break;
-          case 'large':
-            return $videoInfo[ 'thumbnail_large' ];
-            break;
-          case 'medium':
-            return $videoInfo[ 'thumbnail_medium' ];
-          default:
-            break;
-        }
-      }
-      return FALSE;
+    $url = 'http://vimeo.com/api/oembed.json?url=' . rawurlencode($vimeo_url);
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+
+    $json = curl_exec($curl);
+    curl_close($curl);
+
+    $data = json_decode($json);
+
+    if( !$data ) return false;
+    return $data->thumbnail_url;
   }
 
   function getYoutubeId( $url ){

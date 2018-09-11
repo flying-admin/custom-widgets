@@ -44,7 +44,7 @@
                 </a>
               <?php endif; ?>
               <?php if($items[$i]['item_link_type'] == 'modal' && $items[$i]['section_item_modal']['item_modal_id'] != ''): ?>
-                <a href="#<?php echo $items[$i]['section_item_modal']['item_modal_id']; ?>" data-toggle="modal" class="fp_multi-distributor__content__item__info__link fp_multi-distributor__content__item__info__link--<?php echo $items[$i]['item_link_type']; ?> link-text">
+                <a href="#distributor__<?php echo $items[$i]['section_item_modal']['item_modal_id']; ?>" data-toggle="modal" class="fp_multi-distributor__content__item__info__link fp_multi-distributor__content__item__info__link--<?php echo $items[$i]['item_link_type']; ?> link-text">
                   <?php echo $items[$i]['item_link_text']; ?>
                 </a>
               <?php endif; ?>
@@ -69,7 +69,7 @@
 </div>
 <?php for ($i = 0; $i < count($items); $i++): ?>
   <?php if($items[$i]['item_link_type'] == 'modal' && $items[$i]['section_item_modal']['item_modal_id'] != ''): ?>
-  <div class="modal modal--ghost fade" id="<?php echo $items[$i]['section_item_modal']['item_modal_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-multiple-distributor">
+  <div class="modal modal--ghost modal--distributor fade" id="distributor__<?php echo $items[$i]['section_item_modal']['item_modal_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-multiple-distributor">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -99,7 +99,7 @@
 
                     <div class="embed-responsive embed-responsive-16by9">
                       <?php if( $modal['item_modal_stream_type'] == 'youtube' ): ?>
-                        <iframe width="560" height="315" class="embed-responsive-item video-iframe youtube " src="https://www.youtube.com/embed/<?php echo $modal['item_modal_stream_code']; ?>?" frameborder="0" allowfullscreen="" enablejsapi=1 allow="autoplay"></iframe>
+                        <iframe class="embed-responsive-item video-iframe youtube " src="https://www.youtube.com/embed/<?php echo $modal['item_modal_stream_code']; ?>?" frameborder="0" allowfullscreen="" enablejsapi=1 allow="autoplay"></iframe>
                       <?php endif; ?>
                       <?php if( $modal['item_modal_stream_type'] == 'vimeo' ): ?>
                         <iframe class="embed-responsive-item video-iframe vimeo" src="https://player.vimeo.com/video/<?php echo $modal['item_modal_stream_code']; ?>?" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>

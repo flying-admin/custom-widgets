@@ -21,7 +21,7 @@
             <div class="row">
               <?php if( $video_url != false ): ?>
                 <div class="col-sm-12">
-                  <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal" class="fp_video__content__video">
+                  <a href="#video__modal-video-<?php echo $video_code ?>" data-toggle="modal" class="fp_video__content__video">
                     <?php if( $video_image != false ): ?>
                       <div class="fp_video__content__video__image" style="background-image:url('<?php echo $video_image ?>')" ></div>
                     <?php endif; ?>
@@ -38,7 +38,7 @@
 </div>
 <?php if( $video_url != false  ): ?>
   <!-- MODAL -->
-  <div class="modal fade modal--video modal--ghost" id="introduccion__modal-video-<?php echo $video_code ?>" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
+  <div class="modal modal--ghost modal--video fade" id="video__modal-video-<?php echo $video_code ?>" tabindex="-1" role="dialog" aria-labelledby="modal-video-label">
     <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -50,7 +50,7 @@
           <div class="modal-video">
             <div class="embed-responsive embed-responsive-16by9">
               <?php if( $video_type == 'youtube' ): ?>
-                <iframe width="560" height="315" class="embed-responsive-item video-iframe youtube " src="https://www.youtube.com/embed/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" enablejsapi=1 allow="autoplay"></iframe>
+                <iframe width="560" height="315" class="embed-responsive-item video-iframe youtube" src="https://www.youtube.com/embed/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" enablejsapi=1 allow="autoplay"></iframe>
               <?php endif; ?>
               <?php if( $video_type == 'vimeo' ): ?>
                 <iframe class="embed-responsive-item video-iframe vimeo" src="https://player.vimeo.com/video/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>
