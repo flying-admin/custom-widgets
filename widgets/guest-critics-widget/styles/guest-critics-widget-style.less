@@ -3,21 +3,19 @@
 .fp_module {
   width: calc(~"100% + 30px");
   position: relative;
-  margin: 0 -15px 30px;
+  margin: 0 -15px;
 
   &:not(.fp_module--full-width) {
     .fp_module__content {
-      padding: 88px 70px 90px;
       max-width: 1682px;
+      padding: 40px 70px;
       margin: 0 auto;
 
       @media (max-width: 1024px){
-        padding: 88px 40px;
+        padding: 30px 40px;
       }
-      @media (max-width: 800px){
-        padding: 62px 44px 60px;
-      }
-      @media (max-width: 600px){
+
+      @media (max-width: 599px){
         padding: 22px 15px;
       }
     }
@@ -125,7 +123,7 @@
           color: @darkgrey;
           font-family: @f_default;
           margin-top: 0;
-          @media (max-width:600px){
+          @media (max-width:599px){
             font-size : 14px;
             line-height : 22px;
           }

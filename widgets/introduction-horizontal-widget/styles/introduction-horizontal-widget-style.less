@@ -3,21 +3,19 @@
 .fp_module{
   width: calc(~"100% + 30px");
   position: relative;
-  margin: 0 -15px 30px;
+  margin: 0 -15px;
 
   &:not(.fp_module--full-width){
     .fp_module__content{
-      padding: 88px 70px 90px;
+      padding: 40px 70px;
       max-width: 1682px;
       margin: 0 auto;
 
       @media (max-width: 1024px){
-        padding: 88px 40px;
+        padding: 30px 40px;
       }
-      @media (max-width: 800px){
-        padding: 62px 44px 60px;
-      }
-      @media (max-width: 600px){
+
+      @media (max-width: 599px){
         padding: 22px 15px;
       }
     }
@@ -33,7 +31,7 @@
   position: relative;
   width: auto;
   height: auto;
-  
+
   margin: 0;
   overflow: hidden;
   background-size: cover;
@@ -89,18 +87,18 @@
       left: 50%;
       margin-left: -200px;
     }
-    @media(max-width: 600px) {
+    @media(max-width: 599px) {
       width: 300%;
       left: 50%;
       margin-left: -200px;
     }
-  
+
     .content_image{
       width: 100%;
       position: relative;
       overflow: hidden;
       height: 0;
-  
+
       img{
         position: absolute;
         top: 0;
@@ -112,10 +110,5 @@
       }
     }
   }
-  
+
 }
-
-
-
-
-
