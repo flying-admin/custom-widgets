@@ -13,11 +13,13 @@
 
       <?php for($i = 0; $i < count($items); $i++): ?>
         <div class="fp_multi-distributor__content__item">
-          <?php if($items_type == 'normal'): ?>
+          <?php if($items_type == 'normal' || $items_type == 'contained'): ?>
             <?php if($items[$i]['image_url'] != ''): ?>
-              <div class="fp_multi-distributor__content__item__figure fp_multi-distributor__content__item__figure--image">
-                <img src="<?php echo $items[$i]['image_url']; ?>" alt="" class="fp_multi-distributor__content__item__figure__image">
-              </div>
+              <?php if($items_type == 'normal'): ?>
+                <div class="fp_multi-distributor__content__item__figure fp_multi-distributor__content__item__figure--image fp_multi-distributor__content__item__figure--cover" style="background-image: url(<?php echo $items[$i]['image_url']; ?>);"></div>
+              <?php elseif($items_type == 'contained'): ?>
+                <div class="fp_multi-distributor__content__item__figure fp_multi-distributor__content__item__figure--image fp_multi-distributor__content__item__figure--contain" style="background-image: url(<?php echo $items[$i]['image_url']; ?>);"></div>
+              <?php endif; ?>
             <?php endif; ?>
           <?php endif; ?>
           <?php if($items_type == 'icons'): ?>

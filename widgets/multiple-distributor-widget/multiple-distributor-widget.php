@@ -70,7 +70,8 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
               'type'  => 'radio',
               'label' => 'Tipo de vista',
               'options' => array(
-                'normal' => 'Normal',
+                'normal' => 'Imagen Extendida (Normal)',
+                'contained' => 'Imagen Contenida',
                 'icons' => 'Destacados con iconos',
               ),
               'default' => 'normal',
@@ -96,8 +97,8 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                   'fallback' => true,
                   'optional' => true,
                   'state_handler' => array(
-                    'items_type[normal]' => array('show'),
-                    'items_type[icons]' => array('hide')
+                    'items_type[icons]' => array('hide'),
+                    '_else[items_type]' => array('show')
                   )
                 ),
 
@@ -106,8 +107,8 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                   'label' => 'Icono',
                   'optional' => true,
                   'state_handler' => array(
-                    'items_type[normal]' => array('hide'),
-                    'items_type[icons]' => array('show')
+                    'items_type[icons]' => array('show'),
+                    '_else[items_type]' => array('hide')
                   )
                 ),
                 'icon_color' => array(
@@ -115,8 +116,8 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                   'label' => 'Color del icono',
                   'default' => '#FFFFFF',
                   'state_handler' => array(
-                    'items_type[normal]' => array('hide'),
-                    'items_type[icons]' => array('show')
+                    'items_type[icons]' => array('show'),
+                    '_else[items_type]' => array('hide')
                   )
                 ),
                 'icon_bgcolor' => array(
@@ -124,8 +125,8 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                   'label' => 'Color de fondo',
                   'default' => '#00338D',
                   'state_handler' => array(
-                    'items_type[normal]' => array('hide'),
-                    'items_type[icons]' => array('show')
+                    'items_type[icons]' => array('show'),
+                    '_else[items_type]' => array('hide')
                   )
                 ),
 
@@ -336,7 +337,7 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
     $vars['cta_url'] = sow_esc_url( $instance['section_cta']['cta_url'] );
     $vars['new_window'] = $instance['section_cta']['new_window'];
 
-    if ($vars['items_type'] == 'normal'){
+    if ($vars['items_type'] != 'icons'){
       for($i = 0; $i < count($vars['items']); $i++){
         $vars['items'][$i]['image_url'] =  $this->getMedia($vars['items'][$i]['image_url'], $vars['items'][$i]['image_url_fallback']);
       }
