@@ -22,7 +22,9 @@ class Introduction_Widget extends SiteOrigin_Widget {
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Introducción - Permite crear un contenido breve a modo de introducción.'
+        'description' => 'Introducción - Permite crear un contenido breve a modo de introducción.',
+        'panels_groups' => array('fp-widgets'),
+        'panels_icon' => 'dashicons dashicons-admin-page'
       ),
 
       //The $control_options array, which is passed through to WP_Widget
@@ -271,12 +273,12 @@ class Introduction_Widget extends SiteOrigin_Widget {
 
   function get_template_variables($instance) {
     $vars = [];
-    
+
     $vars['title'] = $instance['section_main']['title'];
     $vars['text'] = $instance['section_main']['text'];
     $vars['rich_text'] = $instance['section_main']['rich_text'];
 
-   
+
     $vars['link'] = false;
     if( $instance['section_main']['add_link'] == 'yes' ){
       $vars['link'] = true;
@@ -284,7 +286,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
       $vars['link_url'] = sow_esc_url($instance['section_main']['link_url']);
       $vars['link_blank'] = $instance['section_main']['link_blank'];
     }
-      
+
     $vars['extra_content'] = $instance['section_main']['extra_content'];
     switch ($instance['section_main']['extra_content']) {
 
@@ -308,7 +310,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
           $vars['video_type'] = false;
           $vars['extra_content_position'] = $instance['section_video']['video_position'];
           $vars['video_image'] = false;
-          
+
           $video_code = '';
 
           if( strpos( $vars['video_url'] , 'youtube') != false ){
@@ -377,10 +379,10 @@ class Introduction_Widget extends SiteOrigin_Widget {
   function getYoutubeId( $url ){
       // parse_str( parse_url( $url, PHP_URL_QUERY ), $my_array_of_vars );
       // if(array_key_exists ( 'v' , $my_array_of_vars ) ){
-      //   return  $my_array_of_vars['v'];   
+      //   return  $my_array_of_vars['v'];
       // }else{
-      //   return '';   
-      // } 
+      //   return '';
+      // }
 
       if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
         $id = $match[1];
@@ -403,18 +405,18 @@ class Introduction_Widget extends SiteOrigin_Widget {
 
       $regs = [];
       $id = '';
-  
+
       if (preg_match('%^https?:\/\/(?:www\.|player\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|album\/(\d+)\/video\/|video\/|)(\d+)(?:$|\/|\?)(?:[?]?.*)$%im', $url, $regs)) {
           $id = $regs[3];
       }
-  
+
       if($id){
         return $id;
       }else{
         return '';
       }
-  } 
-  
+  }
+
 
   function get_template_name($instance) {
     return 'introduction-widget-template';

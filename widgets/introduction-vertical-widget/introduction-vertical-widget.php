@@ -22,7 +22,9 @@ class Introduction_Vertical_Widget extends SiteOrigin_Widget {
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Introducción con imagen vertical - Permite crear un contenido breve a modo de introducción con una imagen vertical complementaria.'
+        'description' => 'Introducción con imagen vertical - Permite crear un contenido breve a modo de introducción con una imagen vertical complementaria.',
+        'panels_groups' => array('fp-widgets'),
+        'panels_icon' => 'dashicons dashicons-admin-page'
       ),
 
       //The $control_options array, which is passed through to WP_Widget

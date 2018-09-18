@@ -1,7 +1,7 @@
 <?php
 
 /*
-Widget Name: GUEST CRITICS
+Widget Name: Guest Critics
 Description: Muestra un listado de las personas externas a la Escuela que colaboran impartiendo charlas y seminarios nombrando la empresa en la que trabajan. Los Guest critics a mostrar se seleccionan manualmente.
 Author: Flying Pigs
 Author URI: http://flyingpigs.es
@@ -22,7 +22,9 @@ class Guest_Critics_Widget extends SiteOrigin_Widget {
       // The $widget_options array, which is passed through to WP_Widget.
       // It has a couple of extras like the optional help URL, which should link to your sites help or support page.
       array(
-        'description' => 'Guest critics - Módulo informativo'
+        'description' => 'Guest critics - Módulo informativo',
+        'panels_groups' => array('fp-widgets'),
+        'panels_icon' => 'dashicons dashicons-admin-page'
       ),
 
       //The $control_options array, which is passed through to WP_Widget

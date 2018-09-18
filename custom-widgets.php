@@ -60,6 +60,19 @@ function custom_widgets_load_textdomain() {
 }
 add_action( 'plugins_loaded', 'custom_widgets_load_textdomain' );
 
+// Add widgets group
+function custom_widgets_add_widget_tabs($tabs) {
+  $tabs[] = array(
+    'title' => 'Widgets de Flying Pigs',
+    'filter' => array(
+      'groups' => array('fp-widgets')
+    )
+  );
+
+  return $tabs;
+}
+add_filter('siteorigin_panels_widget_dialog_tabs', 'custom_widgets_add_widget_tabs', 0);
+
 // CTA Form Handler
 function init_cta_form_send_form (){
   if ( $_SERVER["REQUEST_METHOD"] == "POST" && isset($_REQUEST["action"]) ) {
