@@ -61,3 +61,6 @@ msgstr "¡Uups! Ha ocurrido un error, por favor pruebe de nuevo"
 
 msgid "Any questions?"
 msgstr "¿Tienes alguna duda?"
+
+msgid "New form from"
+msgstr "Nuevo mensaje de"

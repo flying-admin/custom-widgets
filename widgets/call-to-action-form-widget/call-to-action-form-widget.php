@@ -216,8 +216,8 @@ class Call_To_Action_Form_Widget extends SiteOrigin_Widget {
     $vars['contact_email'] =   $instance['section_main']['contact_email'];
     $vars['charge'] =          $instance['section_main']['charge'];
     $vars['add_form'] =        $instance['section_main']['add_form'];
-    $vars['fp_ctaf'] =         $instance['section_main']['form_email'];
-    //$vars['fp_ctaf'] =         fp_ctaf_encript($instance['section_main']['form_email']);
+    // $vars['fp_ctaf'] =         $instance['section_main']['form_email'];
+    $vars['fp_ctaf'] =         fp_ctaf_encript($instance['section_main']['form_email']);
     $vars['form_link_text'] =  $instance['section_main']['form_link_text'];
     $vars['form_link_url'] =   $instance['section_main']['form_link_url'];
     $vars['new_window'] =      $instance['section_main']['new_window'];

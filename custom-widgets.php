@@ -98,14 +98,17 @@ function init_cta_form_send_form (){
 
       // Set the recipient email address.
       $recipient = $_POST["emaildata"]['sendto'];
+      $recipient = fp_ctaf_decript($recipient);
       // Set the email subject.
-      $subject = "Fomulario: ".$_POST["emaildata"]['eventtopic'];
+      $subject = "New form from".' '.get_option('blogname').": ".$_POST["emaildata"]['eventtopic'];
 
       // Build the email content.
-      $email_content = "Name: $name\n";
-      $email_content .= "Email: $email\n\n";
-      $email_content .= "Message:\n$message\n\n";
-      $email_content .= "Mesasge info: \n eventurl: ".$_POST["emaildata"]['eventurl']."\n eventtopic: ".$_POST["emaildata"]['eventtopic'];
+      $email_content = __('First name','custom-widgets').": $name\n";
+      $email_content .= __("Email","custom-widgets").": $email\n\n";
+      $email_content .= __("Message","custom-widgets").":\n$message\n\n";
+      $email_content .= "\n\n\n".get_option('blogname');
+      $email_content .= "\n".home_url();
+      // $email_content .= "Mesasge info: \n eventurl: ".$_POST["emaildata"]['eventurl']."\n eventtopic: ".$_POST["emaildata"]['eventtopic'];
       $resultado = wp_mail( $recipient, $subject ,$email_content);
       if(!$resultado){
         http_response_code(400);
@@ -117,3 +120,32 @@ function init_cta_form_send_form (){
   }
 }
 add_action( 'init', 'init_cta_form_send_form' );
+
+function fp_ctaf_encript($string){
+	$key=fp_ctaf_get_key();
+	$result = '';
+	for($i=0; $i<strlen($string); $i++) {
+		$char = substr($string, $i, 1);
+		$keychar = substr($key, ($i % strlen($key))-1, 1);
+		$char = chr(ord($char)+ord($keychar));
+		$result.=$char;
+	}
+	return base64_encode($result);
+}
+
+function fp_ctaf_decript($string){
+	$key=fp_ctaf_get_key();
+	$result = '';
+	$string = base64_decode($string);
+	for($i=0; $i<strlen($string); $i++) {
+		$char = substr($string, $i, 1);
+		$keychar = substr($key, ($i % strlen($key))-1, 1);
+		$char = chr(ord($char)-ord($keychar));
+		$result.=$char;
+	}
+	return $result;
+}
+
+function fp_ctaf_get_key(){
+	return 'ndfdajkhaSDmdsfkjhsSUVYw7w04876$vspzxcñlkjnbasdf';
+}

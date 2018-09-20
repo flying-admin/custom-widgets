@@ -61,3 +61,6 @@ msgstr "Oops! Something went wrong, please try again later"
 
 msgid "Any questions?"
 msgstr "Any questions?"
+
+msgid "New form from"
+msgstr "New form from"
