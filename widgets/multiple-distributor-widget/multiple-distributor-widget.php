@@ -104,6 +104,35 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                   )
                 ),
 
+                'image_align_horizontal' => array(
+                  'type' => 'select',
+                  'label' => 'Alineacion horizontal de la imagen',
+                  'default' => 'center',
+                  'options' => array(
+                    'left' => 'Izquierda',
+                    'center' => 'Centro',
+                    'right' => 'Derecha'
+                  ),
+                  'state_handler' => array(
+                    'items_type[icons]' => array('hide'),
+                    '_else[items_type]' => array('show')
+                  )
+                ),
+                'image_align_vertical' => array(
+                  'type' => 'select',
+                  'label' => 'Alineacion vertical de la imagen',
+                  'default' => 'center',
+                  'options' => array(
+                    'top' => 'Arriba',
+                    'center' => 'Centro',
+                    'bottom' => 'Abajo'
+                  ),
+                  'state_handler' => array(
+                    'items_type[icons]' => array('hide'),
+                    '_else[items_type]' => array('show')
+                  )
+                ),
+
                 'icon' => array(
                   'type' => 'icon',
                   'label' => 'Icono',

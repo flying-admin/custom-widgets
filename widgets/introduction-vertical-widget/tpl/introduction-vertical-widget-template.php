@@ -23,7 +23,7 @@
           <?php if( $image_url != '' || $link ): ?>
                 <?php if($image_url != ''): ?>
                 <figure class="container__image container__image--v fp_introduction-v__content__img">
-                  <div class="content_image" data-width="1300" data-height="481">
+                  <div class="content_image" data-width="0" data-height="0" style="background-image: url(<?php echo $image_url; ?>);">
                     <img src="<?php echo $image_url; ?>" class="">
                   </div>
               </figure>

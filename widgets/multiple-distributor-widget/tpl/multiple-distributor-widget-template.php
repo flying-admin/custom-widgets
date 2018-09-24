@@ -16,9 +16,9 @@
           <?php if($items_type == 'normal' || $items_type == 'contained'): ?>
             <?php if($items[$i]['image_url'] != ''): ?>
               <?php if($items_type == 'normal'): ?>
-                <div class="fp_multi-distributor__content__item__figure fp_multi-distributor__content__item__figure--image fp_multi-distributor__content__item__figure--cover" style="background-image: url(<?php echo $items[$i]['image_url']; ?>);"></div>
+                <div class="fp_multi-distributor__content__item__figure fp_multi-distributor__content__item__figure--image fp_multi-distributor__content__item__figure--cover" style="background-image: url(<?php echo $items[$i]['image_url']; ?>); background-position: <?php echo $items[$i]['image_align_horizontal'] . ' ' . $items[$i]['image_align_vertical']; ?>;"></div>
               <?php elseif($items_type == 'contained'): ?>
-                <div class="fp_multi-distributor__content__item__figure fp_multi-distributor__content__item__figure--image fp_multi-distributor__content__item__figure--contain" style="background-image: url(<?php echo $items[$i]['image_url']; ?>);"></div>
+                <div class="fp_multi-distributor__content__item__figure fp_multi-distributor__content__item__figure--image fp_multi-distributor__content__item__figure--contain" style="background-image: url(<?php echo $items[$i]['image_url']; ?>); background-position: <?php echo $items[$i]['image_align_horizontal'] . ' ' . $items[$i]['image_align_vertical']; ?>;"></div>
               <?php endif; ?>
             <?php endif; ?>
           <?php endif; ?>

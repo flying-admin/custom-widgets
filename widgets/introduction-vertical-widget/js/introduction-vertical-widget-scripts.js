@@ -1,22 +1,23 @@
 jQuery(function(){
   console.log('introduction-vertical-widget - ready');
 
-    jQuery('.modal.modal--video').on('hidden.bs.modal', function (e) {
-      jQuery('.video-iframe').each(function(){
-        jQuery(this).attr("src",jQuery(this).attr("src"));
+    $('.modal.modal--video').on('hidden.bs.modal', function (e) {
+      $('.video-iframe').each(function(){
+        $(this).attr("src",$(this).attr("src"));
       });
 
-      jQuery('.video-iframe.vimeo').each(function(index) {
-        console.log("vimeo", jQuery(this));
-        jQuery(this)[0].contentWindow.postMessage('{"method":"unload"}','*');
+      $('.video-iframe.vimeo').each(function(index) {
+        console.log("vimeo", $(this));
+        $(this)[0].contentWindow.postMessage('{"method":"unload"}','*');
       });
     });
 
-    jQuery('.content_image').each(function () {
-      var w = jQuery(this).attr('data-width');
-      var h = jQuery(this).attr('data-height');
-      var padding = (h * 100) / w;
-      jQuery(this).css('padding-bottom' , padding + "%");
-    });
+    // $('.content_image').each(function () {
+    //   var $img = $(this);
+    //   var w = $img.data('width');
+    //   var h = $img.data('height');
+    //   var padding = (h * 100) / w;
+    //   $img.css('padding-top' , padding + "%");
+    // });
 
 });
