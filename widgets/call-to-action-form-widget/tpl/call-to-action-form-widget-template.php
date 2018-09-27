@@ -63,7 +63,7 @@
               </div>
             </div>
             <?php if( $add_form == 'yes' && $fp_ctaf != ''): ?>
-              <div class="cta-form">
+              <div class="cta-form" data-validation="<?php echo __('Please fill in the required fields', 'custom-widgets'); ?>.">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="form-content">
@@ -114,13 +114,12 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <div class="form_confirmation d-none form-success">
-                      <i class="icon-check"></i>
-                      <h5 class="form_confirmation__title"><?php echo __('Thank you', 'custom-widgets'); ?></h5>
-                      <p class="form_confirmation__subtitle"><?php echo __('The form has been sent succesfully', 'custom-widgets'); ?></p>
+                    <div class="form-success d-none">
+                      <p class="form-success__title"><?php echo __('Thank you', 'custom-widgets'); ?></p>
+                      <p class="form-success__subtitle"><?php echo __('The form has been sent succesfully', 'custom-widgets'); ?></p>
                     </div>
                     <div class="form-error d-none">
-                      <h5><?php echo __('Oops! Something went wrong, please try again later', 'custom-widgets'); ?></h5>
+                      <p class="form-error__title"><?php echo __('Oops! Something went wrong, please try again later', 'custom-widgets'); ?></p>
                     </div>
                   </div>
                 </div>

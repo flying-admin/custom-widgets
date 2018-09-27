@@ -60,6 +60,7 @@
       color: @darkgrey;
       padding: 0;
       margin: 28px 0 0;
+
       @media(max-width: 599px) {
         margin: 14px 0 0;
       }
@@ -77,6 +78,7 @@
         color: @darkgrey;
         font-family: @f_default;
         margin-top: 0;
+
         @media (max-width: 599px) {
           font-size: 14px;
           line-height: 22px;
@@ -123,6 +125,43 @@
             margin-left: 0 !important;
           }
         }
+      }
+    }
+
+    .cta-form,
+    .form-error,
+    .form-success {
+      display: block;
+      padding: 20px 0 0;
+
+      .validation-error,
+      .form-error__title,
+      .form-success__title,
+      .form-success__subtitle {
+        display: block;
+        font-family: @f_default;
+        font-weight: 800;
+        font-style: normal;
+        font-size: 15px;
+        line-height: 22px;
+        margin: 0 0 5px;
+      }
+
+      .validation-error,
+      .form-error__title {
+        color: @error;
+      }
+
+      .form-success__title {
+        font-size: 18px;
+        line-height: 24px;
+        color: @darkgrey;
+      }
+
+      .form-success__subtitle {
+        font-size: 14px;
+        line-height: 20px;
+        color: @darkgrey;
       }
     }
   }
@@ -288,14 +327,15 @@
       width: 100%;
     }
 
-    &.error > p{
-      color: @error;
-      font-size: 13px;
-      line-height: 22px;
-      font-family: @f_default;
-      font-weight: 800;
-      display: block;
-      font-style: normal;
+    &.error > p {
+      // color: @error;
+      // font-size: 13px;
+      // line-height: 22px;
+      // font-family: @f_default;
+      // font-weight: 800;
+      // display: block;
+      // font-style: normal;
+      display: none;
     }
 
     span {
@@ -342,7 +382,7 @@
       transition: color .2s, border .2s;
     }
 
-    &.error{
+    &.error {
       input[type=email],
       input[type=number],
       input[type=password],
@@ -366,6 +406,7 @@
       }
     }
   }
+
   .checkbox {
     label > span {
       padding-left: 35px;
@@ -408,6 +449,7 @@
         transform: rotate(50deg);
       }
     }
+
     label > input:checked + span {
       &:after {
         border-color: @white;
@@ -418,18 +460,20 @@
         border-color: @primary--dark;
       }
     }
-    &.error{
-      label > p{
-        color: @error;
-        font-size: 13px;
-        line-height: 22px;
-        font-family: @f_default;
-        font-weight: 800;
-        display: block;
-        font-style: normal;
+
+    &.error {
+      label > p {
+        // color: @error;
+        // font-size: 13px;
+        // line-height: 22px;
+        // font-family: @f_default;
+        // font-weight: 800;
+        // display: block;
+        // font-style: normal;
+        display: none;
       }
 
-      label>span:before {
+      label > span:before {
         border-color: @error;
       }
     }

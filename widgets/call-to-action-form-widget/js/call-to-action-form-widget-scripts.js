@@ -90,21 +90,18 @@ jQuery(function(){
 
   // cta form validation
   $(".cta-form .send_button").on( 'click', function(e){
-    var moduleCtaFormParent = $(this).closest(".cta-form");
-
     e.preventDefault();
+
+    var $moduleCtaForm = $(this).closest(".cta-form");
     var expresion = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
-    var firstname = $(moduleCtaFormParent).find("#firstname").val();
-    var lastname = $(moduleCtaFormParent).find("#lastname").val();
-    var email = $(moduleCtaFormParent).find("#email").val();
-    var message = $(moduleCtaFormParent).find("#message").val();
-    var sendTo = $(moduleCtaFormParent).find("#sendto").val();
-    var eventURL = $(moduleCtaFormParent).find("#eventurl").val();
-    var eventTopic = $(moduleCtaFormParent).find("#eventtopic").val();
+
+    var sendTo = $moduleCtaForm.find("#sendto").val();
+    var eventURL = $moduleCtaForm.find("#eventurl").val();
+    var eventTopic = $moduleCtaForm.find("#eventtopic").val();
     var cond1 = true, cond2 = true, cond3 = true, cond4 = true, cond5 = true;
 
-    //Comprombamos que esté marcadas las condiciones legales
-    var legalWrap = $(moduleCtaFormParent).find('.checkbox');
+    // Comprombamos que esté marcadas las condiciones legales
+    var legalWrap = $moduleCtaForm.find('.checkbox');
     var legalLabel = legalWrap.find('.field_legal');
     var legalInput = legalLabel.find('#legal');
     var legalError = legalLabel.find('p');
@@ -118,69 +115,88 @@ jQuery(function(){
       cond1 = false;
     }
 
-    //Comprombamos que el correo esté escrito y sea un formato correcto
-    var emailLabel = $(moduleCtaFormParent).find('.field.field_email');
+    // Comprombamos que el correo esté escrito y sea un formato correcto
+    var emailLabel = $moduleCtaForm.find('.field.field_email');
     var emailInput = emailLabel.find('#email');
-    var emailError = emailLabel.find('p');
-    emailError.remove();
-    emailLabel.removeClass('error');
-    if( email == null || email.length == 0 || !expresion.test(email) ) {
-      var emailValidation = emailInput.data('validation');
+    if (emailInput.length){
+      var emailValue = emailInput.val();
+      var emailError = emailLabel.find('p');
+
       emailError.remove();
-      emailLabel.append( "<p>" + emailValidation + "</p>" );
-      emailLabel.addClass('error');
-      cond2 = false;
+      emailLabel.removeClass('error');
+      if( emailValue == null || emailValue.length == 0 || !expresion.test(emailValue) ) {
+        var emailValidation = emailInput.data('validation');
+        emailError.remove();
+        emailLabel.append( "<p>" + emailValidation + "</p>" );
+        emailLabel.addClass('error');
+        cond2 = false;
+      }
     }
 
-    //Comprombamos el nombre
-    var firstnameLabel = $(moduleCtaFormParent).find('.field.field_firstname');
+    // Comprombamos el nombre
+    var firstnameLabel = $moduleCtaForm.find('.field.field_firstname');
     var firstnameInput = firstnameLabel.find('#firstname');
-    var firstnameError = firstnameLabel.find('p');
-    firstnameError.remove();
-    firstnameLabel.removeClass('error');
-    if( firstname == null || firstname.length == 0 ) {
-      var firstnameValidation = firstnameInput.data('validation');
+    if (firstnameInput.length){
+      var firstnameValue = firstnameInput.val();
+      var firstnameError = firstnameLabel.find('p');
+
       firstnameError.remove();
-      firstnameLabel.append( "<p>" + firstnameValidation + "</p>" );
-      firstnameLabel.addClass('error');
-      cond3 = false;
+      firstnameLabel.removeClass('error');
+      if( firstnameValue == null || firstnameValue.length == 0 ) {
+        var firstnameValidation = firstnameInput.data('validation');
+        firstnameError.remove();
+        firstnameLabel.append( "<p>" + firstnameValidation + "</p>" );
+        firstnameLabel.addClass('error');
+        cond3 = false;
+      }
     }
 
-    //Comprombamos el apellido
-    var lastnameLabel = $(moduleCtaFormParent).find('.field.field_lastname');
+    // Comprombamos el apellido
+    var lastnameLabel = $moduleCtaForm.find('.field.field_lastname');
     var lastnameInput = lastnameLabel.find('#lastname');
-    var lastnameError = lastnameLabel.find('p');
-    lastnameError.remove();
-    lastnameLabel.removeClass('error');
-    if( lastname == null || lastname.length == 0 ) {
-      var lastnameValidation = lastnameInput.data('validation');
+    if (lastnameInput.length){
+      var lastnameValue = lastnameInput.val();
+      var lastnameError = lastnameLabel.find('p');
+
       lastnameError.remove();
-      lastnameLabel.append( "<p>" + lastnameValidation + "</p>" );
-      lastnameLabel.addClass('error');
-      cond4 = false;
+      lastnameLabel.removeClass('error');
+      if( lastnameValue == null || lastnameValue.length == 0 ) {
+        var lastnameValidation = lastnameInput.data('validation');
+        lastnameError.remove();
+        lastnameLabel.append( "<p>" + lastnameValidation + "</p>" );
+        lastnameLabel.addClass('error');
+        cond4 = false;
+      }
     }
 
-    //Comprombamos el mensaje
-    var messageLabel = $(moduleCtaFormParent).find('.field.field_message');
+    // Comprombamos el mensaje
+    var messageLabel = $moduleCtaForm.find('.field.field_message');
     var messageInput = messageLabel.find('#message');
-    var messageError = messageLabel.find('p');
-    messageError.remove();
-    messageLabel.removeClass('error');
-    if( message == null || message.length == 0 ) {
-      var messageValidation = messageInput.data('validation');
+    if (messageInput.length){
+      var messageValue = messageInput.val();
+      var messageError = messageLabel.find('p');
+
       messageError.remove();
-      messageLabel.append( "<p>" + messageValidation + "</p>" );
-      messageLabel.addClass('error');
-      cond5 = false;
+      messageLabel.removeClass('error');
+      if( messageValue == null || messageValue.length == 0 ) {
+        var messageValidation = messageInput.data('validation');
+        messageError.remove();
+        messageLabel.append( "<p>" + messageValidation + "</p>" );
+        messageLabel.addClass('error');
+        cond5 = false;
+      }
     }
 
-    //Si entra en if, ha rellenado correctamente formulario
+    var validationError = $moduleCtaForm.find('.validation-error');
+    validationError.remove();
+
+    // Si entra en if, ha rellenado correctamente formulario
     if ( cond1 && cond2 && cond3 && cond4 && cond5 ) {
       var formData = {
-        userfirstname: firstname,
-        userlastname: lastname,
-        useremail: email,
-        usermessage: message,
+        userfirstname: firstnameValue,
+        userlastname: lastnameValue,
+        useremail: emailValue,
+        usermessage: messageValue,
         sendto: sendTo,
         eventurl: eventURL,
         eventtopic: eventTopic
@@ -191,15 +207,19 @@ jQuery(function(){
         url: "#" ,
         data: { action: 'ie_exec_cta_formulario', emaildata: formData },
         success: function(data) {
-          $(moduleCtaFormParent).find(".form-content").addClass('d-none');
-          $(moduleCtaFormParent).find(".form-error").addClass('d-none');
-          $(moduleCtaFormParent).find(".form-success").removeClass('d-none');
+          $moduleCtaForm.find(".form-content").addClass('d-none');
+          $moduleCtaForm.find(".form-error").addClass('d-none');
+          $moduleCtaForm.find(".form-success").removeClass('d-none');
         },
         error: function(msg) {
           console.log(msg.statusText);
-          $(moduleCtaFormParent).find(".form-error").removeClass('d-none');
+          $moduleCtaForm.find(".form-error").removeClass('d-none');
         }
       });
+    }
+    else {
+      var generalValidation = $moduleCtaForm.data('validation');
+      $moduleCtaForm.prepend( "<p class='validation-error'>" + generalValidation + "</p>" );
     }
   });
 });

@@ -22,7 +22,7 @@
   }
 }
 
-.bg-light{
+.bg-light {
   background-color: @white;
 }
 
@@ -48,7 +48,7 @@
     margin-bottom: 0;
   }
 
-  &__container{
+  &__container {
     max-width: 1542px;
     width: 100%;
   }
@@ -81,14 +81,7 @@
       }
     }
 
-    &__items{
-      margin-top: 41px;
-      a{
-        text-decoration: none;
-      }
-    }
-
-    &__item{
+    &__item {
       height: 100%;
       background-size: cover;
       background-color: @white;
@@ -100,22 +93,18 @@
           min-height: 320px!important;
       }
 
-      &__content{
+      &__content {
         position: relative;
         z-index: 1;
         height: 100%;
       }
 
 
-      &__title{
+      &__title {
         .title_text--medium();
         color: @primary--dark;
         font-family: @f_title;
         transition: all 0.3s ease-out 0s;
-
-        &:hover {
-          opacity: 0.7;
-        }
       }
 
       p.fp_guest-critics__content__item__text {
@@ -141,9 +130,11 @@
         }
       }
 
-      &--bg{
+      &--bg {
         position: relative;
-        &:before{
+        transition: all 0.3s ease-out 0s;
+
+        &:before {
           content: "";
           display: block;
           position: absolute;
@@ -152,27 +143,48 @@
           right: 0;
           bottom: 0;
           background-color: #000;
-          opacity: .45;
+          opacity: 0.45;
+          transition: all 0.3s ease-out 0s;
         }
 
-        .fp_guest-critics__content__item__title, .fp_guest-critics__content__item__text{
+        .fp_guest-critics__content__item__title,
+        .fp_guest-critics__content__item__text {
           color: @white;
         }
 
         &:hover {
-          transition: all .15s;
-          .fp_guest-critics__content__item__title{
-            color: darken( @white, 20% );
+
+        }
+      }
+    }
+
+    &__items {
+      margin-top: 41px;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          .fp_guest-critics__content__item__title {
+            opacity: 0.75;
           }
-          &:before{
-            opacity: .25;
+
+          .fp_guest-critics__content__item--bg {
+            &:before{
+              opacity: 0.25;
+            }
+
+            .fp_guest-critics__content__item__title {
+              color: darken(@white, 10%);
+              opacity: 1;
+            }
           }
         }
       }
     }
   }
 
-  &__modal__item{
+  &__modal__item {
     background-color: @white;
     padding: 88px 70px 90px;
 
@@ -183,17 +195,17 @@
       padding: 44px 15px;
     }
 
-    &__info{
+    &__info {
       margin-bottom: 35px;
     }
 
-    &__title{
+    &__title {
       .title_text--medium();
       color: @darkgrey;
       font-family: @f_title;
     }
 
-    p.fp_guest-critics__modal__item__text{
+    p.fp_guest-critics__modal__item__text {
         .medium_text();
         color: @darkgrey;
         margin-top: 0;
@@ -201,7 +213,7 @@
         font-style: italic;
     }
 
-    &__description{
+    &__description {
       .medium_text();
       color: @darkgrey;
       font-family: @f_default;
@@ -209,7 +221,7 @@
       p {
         margin: 0;
 
-        & + p{
+        & + p {
           margin-top: 5px;
         }
       }
@@ -275,15 +287,15 @@
         }
       }
 
-      h1,h2,h3,h4,h5,h6 {
+      h1, h2, h3, h4, h5, h6 {
         font-family: @f_default;
       }
 
-      h1,h2,h3{
+      h1, h2, h3{
         display: none!important;
       }
 
-      h4{
+      h4 {
         font-size: 18px;
         font-weight: 800;
         letter-spacing: 0.25px;
@@ -292,7 +304,7 @@
         text-transform: uppercase;
       }
 
-      h5{
+      h5 {
         font-size: 15px;
         font-weight: 800;
         letter-spacing: 0.25px;
@@ -301,7 +313,7 @@
         text-transform: uppercase;
       }
 
-      h6{
+      h6 {
         font-size: 15px;
         font-weight: 800;
         letter-spacing: 0.25px;
@@ -309,7 +321,7 @@
       }
     }
 
-    &__img{
+    &__img {
       width: 150px;
       height: 150px;
       border-radius: 100%;
@@ -330,7 +342,7 @@
 }
 
 .modal {
-  &.modal--ghost{
+  &.modal--ghost {
     .modal-header,
     .modal-content,
     .modal-body,
@@ -338,6 +350,7 @@
       background-color: transparent;
       border: none;
     }
+
     .close {
       float: right;
       font-size: 1.5rem;
