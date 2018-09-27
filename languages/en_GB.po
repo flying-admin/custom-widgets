@@ -64,3 +64,6 @@ msgstr "Any questions?"
 
 msgid "New form from"
 msgstr "New form from"
+
+msgid "Please fill in the required fields"
+msgstr "Please fill in the required fields"
