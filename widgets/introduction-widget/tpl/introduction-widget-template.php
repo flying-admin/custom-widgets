@@ -5,12 +5,12 @@
         <div class="col-sm-12">
         <div class="fp_introduction__content">
           <div class="row">
-            <div class="col-lg-8 col-sm-12">
+            <div class="col-lg-11 col-sm-12">
               <h2 class="fp_introduction__content__title">
                 <?php echo $title; ?>
               </h2>
             </div>
-            <div class="col-lg-9 col-sm-12">
+            <div class="col-lg-11 col-sm-12">
               <?php if($text != ''): ?>
               <p class="fp_introduction__content__text">
                 <?php echo $text; ?>

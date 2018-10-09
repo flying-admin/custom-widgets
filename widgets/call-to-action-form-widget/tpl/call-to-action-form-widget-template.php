@@ -97,7 +97,7 @@
                             <label class="field_legal" for="legal">
                               <input type="checkbox" id="legal" name="legal" data-validation="<?php echo __('Please accept the Legal terms', 'custom-widgets'); ?>"/>
                               <span class="icon-check">
-                                <?php echo __('I accept the', 'custom-widgets'); ?> <a href="https://www.ie.edu/politica-privacidad" class="link--primary" target="_blank"><?php echo __('Legal terms', 'custom-widgets'); ?></a>
+                                <?php echo __('I accept the', 'custom-widgets'); ?> <a href="<?php echo __('privacy policy url', 'custom-widgets') ?>" class="link--primary" target="_blank"><?php echo __('Legal terms', 'custom-widgets'); ?>.</a>
                               </span>
                             </label>
                           </div>

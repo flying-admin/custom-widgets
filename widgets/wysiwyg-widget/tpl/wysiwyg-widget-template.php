@@ -1,63 +1,61 @@
 <div class="fp_module">
   <div class="fp_module__content">
     <div class="fp_wysiwyg">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="fp_wysiwyg__content">
-              <div class="row">
-                <div class="col-lg-10 col-sm-12">
-                  <?php if($title != ''): ?>
-                    <h2 class="fp_wysiwyg__content__title">
-                      <?php echo $title; ?>
-                    </h2>
-                  <?php endif; ?>
-                  <?php if($text != ''): ?>
-                    <p class="fp_wysiwyg__content__text">
-                      <?php echo $text; ?>
-                    </p>
-                  <?php endif; ?>
-                </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="fp_wysiwyg__content">
+            <div class="row">
+              <div class="col-lg-10 col-sm-12">
+                <?php if($title != ''): ?>
+                  <h2 class="fp_wysiwyg__content__title">
+                    <?php echo $title; ?>
+                  </h2>
+                <?php endif; ?>
+                <?php if($text != ''): ?>
+                  <p class="fp_wysiwyg__content__text">
+                    <?php echo $text; ?>
+                  </p>
+                <?php endif; ?>
               </div>
-              <div class="row" >
-                <?php if( $extra_content != 'none' ): ?>
-                  <div class="col-12">
-                    <div class="extra-content">
+            </div>
+            <div class="row" >
+              <?php if( $extra_content != 'none' ): ?>
+                <div class="col-12">
+                  <div class="extra-content">
 
-                      <?php if( $image   && $image_url): ?>
-                        <figure class="extra-content__img content_image" data-width="740" data-height="480" >
-                          <img src="<?php echo $image_url; ?>" class="">
-                        </figure>
-                      <?php endif; ?>
+                    <?php if( $image   && $image_url): ?>
+                      <figure class="extra-content__img content_image" data-width="740" data-height="480" >
+                        <img src="<?php echo $image_url; ?>" class="">
+                      </figure>
+                    <?php endif; ?>
 
-                      <?php if( $video ): ?>
-                        <?php if( $video_url == false ): ?>
-                          <p>  error video URL </p>
-                        <?php else: ?>
-                          <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal"   class="extra-content__video">
-                            <figure class="extra-content__video__image content_image" data-width="740" data-height="480" >
-                                <img src="<?php echo $video_image ?>" class="">
-                            </figure>
-                            <?php echo siteorigin_widget_get_icon( 'ionicons-ios-play-outline' ); ?>
-                          </a>
-                        <?php endif; ?>
+                    <?php if( $video ): ?>
+                      <?php if( $video_url == false ): ?>
+                        <p>  error video URL </p>
+                      <?php else: ?>
+                        <a href="#introduccion__modal-video-<?php echo $video_code ?>" data-toggle="modal"   class="extra-content__video">
+                          <figure class="extra-content__video__image content_image" data-width="740" data-height="480" >
+                              <img src="<?php echo $video_image ?>" class="">
+                          </figure>
+                          <?php echo siteorigin_widget_get_icon( 'ionicons-ios-play-outline' ); ?>
+                        </a>
                       <?php endif; ?>
-                    </div>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              <?php endif; ?>
+              <div class=" col-12">
+                <?php if($rich_text != ''): ?>
+                  <div class="fp_wysiwyg__content__module">
+                    <?php echo $rich_text; ?>
                   </div>
                 <?php endif; ?>
-                <div class=" col-12">
-                  <?php if($rich_text != ''): ?>
-                    <div class="fp_wysiwyg__content__module">
-                      <?php echo $rich_text; ?>
-                    </div>
-                  <?php endif; ?>
-                  <?php if($link): ?>
-                    <a href="<?php echo $link_url; ?>" class="link link--primary link--external fp_wysiwyg__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
-                      <?php echo $link_text; ?>
-                      <?php echo siteorigin_widget_get_icon( 'genericons-external' ); ?>
-                    </a>
-                  <?php endif; ?>
-                </div>
+                <?php if($link): ?>
+                  <a href="<?php echo $link_url; ?>" class="link link--primary link--external fp_wysiwyg__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
+                    <?php echo $link_text; ?>
+                    <?php echo siteorigin_widget_get_icon( 'genericons-external' ); ?>
+                  </a>
+                <?php endif; ?>
               </div>
             </div>
           </div>

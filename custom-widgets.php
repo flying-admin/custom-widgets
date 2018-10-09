@@ -79,37 +79,59 @@ function init_cta_form_send_form (){
     if ($_REQUEST["action"] == "ie_exec_cta_formulario"){
 
       // Get the form fields and remove whitespace.
-       $name = strip_tags(trim($_POST["emaildata"]['userfirstname']));
-       $name = str_replace(array("\r","\n"),array(" "," "),$name);
-       $userlastname = strip_tags(trim($_POST["emaildata"]['userlastname']));
-       $userlastname = str_replace(array("\r","\n"),array(" "," "),$userlastname);
-       $name .= " ".$userlastname;
-       $email = filter_var(trim( $_POST["emaildata"]['useremail'] ), FILTER_SANITIZE_EMAIL);
-       $message = trim( $_POST["emaildata"]['usermessage']);
+      if(isset($_POST["emaildata"]['userfirstname'])) {
+        $name = strip_tags(trim($_POST["emaildata"]['userfirstname']));
+        $name = str_replace(array("\r","\n"),array(" "," "),$name);
+      }
+      else {
+        $name = '';
+      }
 
+      if(isset($_POST["emaildata"]['userlastname'])) {
+        $lastname = strip_tags(trim($_POST["emaildata"]['userlastname']));
+        $lastname = str_replace(array("\r","\n"),array(" "," "),$lastname);
+      }
+      else {
+        $lastname = '';
+      }
 
-      // Check that data was sent to the mailer.
-      if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        // Set a 400 (bad request) response code and exit.
-        http_response_code(400);
-        echo __('Oops! Something went wrong, please try again later', 'custom-widgets');
-        exit;
+      $name .= " ".$lastname;
+
+      if(isset($_POST["emaildata"]['usermessage'])) {
+        $message = trim($_POST["emaildata"]['usermessage']);
+      }
+      else {
+        $message = '';
+      }
+
+      if(isset($_POST["emaildata"]['useremail'])) {
+        $email = filter_var(trim( $_POST["emaildata"]['useremail'] ), FILTER_SANITIZE_EMAIL);
+      }
+      else {
+        $email = '';
       }
 
       // Set the recipient email address.
-      $recipient = $_POST["emaildata"]['sendto'];
-      $recipient = fp_ctaf_decript($recipient);
+      $recipients = $_POST["emaildata"]['sendto'];
+
+      var_dump($recipients);
+      echo('<br />');
+
+      $recipients = fp_ctaf_decript($recipients);
+
+      var_dump($recipients);
+      echo('<br />');
+
       // Set the email subject.
       $subject = "New form from".' '.get_option('blogname').": ".$_POST["emaildata"]['eventtopic'];
 
       // Build the email content.
       $email_content = __('First name','custom-widgets').": $name\n";
-      $email_content .= __("Email","custom-widgets").": $email\n\n";
-      $email_content .= __("Message","custom-widgets").":\n$message\n\n";
-      $email_content .= "\n\n\n".get_option('blogname');
-      $email_content .= "\n".home_url();
-      // $email_content .= "Mesasge info: \n eventurl: ".$_POST["emaildata"]['eventurl']."\n eventtopic: ".$_POST["emaildata"]['eventtopic'];
-      $resultado = wp_mail( $recipient, $subject ,$email_content);
+      $email_content .= __("Email","custom-widgets").": $email\n";
+      $email_content .= __("Message","custom-widgets").": \n$message\n";
+      $email_content .= "\n\n\n\n\n".get_option('blogname')." (".home_url().")";
+
+      $resultado = wp_mail($recipients, $subject ,$email_content);
       if(!$resultado){
         http_response_code(400);
         echo __('Oops! Something went wrong, please try again later', 'custom-widgets');
@@ -122,30 +144,29 @@ function init_cta_form_send_form (){
 add_action( 'init', 'init_cta_form_send_form' );
 
 function fp_ctaf_encript($string){
-	$key=fp_ctaf_get_key();
+	$key = fp_ctaf_get_key();
+  $cypher = fp_ctaf_get_cypher();
 	$result = '';
-	for($i=0; $i<strlen($string); $i++) {
-		$char = substr($string, $i, 1);
-		$keychar = substr($key, ($i % strlen($key))-1, 1);
-		$char = chr(ord($char)+ord($keychar));
-		$result.=$char;
-	}
-	return base64_encode($result);
+
+  $result = openssl_encrypt($string, $cypher, $key);
+  return $result;
 }
 
 function fp_ctaf_decript($string){
-	$key=fp_ctaf_get_key();
+	$key = fp_ctaf_get_key();
+  $cypher = fp_ctaf_get_cypher();
 	$result = '';
-	$string = base64_decode($string);
-	for($i=0; $i<strlen($string); $i++) {
-		$char = substr($string, $i, 1);
-		$keychar = substr($key, ($i % strlen($key))-1, 1);
-		$char = chr(ord($char)-ord($keychar));
-		$result.=$char;
-	}
-	return $result;
+
+  $result = openssl_decrypt($string, $cypher, $key);
+  return $result;
 }
 
 function fp_ctaf_get_key(){
-	return 'ndfdajkhaSDmdsfkjhsSUVYw7w04876$vspzxcñlkjnbasdf';
+  return 'Flying2017';
+	//return 'ndfdajkhaSDmdsfkjhsSUVYw7w04876$vspzxcñlkjnbasdf';
+}
+
+function fp_ctaf_get_cypher(){
+  return 'AES256';
+	//return 'AES-256-CBC';
 }
