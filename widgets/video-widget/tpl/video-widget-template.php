@@ -50,7 +50,7 @@
           <div class="modal-video">
             <div class="embed-responsive embed-responsive-16by9">
               <?php if( $video_type == 'youtube' ): ?>
-                <iframe width="560" height="315" class="embed-responsive-item video-iframe youtube" src="https://www.youtube.com/embed/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" enablejsapi=1 allow="autoplay"></iframe>
+                <iframe class="embed-responsive-item video-iframe youtube" src="https://www.youtube.com/embed/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" enablejsapi=1 allow="autoplay"></iframe>
               <?php endif; ?>
               <?php if( $video_type == 'vimeo' ): ?>
                 <iframe class="embed-responsive-item video-iframe vimeo" src="https://player.vimeo.com/video/<?php echo $video_code ?>?" frameborder="0" allowfullscreen="" allow="autoplay"></iframe>

@@ -13,7 +13,7 @@ jQuery(function(){
         $iframe.data('src', $iframe.attr('src'));
       }
       src = $iframe.data('src');
-      $iframe.attr('src', src + 'autoplay=1');
+      $iframe.attr('src', src + '&autoplay=1');
     }
   });
 
