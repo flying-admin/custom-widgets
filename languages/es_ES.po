@@ -68,5 +68,5 @@ msgstr "Nuevo mensaje de"
 msgid "Please fill in the required fields"
 msgstr "Por favor, rellene los campos obligatorios"
 
-msgid "privacy policy url"
-msgstr "https://www.ie.edu/politica-privacidad/"
+msgid "https://www.ie.edu/privacy-policy"
+msgstr "https://www.ie.edu/politica-privacidad"
