@@ -1,0 +1,173 @@
+@import "variables";
+
+.fp_contact {
+  display: block;
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 40px 70px;
+  margin: 0 -15px;
+
+  @media(max-width: 1024px){
+    padding: 30px 40px;
+  }
+
+  @media(max-width: 599px){
+    padding: 22px 15px;
+  }
+
+  &--inner {
+    display: block;
+    position: relative;
+    width: auto;
+    height: auto;
+    max-width: 1542px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    @media(max-width: 991px){
+      margin: 0 0 40px;
+    }
+
+    &__title {
+      display: block;
+      max-width: 85%;
+      margin: 0;
+      font-family: @f_title;
+      color: @darkgrey;
+      .title_text();
+    }
+
+    &__text {
+      display: block;
+      max-width: 100%;
+      margin: 20px 0 0;
+      font-family: @f_default;
+      color: @grey;
+      .regular_text();
+
+      &:empty {
+        display: none;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 40px 0 0;
+
+    &__item {
+      display: block;
+      flex-basis: 46%;
+      width: 46%;
+      padding: 35px 40px;
+      margin: 0 0 30px;
+      background-color: @white;
+
+      @media(max-width: 767px){
+        flex-basis: 100%;
+        width: 100%;
+      }
+
+      &__name {
+        display: block;
+        padding: 0;
+        margin: 0;
+        .medium_text();
+        font-family: @f_title;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: @darkgrey;
+      }
+
+      &__desc {
+        display: block;
+        margin: 5px 0 0;
+        .medium_text();
+        font-family: @f_default;
+        line-height: 22px;
+        color: @grey;
+      }
+
+      &__title {
+        display: block;
+        margin: 16px 0 12px;
+        font-family: @f_title;
+        font-weight: 800;
+        font-size: 11px;
+        line-height: 16px;
+        text-transform: uppercase;
+        color: @darkgrey;
+      }
+
+      &__address {
+        display: block;
+        margin: 5px 0 0;
+        .medium_text();
+        font-family: @f_default;
+        color: @darkgrey;
+      }
+
+      &__phone,
+      &__email {
+        display: block;
+        position: relative;
+        padding: 0;
+        padding-left: 24px;
+        margin: 5px 0 0;
+        font-family: @f_default;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 16px;
+        color: @primary--dark;
+
+        a {
+          display: inline-block;
+          padding: 0;
+          color: @primary--dark;
+          text-decoration: none;
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          height: 16px;
+          width: 16px;
+          background-size: contain;
+          background-position: center center;
+          background-repeat: no-repeat;
+        }
+      }
+
+      &__phone {
+        &::after {
+          background-image: url('/wp-content/plugins/custom-widgets/widgets/map-widget/assets/map/link-tel.png');
+        }
+      }
+
+      &__email {
+        &::after {
+          background-image: url('/wp-content/plugins/custom-widgets/widgets/map-widget/assets/map/link-mail.png');
+        }
+      }
+    }
+  }
+}
