@@ -27,15 +27,17 @@
       </div>
     </div>
     <div class="row justify-content-center no-gutters">
-      <div class="col-lg-8 col-md-10">
-        <?php if($background != 'white'): ?>
-          <a href="<?php echo $cta_url; ?>" class="fp_featured-cta__cta btn btn--primary" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
-            <span><?php echo $cta_text; ?></span>
-          </a>
-        <?php else: ?>
-          <a href="<?php echo $cta_url; ?>" class="fp_featured-cta__cta btn" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
-            <span><?php echo $cta_text; ?></span>
-          </a>
+      <div class="col-lg-10">
+        <?php if($cta_url != '' && $cta_text != ''): ?>
+          <?php if($background != 'white'): ?>
+            <a href="<?php echo $cta_url; ?>" class="fp_featured-cta__cta btn btn--primary" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
+              <span><?php echo $cta_text; ?></span>
+            </a>
+          <?php else: ?>
+            <a href="<?php echo $cta_url; ?>" class="fp_featured-cta__cta btn" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
+              <span><?php echo $cta_text; ?></span>
+            </a>
+          <?php endif; ?>
         <?php endif; ?>
       </div>
     </div>

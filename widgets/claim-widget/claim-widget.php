@@ -96,8 +96,8 @@ class Claim_Widget extends SiteOrigin_Widget {
               'state_emitter' => array(
                 'callback' => 'conditional',
                 'args' => array(
-                    'video_modal[on]: val == true',
-                    'video_modal[off]: val == false'
+                  'video_modal[on]: val == true',
+                  'video_modal[off]: val == false'
                 )
               ),
             ),

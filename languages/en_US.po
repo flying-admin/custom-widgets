@@ -70,3 +70,21 @@ msgstr "Please fill in the required fields"
 
 msgid "https://www.ie.edu/privacy-policy"
 msgstr "https://www.ie.edu/privacy-policy"
+
+msgid "All"
+msgstr "All"
+
+msgid "Europe"
+msgstr "Europe"
+
+msgid "Middle East & Africa"
+msgstr "Middle East & Africa"
+
+msgid "Asia Pacific"
+msgstr "Asia Pacific"
+
+msgid "Latin America"
+msgstr "Latin America"
+
+msgid "USA & Canada"
+msgstr "USA & Canada"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: custom-widgets\n"
 "POT-Creation-Date: 2018-09-04 12:00+0200\n"
-"PO-Revision-Date: 2018-10-09 13:18+0200\n"
+"PO-Revision-Date: 2018-10-24 14:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: FlyingPigs\n"
 "Language: es_ES\n"
@@ -27,19 +27,19 @@ msgid "Message"
 msgstr "Mensaje"
 
 msgid "Please enter your First name"
-msgstr "Por favor introduzca su Nombre"
+msgstr "Por favor introduce tu Nombre"
 
 msgid "Please enter your Last name"
-msgstr "Por favor introduzca su Apellido"
+msgstr "Por favor introduce tus Apellidos"
 
 msgid "Please enter a valid Email"
-msgstr "Por favor introduzca un Email válido"
+msgstr "Por favor introduce un Email válido"
 
 msgid "Please enter your Message"
-msgstr "Por favor introduzca su Mensaje"
+msgstr "Por favor introduce tu Mensaje"
 
 msgid "Please accept the Legal terms"
-msgstr "Por favor acepte los Terminos legales"
+msgstr "Por favor acepta los Términos legales"
 
 msgid "I accept the"
 msgstr "Acepto los"
@@ -66,7 +66,25 @@ msgid "New form from"
 msgstr "Nuevo mensaje de"
 
 msgid "Please fill in the required fields"
-msgstr "Por favor, rellene los campos obligatorios"
+msgstr "Por favor, rellena los campos obligatorios"
 
 msgid "https://www.ie.edu/privacy-policy"
 msgstr "https://www.ie.edu/politica-privacidad"
+
+msgid "All"
+msgstr "Todos"
+
+msgid "Europe"
+msgstr "Europa"
+
+msgid "Middle East & Africa"
+msgstr "Oriente Medio y Africa"
+
+msgid "Asia Pacific"
+msgstr "Asia Pacifico"
+
+msgid "Latin America"
+msgstr "America Latina"
+
+msgid "USA & Canada"
+msgstr "EEUU y Canada"
