@@ -80,29 +80,42 @@ class Contact_Widget extends SiteOrigin_Widget {
                   'default' => '',
                   'optional' => true
                 ),
-                'contact_title' => array(
-                  'type' => 'text',
-                  'label' => 'Título',
-                  'default' => '',
-                  'required' => true
-                ),
-                'contact_address' => array(
-                  'type' => 'textarea',
-                  'label' => 'Dirección',
-                  'default' => '',
-                  'optional' => true
-                ),
-                'contact_phone' => array(
-                  'type' => 'text',
-                  'label' => 'Teléfono',
-                  'default' => '',
-                  'optional' => true
-                ),
-                'contact_email' => array(
-                  'type' => 'text',
-                  'label' => 'Correo electrónico',
-                  'default' => '',
-                  'optional' => true
+
+                'departments' => array(
+                  'type' => 'repeater',
+                  'label' => 'Departamentos',
+                  'item_name'  => 'Departamento',
+                  'item_label' => array(
+                    'selector'     => "[id*='department_title']",
+                    'update_event' => 'change',
+                    'value_method' => 'val'
+                  ),
+                  'fields' => array(
+                    'department_title' => array(
+                      'type' => 'text',
+                      'label' => 'Título',
+                      'default' => '',
+                      'required' => true
+                    ),
+                    'department_address' => array(
+                      'type' => 'textarea',
+                      'label' => 'Dirección',
+                      'default' => '',
+                      'optional' => true
+                    ),
+                    'department_phone' => array(
+                      'type' => 'text',
+                      'label' => 'Teléfono',
+                      'default' => '',
+                      'optional' => true
+                    ),
+                    'department_email' => array(
+                      'type' => 'text',
+                      'label' => 'Correo electrónico',
+                      'default' => '',
+                      'optional' => true
+                    )
+                  )
                 )
               )
             )

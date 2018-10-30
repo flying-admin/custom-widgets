@@ -33,15 +33,19 @@
           <?php endif; ?>
 
           <div class="fp_multi-distributor__content__item__info">
-            <p class="fp_multi-distributor__content__item__info__title medium_text">
-              <?php echo $items[$i]['item_title']; ?>
-            </p>
-            <p class="fp_multi-distributor__content__item__info__text medium_text">
-              <?php echo $items[$i]['item_text']; ?>
-            </p>
+            <?php if ($items[$i]['item_title'] != ''): ?>
+              <p class="fp_multi-distributor__content__item__info__title medium_text">
+                <?php echo $items[$i]['item_title']; ?>
+              </p>
+            <?php endif; ?>
+            <?php if ($items[$i]['item_text'] != ''): ?>
+              <p class="fp_multi-distributor__content__item__info__text medium_text">
+                <?php echo $items[$i]['item_text']; ?>
+              </p>
+            <?php endif; ?>
             <?php if($items[$i]['item_link_type'] != 'none' && $items[$i]['item_link_text'] != ''): ?>
               <?php if($items[$i]['item_link_type'] == 'link' && $items[$i]['item_link_url'] != ''): ?>
-                <a href="<?php echo $items[$i]['item_link_url'] ?>" class="fp_multi-distributor__content__item__info__link fp_multi-distributor__content__item__info__link--<?php echo $items[$i]['item_link_type']; ?> link-text" <?php if($items[$i]['item_new_window']): ?> target="_blank" <?php endif; ?>>
+                <a href="<?php echo sow_esc_url($items[$i]['item_link_url']); ?>" class="fp_multi-distributor__content__item__info__link fp_multi-distributor__content__item__info__link--<?php echo $items[$i]['item_link_type']; ?> link-text" <?php if($items[$i]['item_new_window']): ?> target="_blank" <?php endif; ?>>
                   <?php echo $items[$i]['item_link_text']; ?>
                 </a>
               <?php endif; ?>
@@ -51,9 +55,11 @@
                 </a>
               <?php endif; ?>
             <?php endif; ?>
-            <p class="fp_multi-distributor__content__item__info__aux tiny_text">
-              <?php echo $items[$i]['item_info']; ?>
-            </p>
+            <?php if ($items[$i]['item_info'] != ''): ?>
+              <p class="fp_multi-distributor__content__item__info__aux tiny_text">
+                <?php echo $items[$i]['item_info']; ?>
+              </p>
+            <?php endif; ?>
           </div>
 
         </div>

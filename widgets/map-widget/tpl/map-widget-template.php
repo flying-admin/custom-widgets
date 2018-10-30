@@ -79,7 +79,7 @@
                     <?php endif; ?>
                     <p class="fp_map__content__lists__item__elem__info__address"><?php echo $mrkr['marker_address']; ?></p>
                     <?php if($mrkr['marker_cta'] != ''): ?>
-                      <a class="fp_map__content__lists__item__elem__info__cta fp_map__content__lists__item__elem__info__cta--<?php echo $mrkr['marker_cta_style']; ?>" href="<?php echo $mrkr['marker_cta_url']; ?>" <?php if($mrkr['new_window']): ?>target="_blank"<?php endif; ?>>
+                      <a class="fp_map__content__lists__item__elem__info__cta fp_map__content__lists__item__elem__info__cta--<?php echo $mrkr['marker_cta_style']; ?>" href="<?php echo sow_esc_url($mrkr['marker_cta_url']); ?>" <?php if($mrkr['new_window']): ?>target="_blank"<?php endif; ?>>
                         <span><?php echo $mrkr['marker_cta_text']; ?></span>
                       </a>
                     <?php endif; ?>
@@ -110,7 +110,7 @@
                     <?php endif; ?>
                     <p class="fp_map__content__lists__item__elem__info__address"><?php echo $mrkr['marker_address']; ?></p>
                     <?php if($mrkr['marker_cta'] != ''): ?>
-                      <a class="fp_map__content__lists__item__elem__info__cta fp_map__content__lists__item__elem__info__cta--<?php echo $mrkr['marker_cta_style']; ?>" href="<?php echo $mrkr['marker_cta_url']; ?>" <?php if($mrkr['new_window']): ?>target="_blank"<?php endif; ?>>
+                      <a class="fp_map__content__lists__item__elem__info__cta fp_map__content__lists__item__elem__info__cta--<?php echo $mrkr['marker_cta_style']; ?>" href="<?php echo sow_esc_url($mrkr['marker_cta_url']); ?>" <?php if($mrkr['new_window']): ?>target="_blank"<?php endif; ?>>
                         <span><?php echo $mrkr['marker_cta_text']; ?></span>
                       </a>
                     <?php endif; ?>
@@ -142,12 +142,12 @@
         'cta': <?php echo $mrkr['marker_cta']? 1 : 0; ?>,
         'cta_style': '<?php echo $mrkr['marker_cta_style']; ?>',
         'cta_text': '<?php echo $mrkr['marker_cta_text']; ?>',
-        'cta_url': '<?php echo $mrkr['marker_cta_url']; ?>',
+        'cta_url': '<?php echo sow_esc_url($mrkr['marker_cta_url']); ?>',
         'cta_blank': <?php echo $mrkr['new_window']? 1 : 0; ?>
       },
     <?php endforeach; ?>
   ];
 
 </script>
-<!-- <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJCnGHuhW7wGkJcWdHAuBFsuMqwOofYik&amp;callback=initMap"></script> -->
-<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJCnGHuhW7wGkJcWdHAuBFsuMqwOofYik"></script>
+<!-- <script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=<?php echo get_option('maps_api_key'); ?>&amp;callback=initMap"></script> -->
+<script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=<?php echo get_option('maps_api_key'); ?>"></script>

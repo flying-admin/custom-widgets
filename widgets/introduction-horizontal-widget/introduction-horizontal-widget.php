@@ -86,7 +86,7 @@ class Introduction_Horizontal_Widget extends SiteOrigin_Widget {
 
     $vars['title'] = $instance['section_main']['title'];
     $vars['text'] = $instance['section_main']['text'];
-    $vars['image_url'] =  $this->getImage($instance['section_main']['image_url'], $instance['section_main']['image_url_fallback']);
+    $vars['image_url'] = $this->getImage($instance['section_main']['image_url'], $instance['section_main']['image_url_fallback']);
 
     return $vars;
   }

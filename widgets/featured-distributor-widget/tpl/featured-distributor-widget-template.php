@@ -2,7 +2,7 @@
 <div class="fp_featured-distributor <?php echo "fp_featured-distributor--" . $type; ?>">
   <div class="fp_featured-distributor__content">
     <?php if($link_url != ''): ?>
-      <a href="<?php echo $link_url; ?>" class="fp_featured-distributor__content__main fp_featured-distributor__content__main--link" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
+      <a href="<?php echo sow_esc_url($link_url); ?>" class="fp_featured-distributor__content__main fp_featured-distributor__content__main--link" <?php if($new_window): ?> target="_blank" <?php endif; ?>>
     <?php else: ?>
       <div class="fp_featured-distributor__content__main fp_featured-distributor__content__main--no-link">
     <?php endif; ?>

@@ -18,6 +18,40 @@ function custom_widgets ($folders){
 }
 add_filter( 'siteorigin_widgets_widget_folders', 'custom_widgets' );
 
+function additional_customizer_settings( $wp_customize ) {
+
+  $section = $wp_customize->get_section( 'fpie_theme' );
+  if (!$section){
+    $wp_customize->add_section(
+      'fpie_theme',
+      array(
+        'title' => 'Ajustes del tema',
+        'priority' => 1
+      )
+    );
+  }
+
+  $wp_customize->add_setting(
+    'maps_api_key',
+    array(
+      'default' => '',
+      'type' => 'option',
+      'capability' => 'edit_theme_options'
+    )
+  );
+  $wp_customize->add_control(
+    'maps_api_key',
+    array(
+      'type' => 'text',
+      'label' => 'API Key de Google Maps',
+      'description' => '',
+      'section' => 'fpie_theme'
+    )
+  );
+
+}
+add_action( 'customize_register', 'additional_customizer_settings' );
+
 // Adding visibility options
 function custom_widgets_visibility_field( $fields ) {
   $fields['custom_widgets_visibility'] = array(

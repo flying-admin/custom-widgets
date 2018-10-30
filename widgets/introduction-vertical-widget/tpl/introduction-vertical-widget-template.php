@@ -30,7 +30,7 @@
                 <?php endif; ?>
 
                 <?php if( $link ): ?>
-                  <a href="<?php echo $link_url; ?>" class="link link--primary link--external fp_introduction-v__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
+                  <a href="<?php echo sow_esc_url($link_url); ?>" class="link link--primary link--external fp_introduction-v__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
                     <?php echo $link_text; ?>
                     <?php echo siteorigin_widget_get_icon( 'genericons-external' ); ?>
                   </a>

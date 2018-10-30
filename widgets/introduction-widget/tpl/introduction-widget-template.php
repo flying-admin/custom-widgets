@@ -35,7 +35,7 @@
                       <?php if($cta_link_text != ''): ?>
                       <div class="row justify-content-center">
                         <div class="col-lg-12 col-md-6">
-                          <a href="<?php echo $cta_link_url; ?>" class="btn btn--block btn--primary cta-block__btn " <?php if($cta_new_window): ?> target="_blank" <?php endif; ?>>
+                          <a href="<?php echo sow_esc_url($cta_link_url); ?>" class="btn btn--block btn--primary cta-block__btn " <?php if($cta_new_window): ?> target="_blank" <?php endif; ?>>
                             <span>
                               <?php echo $cta_link_text; ?>
                               <?php echo siteorigin_widget_get_icon( 'genericons-external' ); ?>
@@ -77,7 +77,7 @@
               </div>
               <?php endif; ?>
               <?php if($link): ?>
-                <a href="<?php echo $link_url; ?>" class="link link--primary link--external fp_introduction__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
+                <a href="<?php echo sow_esc_url($link_url); ?>" class="link link--primary link--external fp_introduction__content__cta" <?php if($link_blank): ?> target="_blank" <?php endif; ?>>
                   <?php echo $link_text; ?>
                   <?php echo siteorigin_widget_get_icon( 'genericons-external' ); ?>
                 </a>

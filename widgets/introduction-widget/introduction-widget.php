@@ -283,7 +283,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
     if( $instance['section_main']['add_link'] == 'yes' ){
       $vars['link'] = true;
       $vars['link_text'] = $instance['section_main']['link_text'];
-      $vars['link_url'] = sow_esc_url($instance['section_main']['link_url']);
+      $vars['link_url'] = $instance['section_main']['link_url'];
       $vars['link_blank'] = $instance['section_main']['link_blank'];
     }
 
@@ -295,7 +295,7 @@ class Introduction_Widget extends SiteOrigin_Widget {
           $vars['cta_title'] = $instance['section_cta']['title'];
           $vars['cta_text'] = $instance['section_cta']['text'];
           $vars['cta_link_text'] = $instance['section_cta']['cta_text'];
-          $vars['cta_link_url'] =  sow_esc_url( $instance['section_cta']['cta_url'] );
+          $vars['cta_link_url'] =  $instance['section_cta']['cta_url'];
           $vars['cta_new_window'] = $instance['section_cta']['new_window'];
           $vars['extra_content_position'] = $instance['section_cta']['position'];
           break;

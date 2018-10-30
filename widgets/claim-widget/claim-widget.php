@@ -188,7 +188,7 @@ class Claim_Widget extends SiteOrigin_Widget {
     $vars['claim'] = $instance['section_text']['claim'];
     $vars['text'] = $instance['section_text']['text'];
     $vars['cta_text'] = $instance['section_cta']['cta_text'];
-    $vars['cta_url'] = sow_esc_url( $instance['section_cta']['cta_url'] );
+    $vars['cta_url'] = $instance['section_cta']['cta_url'];
     $vars['new_window'] = $instance['section_cta']['new_window'];
 
     if ($vars['bg_type'] == 'image'){

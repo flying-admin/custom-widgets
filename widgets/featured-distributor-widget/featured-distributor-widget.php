@@ -179,7 +179,7 @@ class Featured_Distributor_Widget extends SiteOrigin_Widget {
     $vars['main'] = $instance['section_common']['main'];
     $vars['desc'] = $instance['section_common']['desc'];
     $vars['link_text'] = $instance['section_common']['link_text'];
-    $vars['link_url'] = sow_esc_url( $instance['section_common']['link_url'] );
+    $vars['link_url'] = $instance['section_common']['link_url'];
     $vars['new_window'] = $instance['section_common']['new_window'];
 
     $vars['phrase_main'] = $instance['section_phrase']['phrase_main'];
