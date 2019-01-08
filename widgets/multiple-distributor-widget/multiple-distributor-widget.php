@@ -210,6 +210,7 @@ class Multiple_Distributor_Widget extends SiteOrigin_Widget {
                   'label' => 'Url del enlace',
                   'default' => '',
                   'optional' => true,
+                  'sanitize' => 'url',
                   'state_handler' => array(
                     'item_link_type_{$repeater}[link]' => array('show'),
                     '_else[item_link_type_{$repeater}]' => array('hide')

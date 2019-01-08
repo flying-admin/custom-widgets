@@ -12,7 +12,7 @@ jQuery(function(){
       });
     });
 
-    // $('.content_image').each(function () {
+    // $('.fp_introduction-v .content_image').each(function () {
     //   var $img = $(this);
     //   var w = $img.data('width');
     //   var h = $img.data('height');
