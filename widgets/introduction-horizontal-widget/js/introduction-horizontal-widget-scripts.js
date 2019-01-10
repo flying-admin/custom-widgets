@@ -1,11 +1,12 @@
 jQuery(function(){
   console.log('introduction-horizontal-widget - ready');
 
-    jQuery('.content_image').each(function () {
-      var w = jQuery(this).attr('data-width');
-      var h = jQuery(this).attr('data-height');
+    $('.fp_introduction-h .content_image').each(function () {
+      var $img = $(this);
+      var w = $img.data('width');
+      var h = $img.data('height');
       var padding = (h * 100) / w;
-      jQuery(this).css('padding-bottom' , padding + "%");
+      $img.css('padding-top' , padding + "%");
     });
 
 });

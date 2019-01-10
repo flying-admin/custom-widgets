@@ -88,3 +88,18 @@ msgstr "Latin America"
 
 msgid "USA & Canada"
 msgstr "USA & Canada"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "Go back"
+msgstr "Go back"
+
+msgid "What are you looking for?"
+msgstr "What are you looking for?"
+
+msgid "There are no blog entries yet"
+msgstr "There are no blog entries yet"
+
+msgid "There are no blog entries for your search"
+msgstr "There are no blog entries for your search"
